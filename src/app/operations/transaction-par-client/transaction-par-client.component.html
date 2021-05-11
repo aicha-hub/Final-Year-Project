@@ -1,0 +1,80 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+              
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Liste Transactions</h4>
+                        <p class="card-category"> Les transactions du numéro de compte  : {{id}} </p>
+                    </div>
+                    <div class="card-body">
+                       
+                     <tr> <p></p> </tr> 
+                    
+                        <div class="table-responsive">
+                          <p></p>
+                          <p></p>
+                            <table class="table" id="mytable">
+                              <p></p>
+                              <p></p>
+                                <thead class=" text-primary">
+                                    
+                                    <th style="color: indigo;">
+                                        Identifiant
+                                    </th>
+                                    <th style="color: indigo;">
+                                        RIB Client
+                                    </th>
+                                    <th style="color: indigo;">
+                                         Type
+                                    </th>
+                                    <th style="color: indigo;">
+                                        Montant
+                                    </th>
+                                    <th style="color: indigo;">
+                                        Date
+                                    </th>
+                                    <th style="color: indigo;">
+                                      Statut
+                                    </th>
+                                   
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let transaction of transaction">
+                                      
+                                      <td>{{transaction.codeTransaction}}</td>
+                                      <td>{{transaction.ribEmetteur}}</td>
+                                      <td>{{transaction.typeTransaction}}</td>
+                                      <td>{{transaction.montant}}DT</td>
+                                      <td>{{transaction.dateTransaction}}</td>
+                                      <td>{{transaction.statutTransaction}}</td>
+                                      
+                                      
+                                      
+  
+                                      
+                                      <td class="text-center"><button class="btn btn-primary btn-xs" (click)="details(transaction.codeTransaction)" ><span class="material-icons">article</span></button></td>
+                                      
+  
+                                    </tr>
+                              </tbody>
+                            </table>
+                           
+                          </div>
+                       
+                     
+                  
+  
+                  
+                
+  
+                    </div>
+                </div>
+            </div>               
+        </div>
+    </div>
+    
+  </div>
+  

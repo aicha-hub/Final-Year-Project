@@ -1,0 +1,35 @@
+
+<form class="example-form"> 
+  <table class="example-full-width" cellspacing="0"><tr>   
+    
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Code client :</mat-label>  
+      <input matInput [(ngModel)]="pers_nat.pers1"   name="codePers" id="codePers" type="number" disabled required>
+    </mat-form-field></td>    
+
+
+  <td>
+    <mat-form-field class="example-full-width">
+      <mat-label>Nationnalite</mat-label>
+        <mat-select [(ngModel)]="pers_nat.nat" id="codeNationalite" name="codeNationalite">
+          <mat-option *ngFor="let liste_nationnalite of liste_nationnalite" [value]="liste_nationnalite.codeNationalite"  matInput >
+            {{liste_nationnalite.nationalite}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+</td>
+
+    </tr>
+    
+        
+
+</table>
+  <div class="row" style="margin-top: 25px;">                
+    <div class="col-md-6">
+  <button mat-raised-button color="primary" style="margin-left:230%;" (click)="OnCreateNAT()">Ajouter</button>
+    </div>
+    <div class="col-md-6">
+  <button mat-raised-button color="warn" style="margin-left:160%;"   (click)="Close()">Fermer </button>
+ </div></div>
+</form>
+

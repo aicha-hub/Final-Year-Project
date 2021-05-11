@@ -1,0 +1,83 @@
+
+
+<div class="main-content" >
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example" >   
+                    <button mat-raised-button color="#2B3E42" style="margin-left: 650px"(click)="clientsPhysiques()"><span class="material-icons" style="margin-right: 5px;">filter_alt</span>Clients physiques</button>
+                    <button mat-raised-button color="#2B3E42" style="margin-left: 20px" (click)="clientsMorales()" ><span class="material-icons" style="margin-right: 5px;">filter_alt</span>Clients moraux</button>
+                  </div> 
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Vos clients morales</h4>
+                        <p class="card-category"> </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4" style="margin-left: 630px;">
+                             <mat-form-field class="example-full-width">
+                               <input matInput  #code name="code" id="code"  placeholder="Cherchez un client" type="text" >
+                               
+                             </mat-form-field>
+                            
+                             </div>
+                             <div class="col-md-1">
+                               <button mat-icon-button color="primary"  (click)="chercher(code.value)">
+                                 <span class="material-icons">
+                                   search
+                                   </span>
+                               </button>
+                              </div>
+                            </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th style="color:#770B40;">
+                                        ID
+                                    </th>
+                                    <th style="color: #770B40;">
+                                        Nature
+                                    </th>
+                                    <th style="color: #770B40;">
+                                        Forme Juridique
+                                    </th>
+                                    <th style="color: #770B40;">
+                                       Statut Fatca
+                                    </th>
+                                    <th style="color: #770B40;">
+                                       Niveau risque
+                                    </th>
+                                    <th style="color: #770B40;">
+                                        Revue
+                                    </th>
+
+                                    
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let personne_morale of personne_morale">
+                                      
+                                      <td>{{personne_morale.codeClient}}</td>
+                                      <td>{{personne_morale.nature}}</td>
+                                      <td>{{personne_morale.formeJuridique}}</td>
+                                      <td>{{personne_morale.statutFatca}}</td>
+                                      <td>{{personne_morale.niveauRisque}}</td>
+                                      <td>{{personne_morale.revue}}</td>
+                                      
+                                      
+                                      
+                                    
+                                      <td class="text-center"><button style="background-color: #770B40" class="btn btn-primary btn-xs" (click)="details(personne_morale.codeClient)" ><span class="material-icons">article</span></button></td>
+                                      <td class="text-center"><button class="btn btn-danger btn-xs" (click)="deletePP(personne_morale.codeClient)"  *ngIf="showAdminBoard" ><span class="material-icons">delete_outline</span> </button></td>
+                                     
+                                    </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>               
+        </div>
+    </div>
+    
+  </div>

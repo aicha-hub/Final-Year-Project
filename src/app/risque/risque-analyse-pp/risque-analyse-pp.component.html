@@ -1,0 +1,203 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <button mat-raised-button color="warn" style="margin-left: 850px" (click)="clientsMorales()" >
+                  <span class="material-icons">
+                  east
+                  </span>Voir clients morales</button>
+
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Vos clients </h4>
+                      <p class="card-category"> Clients Physiques </p>
+                  </div>
+                  <div class="card-body">
+                      <label class="l1">Transactions Validées</label>
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                <th style="color: indigo;">
+                                  Identifiant
+                              </th>
+                              <th style="color: indigo;">
+                                  RIB Client
+                              </th>
+                              <th style="color: indigo;">
+                                   Type
+                              </th>
+                              <th style="color: indigo;">
+                                  Montant
+                              </th>
+                              <th style="color: indigo;">
+                                  Date
+                              </th>
+                              <th style="color: indigo;">
+                                Statut
+                              </th>
+
+                                  
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let transaction2 of transaction2">
+                                      
+                                  <td>{{transaction2.codeTransaction}}</td>
+                                  <td>{{transaction2.ribEmetteur}}</td>
+                                  <td>{{transaction2.typeTransaction}}</td>
+                                  <td>{{transaction2.montant}}DT</td>
+                                  <td>{{transaction2.dateTransaction}}</td>
+                                  <td>{{transaction2.statutTransaction}}</td>
+                                    
+                                    
+                                    
+
+                              
+                                        
+                                  
+                                  </tr>
+                            </tbody>
+                          </table>
+                      </div>
+                      <label class="l1">Transactions Douteuses Validées</label>
+                      <div class="table-responsive">
+                      <table class="table">
+                          <thead class=" text-primary">
+                              
+                            <th style="color: indigo;">
+                              Identifiant
+                          </th>
+                          <th style="color: indigo;">
+                              RIB Client
+                          </th>
+                          <th style="color: indigo;">
+                               Type
+                          </th>
+                          <th style="color: indigo;">
+                              Montant
+                          </th>
+                          <th style="color: indigo;">
+                              Date
+                          </th>
+                          <th style="color: indigo;">
+                            Statut
+                          </th>
+
+                              
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let transaction1 of transaction1">
+                                      
+                              <td>{{transaction1.codeTransaction}}</td>
+                              <td>{{transaction1.ribEmetteur}}</td>
+                              <td>{{transaction1.typeTransaction}}</td>
+                              <td>{{transaction1.montant}}DT</td>
+                              <td>{{transaction1.dateTransaction}}</td>
+                              <td>{{transaction1.statutTransaction}}</td>
+                                
+                                
+
+                              </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                  <label class="l1">Transactions Douteuses</label>
+                  <div class="table-responsive">
+                      <table class="table">
+                          <thead class=" text-primary">
+                             
+                            <th style="color: indigo;">
+                              Identifiant
+                          </th>
+                          <th style="color: indigo;">
+                              RIB Client
+                          </th>
+                          <th style="color: indigo;">
+                               Type
+                          </th>
+                          <th style="color: indigo;">
+                              Montant
+                          </th>
+                          <th style="color: indigo;">
+                              Date
+                          </th>
+                          <th style="color: indigo;">
+                            Statut
+                          </th>
+
+                              
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let transaction of transaction">
+                                      
+                              <td>{{transaction.codeTransaction}}</td>
+                              <td>{{transaction.ribEmetteur}}</td>
+                              <td>{{transaction.typeTransaction}}</td>
+                              <td>{{transaction.montant}}DT</td>
+                              <td>{{transaction.dateTransaction}}</td>
+                              <td>{{transaction.statutTransaction}}</td>
+                                
+                                
+                                
+
+                               
+                              </tr>
+                        </tbody>
+                      </table>
+                      <label class="l1">Transactions Refuseés</label>
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                <th style="color: indigo;">
+                                  Identifiant
+                              </th>
+                              <th style="color: indigo;">
+                                  RIB Client
+                              </th>
+                              <th style="color: indigo;">
+                                   Type
+                              </th>
+                              <th style="color: indigo;">
+                                  Montant
+                              </th>
+                              <th style="color: indigo;">
+                                  Date
+                              </th>
+                              <th style="color: indigo;">
+                                Statut
+                              </th>
+    
+                                  
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let transaction3 of transaction3">
+                                      
+                                  <td>{{transaction3.codeTransaction}}</td>
+                                  <td>{{transaction3.ribEmetteur}}</td>
+                                  <td>{{transaction3.typeTransaction}}</td>
+                                  <td>{{transaction3.montant}}DT</td>
+                                  <td>{{transaction3.dateTransaction}}</td>
+                                  <td>{{transaction3.statutTransaction}}</td>
+                                    
+                                    
+                                    
+    
+                                    
+                                  </tr>
+                            </tbody>
+                          </table>
+                  </div>
+                 
+
+
+
+
+
+                  </div>
+              </div>
+          </div>               
+      </div>
+  </div>
+  
+</div>
+
+

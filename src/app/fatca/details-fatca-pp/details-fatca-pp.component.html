@@ -1,0 +1,50 @@
+
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    
+                    <div class="card-body">
+                        <label class="l1" ><b> <section class="mat-typography">
+                            <h2>Fiche FATCA</h2>
+                          </section> </b></label> 
+
+                          <div *ngIf="personne_physique.paysNaiss" aria-disabled="false">  
+                            <p class="l2"> - Lieu de naissance du client situé aux Etats-Unis  </p>
+                          </div>
+
+                          <div *ngIf="personne_physique.usResident">  
+                            <p class="l2"> - Le client a residé de facon permenante dans les 3 dernieres annees dans les Etats Unis </p>
+                          </div>
+
+                          <div *ngIf="personne_physique.carteVerte">  
+                            <p class="l2"> - Le client dispose d'une carte verte</p>
+                          </div>
+
+                          <div *ngIf="personne_physique.codeTin">  
+                            <p class="l2"> - Le client dispose d'un code TIN  </p>
+                          </div>
+
+                          <div *ngIf="personne_physique.indiTelephonique==1">  
+                            <p class="l2" > - Le client dispose d’une ligne téléphonique américaine .                           </p>
+                     
+                          </div>
+                        
+                          
+
+
+
+                         
+
+                    </div>
+                </div>
+            </div>               
+        </div>
+       
+    </div>
+    <button mat-stroked-button color="warn" (click)="close()" style="margin-left: 600px;" >Fermer</button>
+  </div>
+
+

@@ -1,0 +1,433 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="card">
+        <div class="card-header card-header-danger">
+            <h4 class="card-title">Personne Morale</h4>
+            <p class="card-category">Veuillez saisir tous les donnees</p>
+        </div>
+        <div class="card-body">
+            <div id="typography">
+                
+                <form #Form="ngForm"  [formGroup]="this.form">
+                  
+                <label class="l1">DONNÉES DE BASE DU CLIENT PERSONNE MORALE*
+                </label>
+                <mat-form-field class="example-full-width">
+                  <input  required  matInput [(ngModel)]="personne_morale.codeClient"  id="codeClient"  formControlName="codeClient" placeholder="Matricule Fiscale" type="number" >
+                  <mat-error>Champs obligatoire.</mat-error>
+                </mat-form-field>
+
+                <div class="row">
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input  required matInput [(ngModel)]="personne_morale.denominationSociale"  id="denominationSociale" formControlName="denominationSociale" placeholder="Dénomination Sociale" type="text"  >
+                        <mat-error>Champs obligatoire.</mat-error>
+
+                      </mat-form-field>
+                      </div>
+                      <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input  required matInput [(ngModel)]="personne_morale.formeJuridique"  id="formeJuridique"   formControlName="formeJuridique" placeholder="Forme Juridique" type="text">
+                        <mat-error>Champs obligatoire.</mat-error>
+
+                      </mat-form-field>
+                      </div>
+                    </div>
+                   <div class="row">
+                     <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                        <input  required matInput [(ngModel)]="personne_morale.objetSocial"  id="objetSocial"  formControlName="objetSocial" placeholder="Objet Social" type="text" >
+                        <mat-error>Champs obligatoire.</mat-error>  
+                       </mat-form-field>
+                      </div>
+                      
+                      <div class="col-md-6">
+                        
+                      <mat-form-field class="example-full-width">
+                          <mat-label style="margin-right: 15px;">Secteur du travail</mat-label>
+                          <mat-select  [(ngModel)]="personne_morale.secteurTravail" id="secteurTravail" formControlName="secteurTravail" type="text">
+                            <mat-option *ngFor="let listeSecteur of listeSecteur" [value]="listeSecteur.name" matInput>
+                              {{listeSecteur.name}}
+                            </mat-option>
+                          </mat-select>  
+                          <mat-error>Champs obligatoire.</mat-error>  
+                        </mat-form-field> 
+                         
+                      </div>
+                      
+                     
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                          <input   required [(ngModel)]="personne_morale.dateConstrution"  id="dateConstitution" type="date" matInput placeholder="Date de constitution"  formControlName="dateConstitution" >
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-6">
+                      
+                      <mat-form-field class="example-full-width">
+                      <mat-label>Pays de l'etablissement stable</mat-label>
+                      <mat-select [(ngModel)]="personne_morale.paysConstruction" id="paysConstitution" formControlName="paysConstitution" matInput placeholder="Pays Construction" type="text">
+                        <mat-option *ngFor="let liste_nationnalite of liste_nationnalite" [value]="liste_nationnalite.nationalite"  matInput >
+                          {{liste_nationnalite.nationalite}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error>Champs obligatoire.</mat-error>
+                      </mat-form-field>
+                      
+                      </div>
+                    </div>
+                    <div class="row">
+                      
+                      <div class="col-md-6">
+                       <mat-form-field class="example-full-width">
+
+                          <mat-label>Pays residence</mat-label>
+                        <mat-select [(ngModel)]="personne_morale.paysResidence" id="paysResidence" formControlName="paysResidence" matInput placeholder="Pays residence" type="text" >
+                          <mat-option *ngFor="let liste_nationnalite of liste_nationnalite" [value]="liste_nationnalite.nationalite"  matInput >
+                            {{liste_nationnalite.nationalite}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error>Champs obligatoire.</mat-error>
+                        </mat-form-field> 
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                      <input required [(ngModel)]="personne_morale.adresse" id="adresse" formControlName="adresse" matInput placeholder="Adresse" type="text" >
+                      <mat-error>Champs obligatoire.</mat-error>  
+                    </mat-form-field>
+                    </div> 
+                    <div class="row">
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input required [(ngModel)]="personne_morale.email" id="email" formControlName="email" matInput placeholder="Email" type="email"  required>
+                        <mat-error>adresse email invalide.</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                      <input required [(ngModel)]="personne_morale.numTelephone" id="contact" formControlName="contact" matInput placeholder="Telephone de contact" type="number" >
+                      <mat-error *ngIf="this.form.controls['contact'].errors?.required">Champs obligatoire.</mat-error>
+                      <mat-error *ngIf="this.form.controls['contact'].errors?.maxlength">Maximum 8 caracteres.</mat-error>
+                    </mat-form-field>
+                    </div> 
+                    </div> 
+                    <label class="l1">DONNÉES DU REPRÉSENTANT/MANDATAIRE QUI TRAITE L’OPÉRATION *</label>
+                    <div class="row">
+                      <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input [(ngModel)]="representant_legal.nom" id="nom" formControlName="nom" matInput placeholder="Nom representant" required>
+                        <mat-error>Champs obligatoire.</mat-error>  
+                      </mat-form-field>
+                      </div>
+                      <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                          <input   required [(ngModel)]="representant_legal.prenom" formControlName="prenom" id="prenom" matInput placeholder="Prenom representant"  >
+                          <mat-error>Champs obligatoire.</mat-error>  
+                        </mat-form-field>
+                       </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                          <input   required [(ngModel)]="representant_legal.codeClient" formControlName="codeClientRep" id="codeClientRep"  matInput placeholder="CIN du representant"  >
+                          <mat-error *ngIf="this.form.controls['codeClientRep'].errors?.maxlength">Maximum 8 caracteres.</mat-error>
+                          <mat-error *ngIf="this.form.controls['codeClientRep'].errors?.required">Champs obligatoire.</mat-error>
+
+                        </mat-form-field>
+                      </div> 
+                      <div class="col-md-6">
+                       <mat-form-field class="example-full-width">
+                        <input  required matInput [(ngModel)]="representant_legal.dateNaissance" formControlName="Date_naiss" id="Date_naiss" placeholder="Date de naissance" type="date">
+                        <mat-error>Champs obligatoire.</mat-error>  
+                      </mat-form-field>
+                      </div>
+                    </div>
+                      
+                      <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+
+                          <mat-label>Pays Residence</mat-label>
+                        <mat-select [(ngModel)]="representant_legal.paysResidence" id="paysResidence2" formControlName="paysResidence2" matInput placeholder="Pays residence" type="text">
+                          <mat-option *ngFor="let liste_nationnalite of liste_nationnalite" [value]="liste_nationnalite.nationalite"  matInput >
+                            {{liste_nationnalite.nationalite}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error>Champs obligatoire.</mat-error>  
+                        </mat-form-field>
+                      </div>
+                     <p></p>
+       
+                      <h4>Fonction dans l'organisme
+                      <input [(ngModel)]="representant_legal.fonctionOrganisme " id="FO1" formControlName="FO1" style="margin: left 90px" type="radio"  value="Mandataire"
+                      checked>
+                      <label for="FO1">Mandataire</label>              
+                      <input type="radio"  [(ngModel)]="representant_legal.fonctionOrganisme " id="FO2" formControlName="FO2" value="Administrateur">
+                      <label for="FO2">Administrateur</label> </h4>
+                      
+                      <p></p>
+                      <label  class="l1">STATUT US:</label>
+                      <p>1- La société est créée en vertu de la loi américaine ? </p>
+                    <h5>  <input  type="radio"   id="huey12" formControlName="us1" [(ngModel)]="personne_morale.us" value="true"
+                             checked>
+                      <label for="huey12" style="margin-right:50px;">Oui </label>
+                      <input type="radio" id="dewey12"   formControlName="us2"  [(ngModel)]="personne_morale.us" value="false">
+                      <label for="dewey12">Non</label> </h5>
+    
+                      <p>2- Le capital de la société est détenu par un actionnaire ou plus qui sont des contribuables américains ?
+                         </p>
+                         <h5>  <input  type="radio" id="huey11"  [(ngModel)]="personne_morale.actionnaireUs" formControlName="actionnaire1" value="true"
+                          checked>
+                        <label for="huey" style="margin-right:50px;">Oui </label>
+                        <input type="radio" id="dewey11"  formControlName="actionnaire2"  [(ngModel)]="personne_morale.actionnaireUs" value="false">
+                       <label for="dewey11">Non</label> </h5>
+                       
+                        <p>3-Vous disposez d'un code TIN ?
+                        </p>
+                        <h5>  <input   type="radio" id="huey13" formControlName="codeTin1" value="true" [(ngModel)]="personne_morale.codeTin"
+                   checked>
+                      <label for="huey13" style="margin-right:50px;">Oui </label>
+                      <input type="radio"  id="dewey13" formControlName="codeTin2" value="false" [(ngModel)]="personne_morale.codeTin">
+                      <label for="dewey13">Non</label> </h5>
+                      
+                      <p>4-S'agit t-il d'une institution Financière non américaine (disposant ou non d’un code GIIN) ?
+                      </p>
+                      <h5>  <input   type="radio" id="GIINT" formControlName="GIIN1" value="true" [(ngModel)]="personne_morale.giin"
+                 checked>
+                    <label for="huey13" style="margin-right:50px;">Oui </label>
+                    <input type="radio"  id="GIINF" formControlName="GIIN2" value="false" [(ngModel)]="personne_morale.giin">
+                    <label for="dewey13">Non</label> </h5>
+
+                     
+                    <div class="row">
+                      
+                      <div class="col-md-6">
+                       
+                    <mat-form-field appearance="standard"  >
+                      <mat-label *ngIf="selectedFiles; else newFile">{{selectedFiles.item(0).name}}</mat-label>
+                      <ng-template #newFile>
+                          <mat-label>Ajouter Justificatif</mat-label>
+                      </ng-template>
+                     
+                      <input matInput disabled formControlName="justificatif">
+                      <button matSuffix mat-icon-button matTooltip="Click to upload" (click)="fileInput.click()">
+                        <span class="material-icons">
+                          attach_file
+                          </span>
+                      </button>
+                      <input hidden (change)="selectFile($event)" #fileInput type="file" formControlName="file" ngModel>
+                      </mat-form-field>
+                      
+                    <!-- <button class="btn btn-primary btn-xs" (click)="Add(Form)" type="submit"  ><span class="material-icons">article</span> Ajouter</button>
+                      --> 
+                      </div>
+                    </div>
+                    
+                     
+                      <label class="l1">DÉCLARATION DE BÉNÉFICIAIRE EFFECTIF OU TITULAIRE RÉEL *  </label>
+                      <div class="col-md-6">
+                      <button mat-stroked-button color="warn" (click)="onClick(personne_morale,representant_legal.codeClient,Form)" >
+                        <span class="material-icons">
+                          playlist_add
+                          </span>  Ajouter les bénéficiaires effectifs
+                      </button>
+                    </div>
+
+                  
+                      <label class="l1">DÉCLARATION DE PERSONNES POLITIQUEMENT EXPOSÉES *</label>
+                      <h5>La société possède parmi ses bénéficiaires effectifs/titulaires réels ou ses administrateurs, ou parmi les plus proches 
+                        membres de leur famille et des personnes connues pour leur être étroitement associées, une personne occupant ou 
+                        ayant occupé durant les 12 derniers mois une haute fonction publique représentative ou un poste important au sein 
+                        des administrations publiques en Andorre, dans des États membres de l’Union européenne ou dans des pays tiers ?
+                      </h5>
+                      <h5><input [(ngModel)]="personne_morale.associesPpe"  style="margin-left:80px;" type="radio" id="PPE1" formControlName="PPE1" value="true"
+                      checked>
+                      <label for="PPE1">Oui</label>              
+                      <input type="radio"  [(ngModel)]="personne_morale.associesPpe" id="PPE2" formControlName="PPE2" value="false">
+                      <label for="PPE2">Non</label></h5>
+                     
+
+                      <label class="l1">INFORMATIONS SUR LES ACTIONNAIRES</label>
+                      <h4>
+                        La société a un actionnariat sur plusieurs niveaux et/ou des actionnaires
+                         sociétés offshore 
+                      </h4>
+                      <h5><input [(ngModel)]="personne_morale.actionnaireOffshore"  style="margin-left:80px;" type="radio" id="A1" formControlName="offshore1" value="true"
+                        checked>
+                        <label for="A1">Oui</label>              
+                        <input type="radio"  [(ngModel)]="personne_morale.actionnaireOffshore" id="A2" formControlName="offshore2" value="false">
+                        <label for="A2">Non</label></h5>
+                       
+                      <label class="l1">DESCRIPTION DE L’OPÉRATION  *</label>
+                      <h3 style="text-decoration: underline">Nature de l’opération : </h3>
+                       <h5> <input [(ngModel)]="personne_morale.natureOperation"  type="radio" id="N1" formControlName="natureOperation1" value="Achat et vente ou autres actes de disposition de biens immeubles ou entités"
+                        checked>
+                        <label for="N1"> Achat et vente ou autres actes de disposition de biens immeubles ou entités</label>              
+                      </h5>
+                      
+                      <h5>  
+                      <input type="radio"  [(ngModel)]="personne_morale.natureOperation" id="N2" formControlName="natureOperation2" value="Manipulation de fonds, de valeurs ou autres actifs des clients">
+                        <label for="N2">Manipulation de fonds, de valeurs ou autres actifs des clients</label>
+                      </h5>
+                      <h5>
+                        <input [(ngModel)]="personne_morale.natureOperation"type="radio" id="N3" formControlName="natureOperation3" value="Ouverture ou gestion de comptes bancaires, comptes d’épargne ou comptes de valeurs"
+                        checked>
+                        <label for="N3"> Ouverture ou gestion de comptes bancaires, comptes d’épargne ou comptes de valeurs</label>              
+                      </h5>
+                      <h5>
+                        <input type="radio"  [(ngModel)]="personne_morale.natureOperation" id="N4" formControlName="natureOperation4" value="Organisation des apports nécessaires à la création, au fonctionnement ou à la gestion de sociétés">
+                        <label for="N4"> Organisation des apports nécessaires à la création, au fonctionnement ou à la gestion de sociétés</label>
+                      </h5>
+                      <h5>
+                        <input [(ngModel)]="personne_morale.natureOperation"  type="radio" id="N5" formControlName="natureOperation5" value="Création, fonctionnement ou gestion de fidéicommis, sociétés, associations, fondations ou structures analogues"
+                        checked>
+                        <label for="N5">  Création, fonctionnement ou gestion de fidéicommis, sociétés, associations, fondations ou structures analogues</label>              
+                      </h5>
+                      <h5>
+                        <input type="radio"  [(ngModel)]="personne_morale.natureOperation" id="N6" formControlName="natureOperation6" value="Autres">
+                        <label for="N6"> Autres</label>
+                      </h5>
+                      
+                      <label class="l1">DÉCLARATION DE L’ORIGINE DES FONDS *</label>
+
+                      
+                      <h4 >Veuillez indiquer ci-dessous la provenance des fonds objet de l’opération : </h4>
+
+                        <input [(ngModel)]="personne_morale.origineFonds" style="margin: left 100px" type="radio" id="OF1" formControlName="origineFonds1" value="De votre activité"
+                        >
+                        <label for="OF1"> De votre activité </label>    
+                      <input type="radio"  [(ngModel)]="personne_morale.origineFonds" id="OF2" formControlName="origineFonds2" value="Des associés">
+                        <label for="dewey">Des associés</label>
+                        <input [(ngModel)]="personne_morale.origine_Fonds"type="radio" id="OF3" formControlName="origineFonds3" value="De la vente d’un immeuble"
+                        >
+                        <label for="huey">De la vente d’un immeuble</label>      
+                        <input type="radio"  [(ngModel)]="personne_morale.origineFonds" id="OF4" formControlName="origineFonds4" value="Autre">
+                        <label for="dewey"> Autre</label>
+                      
+                        <h4 >Origine des fonds propres utilisés </h4>
+
+                        <div class="col-md-6">
+                         
+                          <mat-form-field class="example-full-width">
+
+                            <mat-label>Pays de provenance</mat-label>
+                          <mat-select [(ngModel)]="personne_morale.paysOrigineFonds" id="paysOF" formControlName="paysOF" matInput placeholder="Pays residence" type="text">
+                            <mat-option *ngFor="let liste_nationnalite of liste_nationnalite" [value]="liste_nationnalite.nationalite"  matInput >
+                              {{liste_nationnalite.nationalite}}
+                            </mat-option>
+                          </mat-select>
+                          </mat-form-field>
+                        </div>
+                         
+                       
+                        <label class="l1">AUTRES INFORMATIONS SUR LA PERSONNE MORALE *</label>
+                        <h4 >Chiffre d'affaires : </h4>
+
+                        <div class="col-md-6">
+                          <mat-form-field class="example-full-width">
+                          <input  required  matInput [(ngModel)]="personne_morale.chiffreAffaire" formControlName="chiffreAffaire" id="chiffreAffaire"  placeholder="Chiffre d'affaires" type="number" >
+                          </mat-form-field>
+                        </div>
+
+
+                        
+                        <h4 >Domaine d'activite : </h4>
+
+                        <input [(ngModel)]="personne_morale.domaineActivite" style="margin: left 100px" type="radio" id="PM1" formControlName="domaineActivite1" value="International"
+                        >
+                        <label for="PM1"> International </label>    
+                      <input type="radio"  [(ngModel)]="personne_morale.domaineActivite" id="PM2" formControlName="domaineActivite2" value="National">
+                        <label for="PM2">National</label>
+                        <input [(ngModel)]="personne_morale.domaineActivite"type="radio" id="PM3" formControlName="domaineActivite3" value="Local">
+                        <label for="PM3">Local</label>  
+                        
+                        
+                        <h4 >Nature de la Personne morale : </h4>
+                        
+                        <div>
+                          <input type="radio" [(ngModel)]="personne_morale.nature" id="N1" formControlName="nature1" value="Société avec activité commerciale ou entrepreneuriale"
+                                 checked>
+                          <label for="N1">Société avec activité commerciale ou entrepreneuriale</label>
+                        </div>
+
+                        <div>
+                          <input type="radio" [(ngModel)]="personne_morale.nature" id="N2" formControlName="nature2" value="Entités de droit public, Associations culturelles, professionnelles, fondations"
+                                 checked>
+                          <label for="N2">Entités de droit public, Associations culturelles, professionnelles, fondations</label>
+                        </div>
+
+                        <div>
+                          <input type="radio" [(ngModel)]="personne_morale.nature" id="N3" formControlName="nature3" value="ONG"
+                                 checked>
+                          <label for="N3">ONG</label>
+                        </div>
+
+
+                        <div>
+                          <input type="radio" [(ngModel)]="personne_morale.nature" id="N4" formControlName="nature4" value="Assoc. religieuse"
+                                 checked>
+                          <label for="N4">Assoc. religieuse</label>
+                        </div>
+
+
+                        <div>
+                          <input type="radio" [(ngModel)]="personne_morale.nature" id="N5" formControlName="nature5" value="Assoc. politique"
+                                 checked>
+                          <label for="N5">Assoc. politique</label>
+                        </div>
+
+
+                        <div>
+                          <input type="radio" [(ngModel)]="personne_morale.nature" id="N6" formControlName="nature6" value="Syndicat"
+                                 checked>
+                          <label for="N6">Syndicat</label>
+                        </div>
+
+
+
+                        
+                        <p></p>
+                        <h4>
+                          La société est cotée sur le marché boursier ?
+                        </h4>
+                        <h5><input [(ngModel)]="personne_morale.marcheBoursier"  style="margin-left:80px;" type="radio" id="B1" formControlName="marcheBoursier1" value="true"
+                          checked>
+                          <label for="B1">Oui</label>              
+                          <input type="radio"  [(ngModel)]="personne_morale.marcheBoursier" id="B2" formControlName="marcheBoursier2" value="false">
+                          <label for="B2">Non</label></h5>
+                        
+                          <h4>
+                            La société est à participation publique ?
+                          </h4>
+                          <h5><input [(ngModel)]="personne_morale.participationPub"  style="margin-left:80px;" type="radio" id="D1" formControlName="participationPub1" value="true"
+                            checked>
+                            <label for="D1">Oui</label>              
+                            <input type="radio"  [(ngModel)]="personne_morale.participationPub" id="D2" formControlName="participationPub2" value="false">
+                            <label for="D2">Non</label></h5>
+                       
+                     
+
+
+                      
+                        
+                        
+
+                      
+                      
+                      
+                      
+                      <p></p>
+                    
+                    
+                    <button mat-stroked-button color="warn" (click)="CreateNow(personne_morale.codeClient)"   [disabled]="this.form.invalid" ><span class="material-icons">article</span> Ajouter</button>
+                </form>
+                   
+                  
+                   
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>

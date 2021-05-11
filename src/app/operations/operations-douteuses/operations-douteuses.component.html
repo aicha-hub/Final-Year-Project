@@ -1,0 +1,74 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Vos transactions</h4>
+                        <p class="card-category"> Inspecter tous les transactions </p>
+                    </div>
+                    <div class="card-body">
+                     <tr> <p></p> </tr> 
+                     <div class="row">
+                      <div class="col-md-4" style="margin-left:600px">
+                       <mat-form-field class="example-full-width">
+                         <input matInput  #rib name="rib" id="rib"  placeholder="Cherchez les transactions d'un client" type="text" >
+                      
+                       </mat-form-field>
+ 
+                       </div>
+                        <div class="col-md-1" >
+                         <button mat-icon-button color="primary"  (click)="chercher(rib.value)">
+                           <span class="material-icons">
+                             search
+                             </span>
+                         </button>
+                        </div>
+                       </div>
+                        <div class="table-responsive">
+                          <p></p>
+                          <p></p>
+                            <table class="table" id="mytable">
+                              <p></p>
+                              <p></p>
+                                <thead class=" text-primary">
+                                    <th style="color: indigo;">
+                                        Identifiant
+                                    </th>
+                                    <th style="color: indigo;">
+                                        RIB Client
+                                    </th>
+                                    <th style="color: indigo;">
+                                         Type
+                                    </th>
+                                    <th style="color: indigo;">
+                                        Montant
+                                    </th>
+                                    <th style="color: indigo;">
+                                        Date
+                                    </th>
+                                    <th style="color: indigo;">
+                                      Statut
+                                    </th>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let transaction of transaction">
+                                      <td>{{transaction.codeTransaction}}</td>
+                                      <td>{{transaction.ribEmetteur}}</td>
+                                      <td>{{transaction.typeTransaction}}</td>
+                                      <td>{{transaction.montant}}DT</td>
+                                      <td>{{transaction.dateTransaction}}</td>
+                                      <td>{{transaction.statutTransaction}}</td>
+                                      <td class="text-center"><button class="btn btn-primary btn-xs" (click)="details(transaction.codeTransaction,transaction)" ><span class="material-icons">article</span>Traiter</button></td>
+                                      <!--<td class="text-center"><button class="btn btn-danger btn-xs" (click)="deletePP(contact.codeClient)" ><span class="material-icons">delete_outline</span> </button></td>
+                                      -->
+                                    </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                    </div>
+                </div>
+            </div>               
+        </div>
+    </div>
+  </div>

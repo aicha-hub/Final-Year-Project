@@ -1,0 +1,75 @@
+<label class="l1">Liste d’associés / principaux actionnaires par ordre décroissant de participation</label>
+<form class="example-form" [formGroup]="service.form"> 
+  
+  <button mat-stroked-button style="margin-left: 100%;" (click)="onSet()"><span class="material-icons">
+    add_circle_outline
+    </span></button>
+                 <div class="row">
+                      <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input formControlName="nom" matInput [(ngModel)]="beneficiaire_effectif.nom" id="nom" name="nom" placeholder="Nom representant" required>
+                        <mat-error>This field is mandatory.</mat-error>  
+                      </mat-form-field>
+                      </div>
+
+                      <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                          <input  formControlName="prenom"  matInput  required [(ngModel)]="beneficiaire_effectif.prenom" name="prenom" id="prenom" placeholder="Prenom representant"  >
+                          <mat-error>This field is mandatory.</mat-error>
+                        </mat-form-field>
+                       </div>
+                 </div>
+                 <div class="row">
+                       <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+
+                          <mat-label>Pays residence</mat-label>
+                        <mat-select [(ngModel)]="beneficiaire_effectif.paysResidence" id="paysResidence" name="paysResidence" matInput placeholder="Pays residence" type="text">
+                          <mat-option *ngFor="let liste_nationnalite of liste_nationnalite" [value]="liste_nationnalite.nationalite"  matInput >
+                            {{liste_nationnalite.nationalite}}
+                          </mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                       </div>
+                       
+                       <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                          <input   formControlName="pourcentage" required  matInput placeholder="Pourcentage"  >
+                          <mat-error>This field is mandatory.</mat-error>
+                        </mat-form-field>
+                       </div>
+                       
+                    </div>
+
+                    <div class="row">
+                    <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input formControlName="CIN" matInput #CIN maxlength="8" required [(ngModel)]="beneficiaire_effectif.codeClient" name="codeClient" id="codeClient" required matInput placeholder="Numero Carte identite" type="number" >
+                      <mat-hint align="end">{{CIN.value?.length || 0}}/8</mat-hint>
+                      <mat-error *ngIf="service.form.controls['CIN'].errors?.required">This field is mandatory.</mat-error>
+                      <mat-error *ngIf="service.form.controls['CIN'].errors?.maxlength">Maximum 8 charactors needed.</mat-error>  
+                  </mat-form-field>
+                    </div>
+                     
+                    
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input   required   [(ngModel)]="beneficiaire_effectif.numPassport" name="numPassport" id="numPassport" required matInput placeholder="Numero passeport"  >
+                      </mat-form-field>
+                      </div>
+                    </div>
+
+                    
+                   
+</form>
+
+                    <tr> 
+                      <td>
+                    <button mat-raised-button color="primary" style="margin-left:570%;" (click)="OnCreate(beneficiaire_effectif.code_clt)">Ajouter </button>        
+                  </td>
+                  <td>
+                    <button mat-raised-button color="warn" style="margin-left:600%;"  (click)="Close()">Fermer </button> </td>
+                  </tr>    
+<!---->
+<!---->
+<!---->

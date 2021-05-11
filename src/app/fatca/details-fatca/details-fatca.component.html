@@ -1,0 +1,47 @@
+
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    
+                    <div class="card-body">
+                      <label class="l1" ><b> <section class="mat-typography">
+                        <h2>Fiche FATCA</h2>
+                      </section> </b></label> 
+
+                          <div *ngIf="personne_morale.paysResidence">  
+                            <p class="l2">Lieu de residence de la societé situé aux Etats-Unis  </p>
+                          </div>
+
+                          <div *ngIf="personne_morale.us">  
+                            <p class="l2"> La société est créée en vertu de la loi américaine </p>
+                          </div>
+
+                          <div *ngIf="personne_morale.actionnaireUs">  
+                            <p class="l2"> Le capital de la société est détenu par un actionnaire ou plus qui sont des contribuables américains</p>
+                          </div>
+
+                          <div *ngIf="personne_morale.codeTin">  
+                            <p class="l2"> La société dispose d'un code TIN  </p>
+                          </div>
+
+                          <div *ngIf="personne_morale.giin">  
+                            <p class="l2"> Il s'agit d'une institution Financière non américaine </p>
+                          </div>
+                        
+                        
+
+
+
+
+
+                    </div>
+                </div>
+            </div>               
+        </div>
+    </div>
+    <button mat-stroked-button color="warn" (click)="close()" style="margin-left: 600px;" >Fermer</button> 
+  </div>
+

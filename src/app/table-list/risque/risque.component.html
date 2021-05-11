@@ -1,0 +1,126 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+
+
+
+
+<div class="main-content" >
+    <div class="container-fluid" >
+       
+                
+        <div class="row" >
+            <div class="col-md-12" >
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Fiche Risque</h4>
+                        <p class="card-category">Code Client : {{modelePersonnePhysique.code}}</p>
+                    </div>
+                    <div class="card-body" style="margin-left: 40px;margin-top:40px;">
+                        <div class="card-title">
+                            <h2 id="v22">COTATION : {{modelePersonnePhysique.valeur}}</h2>
+                        </div>
+                        <form>
+
+                           
+                           <div *ngIf="modelePersonnePhysique">
+                            <label class="l1" ><b> <section class="mat-typography">
+                                <h2>LE NOM EXISTE DANS LA LISTE NOIRE :</h2>
+                              </section> </b></label> 
+
+                            <div *ngIf="modelePersonnePhysique.nom;else elseBlock1">  
+                                
+                                <p class="l2"> <b>Nom : </b>{{modelePersonnePhysique.nom}}</p>
+                               
+                              </div>
+                              <ng-template #elseBlock1> <p>Le nom de cette personne n'existe pas dans la liste noire</p></ng-template>
+
+                            <div>
+                                <label class="l1" ><b> <section class="mat-typography">
+                                    <h2>LES RISQUES LIES AU CRITERE GEOGRAPHIQUE :</h2>
+                                  </section> </b></label> 
+                               
+                                
+                                
+                                <p></p>
+                                <label class="l2" *ngIf="modelePersonnePhysique.listeNoire"><b>Liste Noire : </b></label> {{modelePersonnePhysique.listeNoire}}
+                                <p></p> 
+                                <label class="l2" *ngIf="modelePersonnePhysique.listeGrise"><b>Liste Grise :</b></label> {{modelePersonnePhysique.listeGrise}} 
+                                <p></p> 
+                                <label class="l2" *ngIf="modelePersonnePhysique.listeEconomieParallele"><b>Liste Economie Parallele :</b></label> {{modelePersonnePhysique.listeEconomieParallele}} 
+                                <p></p>
+                                <label class="l2" *ngIf="modelePersonnePhysique.listeDrogue"><b>Liste Pays producteurs du drogue :</b></label> {{modelePersonnePhysique.listeDrogue}}
+                                <p></p>
+                                <label class="l2" *ngIf="modelePersonnePhysique.listeGeurre"><b>Liste Pays en guerre :</b></label> {{modelePersonnePhysique.listeGeurre}}
+                                <p></p>
+                                <label class="l2" *ngIf="modelePersonnePhysique.listeCorruption"><b>Liste Pays en corruption:</b></label> {{modelePersonnePhysique.listeCorruption}}
+                             </div>
+
+                        
+                        
+
+                          <div>
+                            <label class="l1" ><b> <section class="mat-typography">
+                                <h2>LES RISQUES LIES AU SECTEUR ET AU PROFESSION DE LA PERSONNE PHYSIQUE : </h2>
+                              </section> </b></label> 
+                             
+                             <div *ngIf="modelePersonnePhysique.secteur">  
+                                <p class="l2"> <b>Secteur :</b> {{modelePersonnePhysique.secteur}}</p>
+                              
+                              </div>
+                             
+                            <div *ngIf="modelePersonnePhysique.profession">
+                              <p class="l2"> <b>Profession : </b> {{modelePersonnePhysique.profession}}</p>
+                            </div>
+
+                            <div *ngIf="!modelePersonnePhysique.profession && !modelePersonnePhysique.secteur">
+                              <p class="l2"> Aucun risque liéé au secteur ou au profession</p>
+                            </div>
+                         </div>
+
+
+                         <div>
+                            <label class="l1" ><b> <section class="mat-typography">
+                                <h2>LES RISQUES LIES AU STATUT DE LA PERSONNE PHYSIQUE : </h2>
+                              </section> </b></label> 
+                            
+                             <div *ngIf="modelePersonnePhysique.statut;else elseBlock3">  
+                               
+                              <p class="l2"> <b>Statut PEP : </b>{{modelePersonnePhysique.statut}}</p>
+                               
+                              </div>
+                           <ng-template #elseBlock3>   <p><b>Statut PEP:</b>Cette personne n'est pas politiquement exposée </p></ng-template>
+
+
+                              <div *ngIf="modelePersonnePhysique.residence;">  
+                               
+                                <p class="l2">  <b>Residence : </b>{{modelePersonnePhysique.residence}}</p>
+                               
+                              </div>
+                              
+
+                             
+                            
+                                    
+                             
+                             
+                             
+                             
+                          
+                            
+                         </div>
+
+
+  
+   
+                             </div>
+                             <td class="text-center"><button mat-raised-button color="warn" style="margin-left:850px;margin-top: 50px;margin-bottom: 20px;" (click)="details(modelePersonnePhysique.code)" ><span class="material-icons" style="margin-right: 5px;">trending_up</span>Analyser transactions</button></td>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+      </div>
+   

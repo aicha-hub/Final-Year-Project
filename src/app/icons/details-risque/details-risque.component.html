@@ -1,0 +1,69 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Fiche Risque</h4>
+                        <p class="card-category">Code Client : {{modelePersonneMorale.code}}</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h2>COTATION : {{modelePersonneMorale.valeur}}</h2>
+                        </div>
+                        <form>
+                           <div *ngIf="modelePersonneMorale">
+                               <div *ngIf="modelePersonneMorale.blackListe">
+                                <label class="l1" ><b> <section class="mat-typography">
+                                    <h2>BLACK LIST</h2>
+                                  </section> </b></label> 
+                                <p class="l2">{{modelePersonneMorale.blackListe}} !</p>
+                               </div>
+                            <div>
+                                <label class="l1" *ngIf="modelePersonneMorale.listeNoire||modelePersonneMorale.listeGrise||modelePersonneMorale.listeEconomieParallele||modelePersonneMorale.listeDrogue||modelePersonneMorale.listeGeurre||modelePersonneMorale.listeCorruption"><b> <section class="mat-typography">
+                                    <h2>LES RISQUES LIES AU CRITERE GEOGRAPHIQUE</h2>
+                                  </section> </b></label> 
+                                <p></p>
+                                <label class="l2" *ngIf="modelePersonneMorale.listeNoire" ><b>Liste Noire : </b></label> {{modelePersonneMorale.listeNoire}}
+                                <p></p> 
+                                <label class="l2" *ngIf="modelePersonneMorale.listeGrise"><b>Liste Grise :</b></label> {{modelePersonneMorale.listeGrise}} 
+                                <p></p> 
+                                <label class="l2" *ngIf="modelePersonneMorale.listeEconomieParallele"><b>Liste Economie Parallele :</b></label> {{modelePersonneMorale.listeEconomieParallele}} 
+                                <p></p>
+                                <label class="l2" *ngIf="modelePersonneMorale.listeDrogue"><b>Liste Pays producteurs du drogue :</b></label> {{modelePersonneMorale.listeDrogue}}
+                                <p></p>
+                                <label class="l2" *ngIf="modelePersonneMorale.listeGeurre"><b>Liste Pays en guerre :</b></label> {{modelePersonneMorale.listeGeurre}}
+                                <p></p>
+                                <label class="l2" *ngIf="modelePersonneMorale.listeCorruption"><b>Liste Pays en corruption:</b></label> {{modelePersonneMorale.listeCorruption}}
+                             </div>
+                         <div>
+                             <label class="l1" ><b> <section class="mat-typography">
+                                <h2>LES RISQUES LIES A LA NATURE DE LA SOCIETE </h2>
+                              </section> </b></label> 
+                              <p>{{modelePersonneMorale.nature}}</p>
+                              <p>{{modelePersonneMorale.pub}}</p>
+                              <p>{{modelePersonneMorale.offshore}}</p>
+                              <p>{{modelePersonneMorale.paysPro}}</p>
+                              <p>{{modelePersonneMorale.ong}}</p>
+                              <p>{{modelePersonneMorale.marcheBoursier}}</p>
+                              <p>{{modelePersonneMorale.chiffreAffaires}}</p>
+                          </div>
+                          <div>
+                            <label class="l1" ><b> <section class="mat-typography">
+                                <h2>LES RISQUES LIES AU SECTEUR DE LA SOCIETE </h2>
+                              </section> </b></label> 
+                             <div *ngIf="modelePersonneMorale.secteur; else elseBlock">  
+                                <p class="l2"> <b>Secteur : </b>{{modelePersonneMorale.secteur}}</p>
+                              </div>
+                              <ng-template #elseBlock> <p>Aucun risque lié au secteur</p></ng-template>
+                         </div>
+                             </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>

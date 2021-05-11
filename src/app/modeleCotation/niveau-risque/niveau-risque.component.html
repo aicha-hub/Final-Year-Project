@@ -1,0 +1,73 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+<div class="card-title">
+    <p></p>
+    <h2>Paramétrage du niveau de risque</h2>
+</div>
+
+                <div class="table-responsive" >
+                    <table class="mat-elevation-z8">
+                        <thead class=" text-primary">
+                            <th style="color: indigo;">
+                                
+                            </th>
+                            <th style="color: indigo;">
+                                Note
+                            </th>
+                           
+
+                            
+                        </thead>
+                        <tbody *ngIf="modele">
+<tr>
+    <td>Risque Faible</td>
+    <td> 
+        <mat-form-field class="example-full-width">
+            <input   matInput [(ngModel)]="modele.noteRisqueFaible" name="noteRisqueFaible" id="noteRisqueFaible"   type="number" >
+          </mat-form-field>
+    </td>
+  </tr>
+  <tr>
+    <td>Risque Moyennement Faible</td>
+    <td>
+        <mat-form-field class="example-full-width">
+            <input   matInput [(ngModel)]="modele.noteRisqueMoyennementFaible" name="noteRisqueMoyennementFaible" id="noteRisqueMoyennementFaible"   type="number" >
+          </mat-form-field>
+    </td>
+</tr>
+
+<tr>
+    <td>Risque Moyennement Eleve</td>
+    <td>
+        <mat-form-field class="example-full-width">
+            <input   matInput [(ngModel)]="modele.noteRisqueMoyennementEleve" name="noteRisqueMoyennementEleve" id="noteRisqueMoyennementEleve"   type="number" >
+          </mat-form-field>
+    </td>
+</tr>
+
+<tr>
+    <td>Risque Eleve</td>
+    <td>
+        <mat-form-field class="example-full-width">
+            <input   matInput [(ngModel)]="modele.noteRisqueEleve" name="noteRisqueEleve" id="noteRisqueEleve"   type="number" >
+          </mat-form-field>
+    </td>
+</tr>
+
+
+</tbody>
+</table>
+</div>
+
+<p> <button  *ngIf="showChefBoard || showAdminBoard"  mat-stroked-button color="#566D7E"   style="margin-left: 450px;" (click)="modifier(modele)" ><span class="material-icons">
+    save_alt
+    </span>Enregistrer</button>
+</p>
+
+
+            </div>
+            </div>
+            </div>
+</div>

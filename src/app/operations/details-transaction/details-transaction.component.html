@@ -1,0 +1,173 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Transactions</h4>
+                        <p class="card-category">Fiche transaction</p>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input  matInput [(ngModel)]="transaction.typeTransaction" #type  name="type" id="type"  placeholder="Type transaction" type="text" disabled>
+                                    </mat-form-field>
+                                  </div>
+                           </div>
+                            <div *ngIf="type.value=='virement'">  
+                                <label class="l1">DETAILS COMPTE EMETTEUR :</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                      <mat-form-field class="example-full-width">
+                                        <input  matInput [(ngModel)]="transaction.nomEmetteur"   name="nomEmetteur" id="nomEmetteur"  placeholder="Nom" type="text" disabled>
+                                      </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-full-width">
+                                          <input matInput [(ngModel)]="transaction.prenomEmetteur"   name="prenomEmetteur" id="prenomEmetteur"  placeholder="prenom " type="text" disabled >
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                      <mat-form-field class="example-full-width">
+                                        <input matInput [(ngModel)]="transaction.typeCompteEmetteur"   name="typeCompteEmetteur" id="typeCompteEmetteur"  placeholder="Type compte " type="text" disabled >
+                                      </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <mat-form-field class="example-full-width">
+                                        <input matInput [(ngModel)]="transaction.ribEmetteur"   name="ribEmetteur" id="ribEmetteur"  placeholder="Numero  compte " type="number" disabled >
+                                      </mat-form-field>
+                                  </div>
+                                </div>
+                                <label class="l1">INFORMATIONS SUR LE DESTINATAIRE:</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                      <mat-form-field class="example-full-width">
+                                        <input  matInput [(ngModel)]="transaction.nomDestinataire"   name="nomDestinataire" id="nomDestinataire"  placeholder="Nom " type="text" disabled >
+                                      </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-full-width">
+                                          <input matInput [(ngModel)]="transaction.ribDestinataire"   name="ribDestinataire" id="ribDestinataire"  placeholder="RIB " type="text"  disabled>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <label class="l1">DETAILS DE LA TRANSACTION:</label>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                      <mat-form-field class="example-full-width">
+                                        <input matInput [(ngModel)]="transaction.montant"   name="montant" id="montant"  placeholder="Montant " type="number" disabled>
+                                      </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field class="example-full-width">
+                                          <input  matInput [(ngModel)]="transaction.paysDestinataire"   name="paysDestinataire" id="paysDestinataire"  placeholder="Pays Destinataire " type="text" disabled >
+                                        </mat-form-field>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput [(ngModel)]="transaction.dateTransaction"   name="dateTransaction" id="dateTransaction"    placeholder="Date" type="date"  disabled>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-xs" (click)="retour(transaction.ribEmetteur)" ><span class="material-icons">
+                                    arrow_back
+                                    </span>Retour</button>
+                                </div>
+                            <div *ngIf="type.value=='prelevement'">  
+                                <label class="l1">DETAILS COMPTE CLIENT :</label>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input  matInput [(ngModel)]="transaction.nomEmetteur"   name="nomEmetteur" id="nomEmetteur"  placeholder="Nom" type="text" disabled>
+                                    </mat-form-field>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <mat-form-field class="example-full-width">
+                                        <input matInput [(ngModel)]="transaction.prenomEmetteur"   name="prenomEmetteur" id="prenomEmetteur"  placeholder="prenom " type="text" disabled >
+                                      </mat-form-field>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput [(ngModel)]="transaction.typeCompteEmetteur"   name="typeCompteEmetteur" id="typeCompteEmetteur"  placeholder="Type compte " type="text" disabled>
+                                    </mat-form-field>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput [(ngModel)]="transaction.ribEmetteur"   name="ribEmetteur" id="ribEmetteur"  placeholder="Numero compte" type="number" disabled >
+                                    </mat-form-field>
+                                </div>
+                              </div>
+                                <label class="l1">DETAILS DE LA TRANSACTION:</label>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput [(ngModel)]="transaction.montant"   name="montant" id="montant"  placeholder="Montant " type="number" disabled >
+                                    </mat-form-field>
+                                  </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput [(ngModel)]="transaction.dateTransaction"   name="dateTransaction" id="dateTransaction"    placeholder="Date" type="date"  disabled>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-xs" (click)="retour(transaction.ribEmetteur)" ><span class="material-icons">
+                                    arrow_back
+                                    </span> Retour</button>
+                            </div>
+                          <div *ngIf="type.value=='versement'">  
+                              <label class="l1">DETAILS COMPTE CLIENT :</label>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input  matInput [(ngModel)]="transaction.nomEmetteur"   name="nomEmetteur" id="nomEmetteur"  placeholder="Nom" type="text" disabled >
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput [(ngModel)]="transaction.prenomEmetteur"   name="prenomEmetteur" id="prenomEmetteur"  placeholder="prenom " type="text" disabled >
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput [(ngModel)]="transaction.typeCompteEmetteur"   name="typeCompteEmetteur" id="typeCompteEmetteur"  placeholder="Type compte " type="text" disabled >
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput [(ngModel)]="transaction.ribEmetteur"   name="ribEmetteur" id="ribEmetteur"  placeholder="Numero compte" type="number" disabled>
+                                  </mat-form-field>
+                              </div>
+                            </div>
+                              <label class="l1">DETAILS DE LA TRANSACTION:</label>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput [(ngModel)]="transaction.montant"   name="montant" id="montant"  placeholder="Montant " type="number" disabled >
+                                  </mat-form-field>
+                                </div>
+                                  <div class="col-md-6">
+                                      <mat-form-field class="example-full-width">
+                                        <input matInput [(ngModel)]="transaction.dateTransaction"   name="dateTransaction" id="dateTransaction"    placeholder="Date" type="date"  disabled>
+                                      </mat-form-field>
+                                  </div>
+                              </div>
+                                    <button class="btn btn-primary btn-xs" (click)="retour(transaction.ribEmetteur)" ><span class="material-icons">
+                                        arrow_back
+                                        </span> Retour</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

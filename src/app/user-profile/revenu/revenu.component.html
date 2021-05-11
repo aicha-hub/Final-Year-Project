@@ -1,0 +1,50 @@
+<form class="example-form"> 
+  <table class="example-full-width" cellspacing="0"><tr>   
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Code client :</mat-label>      
+      <input matInput [(ngModel)]="revenu.persPhy"   name="pers" id="pers" type="number" disabled required>
+    </mat-form-field></td>    
+    <td><mat-form-field class="example-full-width">
+     <mat-label>Revenu Mensuel Net</mat-label>
+      <input matInput [(ngModel)]="revenu.revenuNet"   name="revenuNet" id="revenuNet" type="number" required>
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Devise</mat-label>
+      <input matInput [(ngModel)]="revenu.deviseRevenuNet"   name="deviseRevenuNet" id="deviseRevenuNet" required>
+    </mat-form-field></td>
+  </tr>   
+</table>
+  <p></p>
+  <p><mat-label> 
+     AUTRES REVENUS : </mat-label></p>
+  <table class="example-full-width" cellspacing="0"><tr>     
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Nature</mat-label>
+      <input matInput [(ngModel)]="revenu.nature"  name="nature" id="nature" type="text"  required>
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Periodicite</mat-label>
+      <input matInput [(ngModel)]="revenu.periodicite"  name="periodicite" id="periodicite" type="text" placeholder="Ex Mensuel" required>
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <mat-label >Montant</mat-label>
+      <input matInput [(ngModel)]="revenu.montant"  name="montant" id="montant"  type="number" class="example-full-width" required>
+      <span matSuffix>.00</span>
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Devise</mat-label>
+      <input matInput #devise maxlength="10" [(ngModel)]="revenu.devise"  name="devise" id="devise" type="text" placeholder="Ex.dinars" value="Dinars" required>
+      <mat-hint align="end">{{devise.value.length}} / 10</mat-hint>
+    </mat-form-field></td>
+  </tr></table>
+  <div class="row" style="margin-top: 25px;">                
+    <div class="col-md-6">
+  <button mat-raised-button color="primary" style="margin-left:230%;" (click)="OnCreate()">Ajouter</button>
+    </div>
+    <div class="col-md-6">
+  <button mat-raised-button color="warn" style="margin-left:160%;"   (click)="Close()">Fermer </button>
+ </div></div>
+</form>
+
+
+  

@@ -1,0 +1,95 @@
+<div class="main-content">
+    <div class="container-fluid">
+      
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Ouverture compte</h4>
+                        <p class="card-category"></p>
+                    </div>
+                    <div class="card-body">
+                        <form>                          
+                          <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+
+                                    <mat-label>Type Compte</mat-label>
+                                  <mat-select  matInput  #operation name="operation" type="text" id="operation" type="text">
+                                    <mat-option value="courant">Courant</mat-option>
+                                    <mat-option value="epargne">Epargne</mat-option>
+                                  </mat-select>
+                                  </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+
+                                    <mat-label>Type Client</mat-label>
+                                  <mat-select  matInput  #client name="client" type="text" id="client" type="text">
+                                    <mat-option value="physique">client physique</mat-option>
+                                    <mat-option value="moral">client moral</mat-option>
+                                  </mat-select>
+                                  </mat-form-field>
+                                  
+
+                            </div>
+                       
+                            
+                            
+                       
+                       </div> 
+
+                       <div *ngIf="operation.value=='courant'">  
+                        <p>
+
+                        </p>
+                        <p></p>
+                        <label class="l1">DETAILS COMPTE :</label>
+                          <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput [(ngModel)]="compteCourant.nomAgence" name="nomAgence" id="nomAgence" placeholder="Nom Agence" type="text" >
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput [(ngModel)]="compteCourant.solde" name="solde" id="solde" placeholder="Solde" type="number" >
+                                  </mat-form-field>
+                              </div>
+                              </div>
+
+
+                              <td class="text-center"><button class="btn btn-primary btn-xs" (click)="CreateNow(operation.value,client.value)" ><span class="material-icons">article</span> Confirmer</button></td>
+                           </div>
+                       <div *ngIf="operation.value=='epargne'">  
+                              <p>
+
+                              </p>
+                              <p></p>
+                              <label class="l1">DETAILS COMPTE :</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                      <mat-form-field class="example-full-width">
+                                        <input matInput [(ngModel)]="compteEpargne.nomAgence" name="nomAgence" id="nomAgence" placeholder="Nom Agence" type="text" >
+                                      </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-full-width">
+                                          <input matInput [(ngModel)]="compteEpargne.solde" name="solde" id="solde" placeholder="Solde" type="number" >
+                                        </mat-form-field>
+                                    </div>
+                                    </div>
+
+
+                                    <td class="text-center"><button class="btn btn-primary btn-xs" (click)="CreateNow(operation.value,client.value)" ><span class="material-icons">article</span> Confirmer</button></td>
+                                 </div>
+                                           
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+  </div>
+  

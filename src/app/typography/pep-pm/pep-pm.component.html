@@ -1,0 +1,76 @@
+<form class="example-form" [formGroup]="service.form">
+ 
+
+   <div class="row">
+
+
+    <div class="col-md-10"> 
+      <mat-form-field class="example-full-width">
+        <mat-label>Numero Carte CIN de la personne concernée</mat-label>
+        <input formControlName="CIN" matInput #input maxlength="8" [(ngModel)]=pep.contact name="contact" id="contact" required matInput placeholder="Numero CIN" type="number">
+        <mat-hint align="end">{{input.value?.length || 0}}/8</mat-hint>
+        <mat-error *ngIf="service.form.controls['CIN'].errors?.required">This field is mandatory.</mat-error>
+          <mat-error *ngIf="service.form.controls['CIN'].errors?.maxlength">Maximum 8 charactors needed.</mat-error>
+       </mat-form-field> 
+      
+        
+
+    
+    
+  </div>
+  <button mat-stroked-button (click)="onSet()"><span class="material-icons">add_task</span></button>
+</div>
+
+
+<div class="row">
+<div class="col-md-6">
+<mat-form-field class="example-full-width">
+  <mat-label>Fonction</mat-label>
+  <input matInput formControlName="fonctionPep" [(ngModel)]=pep.fonctionPep name="fonctionPep" id="fonctionPep" required matInput placeholder="Fonction" >
+  <mat-error>This field is mandatory.</mat-error>
+</mat-form-field>
+
+</div>
+
+<div class="col-md-6">
+  <mat-form-field class="example-full-width">
+    <mat-label>Pays Construction</mat-label>
+    <mat-select formControlName="paysPep" [(ngModel)]="pep.paysPep" id="pep.paysPep" name="pep.paysPep" matInput placeholder="Pays " type="text">
+      <mat-option *ngFor="let liste_nationnalite of liste_nationnalite" [value]="liste_nationnalite.nationalite"  matInput >
+        {{liste_nationnalite.nationalite}}
+      </mat-option>
+    </mat-select>
+    <mat-error>This field is mandatory.</mat-error>
+    </mat-form-field>
+</div>
+</div>
+  
+
+<p></p>
+
+  <div class="row">
+    <div class="col-md-6">
+    <mat-form-field class="example-full-width">
+      <input required [(ngModel)]="pep.dateDebut" name="dateDebut" id="dateDebut" type="date" matInput placeholder="Date debut"  >
+    </mat-form-field>
+  </div>
+
+    <div class="col-md-6">
+    <mat-form-field class="example-full-width">
+      <input required [(ngModel)]="pep.dateFin" name="dateFin" id="dateFin" type="date" matInput placeholder="Date fin"  >
+    </mat-form-field>
+  </div>
+  <button mat-raised-button color="primary"  (click)="OnCreatePEP()">Ajouter </button> 
+</div>
+   
+  
+  <p></p>
+
+
+   
+  <button mat-raised-button color="warn" style="margin-left: 60%;" (click)="Close()">Fermer </button>
+ 
+        
+ 
+</form>
+

@@ -1,0 +1,31 @@
+.l1{
+    margin-top: 30px;
+    text-decoration: underline;
+    font-size: 18px;
+    color:#f94144;
+}
+.l2{font-size: 16px;
+    color:#364547;
+}
+p,
+label {
+    font: 1rem 'Fira Sans', sans-serif;
+    color: rgb(61, 59, 59);
+    margin-bottom: 25px;
+}
+input {
+    margin: .4rem;
+}
+.t1{
+    margin-right: 10px;
+}
+#b1 {
+    background-color: red;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }

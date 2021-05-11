@@ -1,0 +1,383 @@
+    
+    
+    
+   
+  
+
+    
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Modéle de cotation de risque</h4>
+                        
+                    </div>
+                   <!-- <p> <button  mat-raised-button color="primary"  style="margin-left: 850px;" (click)="niveauRisque(modele)" ><span class="material-icons">article</span>Modifier niveau risque</button>
+                    </p>
+                       -->
+                    
+                    <div class="card-body">
+                        <button *ngIf="showChefBoard || showAdminBoard" mat-stroked-button color="#566D7E"  style="margin-left: 750px;" (click)="niveauRisque(modele)"><span class="material-icons">edit</span>Modifier niveau risque</button>
+                        <button *ngIf="showResponsableBoard " mat-stroked-button color="#566D7E"  style="margin-left: 750px;" (click)="niveauRisque(modele)"><span class="material-icons">edit</span>Modifier niveau risque</button>
+
+                        <div class="card-title">
+                            <p></p>
+                            <h2>Risque lié au critére géographique et au domaine d'activité</h2>
+                        </div>
+                        
+                        <div class="table-responsive" >
+                            <table class="mat-elevation-z8">
+                                <thead class=" text-primary">
+                                    <th style="color: indigo;">
+                                        
+                                    </th>
+                                    <th style="color: indigo;">
+                                        Note
+                                    </th>
+                                   
+
+                                    
+                                </thead>
+                                <tbody *ngIf="modele">
+                                    
+                                    <tr>
+                                        <td>Pays inscrits aux liste Noire GAFI</td>
+                                        <td>
+                                            <mat-form-field class="example-full-width">
+                                                <input   matInput [(ngModel)]="modele.noteListeNoire" name="noteListeNoire" id="noteListeNoire"   type="number" >
+                                            </mat-form-field>
+                                        </td>
+                                       </tr>
+                                    <tr > 
+                                      <td>Pays inscrits aux liste Grise GAFI </td>
+                                      <td>   <mat-form-field class="example-full-width">
+                                        <input   matInput [(ngModel)]="modele.noteListeGrise" name="noteListeGrise" id="noteListeGrise"   type="number" >
+                                      
+                                       
+                                      </mat-form-field>
+                                        </td>
+                                    </tr>
+                                   
+                                    <tr>
+                                        <td>Pays identifiés comme à forte corruption</td>
+                                        <td>
+                                            <mat-form-field class="example-full-width">
+                                                <input   matInput [(ngModel)]="modele.notePaysCorruption" name="notePaysCorruption" id="notePaysCorruption"   type="number" >
+                                              </mat-form-field>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Pays producteurs de drogue </td>
+                                        <td>
+                                            <mat-form-field class="example-full-width">
+                                                <input   matInput [(ngModel)]="modele.notePaysDrogues" name="notePaysDrogues" id="notePaysDrogues"   type="number" >
+                                              </mat-form-field>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Pays émergents : cadre juridique et fiscal en évolution, activités importantes de l’économie parallèle</td>
+                                        <td>
+                                            <mat-form-field class="example-full-width">
+                                                <input   matInput [(ngModel)]="modele.notePaysEconomieParallele" name="notePaysEconomieParallele" id="notePaysEconomieParallele"   type="number" >
+                                              </mat-form-field>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Secteur de travail  (Import-Export, Etablissement de jeux de hasard, Casinos, Clubs VIP)</td>
+                                        <td>
+                                            <mat-form-field class="example-full-width">
+                                                <input   matInput [(ngModel)]="modele.noteSecteur" name="noteSecteur" id="noteSecteur"   type="number" >
+                                            </mat-form-field>
+                                        </td>
+                                       </tr>
+                                       <tr>
+                                        <td>Secteur de travail (Industrie petro-chimique, Transport maritime, Petrole, Chimie-Parachimie, Arment) </td>
+                                        <td>
+                                            <mat-form-field class="example-full-width">
+                                                <input   matInput [(ngModel)]="modele.noteSecteur1" name="noteSecteur1" id="noteSecteur1"   type="number" >
+                                            </mat-form-field>
+                                        </td>
+                                       </tr>
+                                       <tr>
+                                        <td>Secteur de travail (Commerce, Automobile-Reparation automobiles,Immobilier, Relations d affaire avec etats ou gouvernements etrangers, Bureaux de change ) </td>
+                                        <td>
+                                            <mat-form-field class="example-full-width">
+                                                <input   matInput [(ngModel)]="modele.noteSecteur2" name="noteSecteur2" id="noteSecteur2"   type="number" >
+                                            </mat-form-field>
+                                        </td>
+                                       </tr>
+                                       <tr>
+                                        <td>Secteur de travail (Objets d'art et antiquite,Informatique-Telecoms, )  </td>
+                                        <td>
+                                            <mat-form-field class="example-full-width">
+                                                <input   matInput [(ngModel)]="modele.noteSecteur3" name="noteSecteur3" id="noteSecteur3"   type="number" >
+                                            </mat-form-field>
+                                        </td>
+                                       </tr>
+                                   
+                                   
+                                      
+                                      
+                                      
+                                      
+  
+                                     
+                                
+                              </tbody>
+                            </table>
+                        </div>
+
+                            
+
+                        <div class="card-title">
+                            <p></p>
+                            <h2>Risque lié au nature du client moral</h2>
+                        </div>
+                    
+                            <div class="table-responsive" >
+                                <table class="mat-elevation-z8">
+                                    <thead class=" text-primary">
+                                        <th style="color: indigo;">
+                                            
+                                        </th>
+                                        <th style="color: indigo;">
+                                            Note
+                                        </th>
+                                       
+    
+                                        
+                                    </thead>
+                                    <tbody *ngIf="modele">
+                   
+
+                    <tr>
+                        <td>Un des actionnaires du client Moral politiquement exposé </td>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <input   matInput [(ngModel)]="modele.notePepPersonneMorale" name="notePepPersonneMorale" id="notePepPersonneMorale"   type="number" >
+                              </mat-form-field>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>L'origine des fonds de la societe est de la vente des immeubles</td>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <input   matInput [(ngModel)]="modele.noteNature" name="noteNature" id="noteNature"   type="number" >
+                              </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Societé à participation publique</td>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <input   matInput [(ngModel)]="modele.noteParticipationPub" name="noteParticipationPub" id="noteParticipationPub"   type="number" >
+                              </mat-form-field>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Societé Offshore</td>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <input   matInput [(ngModel)]="modele.noteOffshore" name="noteOffshore" id="noteOffshore"   type="number" >
+                              </mat-form-field>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Le pays de provenance des fonds n'est pas la Tunisie</td>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <input   matInput [(ngModel)]="modele.notePaysOrigineFonds" name="notePaysOrigineFonds" id="notePaysOrigineFonds"   type="number" >
+                              </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Societé cotée sur le marché boursier</td>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <input   matInput [(ngModel)]="modele.noteMarcheBoursier" name="noteMarcheBoursier" id="noteMarcheBoursier"   type="number" >
+                            </mat-form-field>
+                        </td>
+                       </tr>
+                    <tr > 
+                      <td>Société ayant un actionnariat sur plusieurs niveaux et des actionnaires sociétés offshore </td>
+                      <td>   <mat-form-field class="example-full-width">
+                        <input   matInput [(ngModel)]="modele.noteAssOffshore" name="noteAssOffshore" id="noteAssOffshore"   type="number" >
+                      
+                       
+                      </mat-form-field>
+                        </td>
+                    </tr>
+                   
+                    <tr>
+                        <td>Organisation à but non lucratif </td>
+                        <td> 
+                            <mat-form-field class="example-full-width">
+                                <input   matInput [(ngModel)]="modele.ong" name="ong" id="ong"   type="number" >
+                              </mat-form-field>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Un des actionnaires du client Moral politiquement exposé </td>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <input   matInput [(ngModel)]="modele.notePepPersonneMorale" name="notePepPersonneMorale" id="notePepPersonneMorale"   type="number" >
+                              </mat-form-field>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Chiffre d'affaire supérieur à 500.000.000DT</td>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <input   matInput [(ngModel)]="modele.noteChiffreAffaire" name="noteChiffreAffaire" id="noteChiffreAffaire"   type="number" >
+                              </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr > 
+                        <td>Representant legal mentionné dans la liste noire</td>
+                        <td>   <mat-form-field class="example-full-width">
+                          <input   matInput [(ngModel)]="modele.noteBlackListePM" name="noteBlackListePM" id="noteBlackListePM"   type="number" >
+                        
+                         
+                        </mat-form-field>
+                          </td>
+                         
+                      </tr>
+                     
+                     
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-title">
+                <p></p>
+                <h2>Risque lié au nature du client physique</h2>
+            </div>
+            
+                            <div class="table-responsive" >
+                                <table class="mat-elevation-z8">
+                                    <thead class=" text-primary">
+                                        <th style="color: indigo;">
+                                            
+                                        </th>
+                                        <th style="color: indigo;">
+                                            Note
+                                        </th>
+                                       
+    
+                                        
+                                    </thead>
+                                    <tbody *ngIf="modele">
+            <tr>
+                <td>Client physique politiquement exposé </td>
+                <td> 
+                    <mat-form-field class="example-full-width">
+                        <input   matInput [(ngModel)]="modele.notePepPersonnePhysique" name="notePepPersonnePhysique" id="notePepPersonnePhysique"   type="number" >
+                      </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td> Pays residence du client physique n'est pas la Tunisie </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input   matInput [(ngModel)]="modele.residence" name="residence" id="residence"   type="number" >
+                      </mat-form-field>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Le compte est ouvert par un intermédiaire</td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input   matInput [(ngModel)]="modele.intermediaire" name="intermediaire" id="intermediaire"   type="number" >
+                      </mat-form-field>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Client physique mentionné dans la liste noire </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input   matInput [(ngModel)]="modele.noteBlackListePP" name="noteBlackListePP" id="noteBlackListePP"   type="number" >
+                      </mat-form-field>
+                </td>
+            </tr>
+
+            <tr > 
+                <td>Profession du client physique</td>
+                <td>   <mat-form-field class="example-full-width">
+                  <input   matInput [(ngModel)]="modele.noteProfession" name="noteProfession" id="noteProfession"   type="number" >
+                
+                 
+                </mat-form-field>
+                
+                  </td>
+            </tr>
+            <tr > 
+                <td>Profession du client physique</td>
+                <td>   <mat-form-field class="example-full-width">
+                  <input   matInput [(ngModel)]="modele.noteProfession1" name="noteProfession1" id="noteProfession1"   type="number" >
+                
+                 
+                </mat-form-field>
+                
+                  </td>
+            </tr>
+            <tr > 
+                <td>Profession du client physique</td>
+                <td>   <mat-form-field class="example-full-width">
+                  <input   matInput [(ngModel)]="modele.noteProfession2" name="noteProfession2" id="noteProfession2"   type="number" >
+                
+                 
+                </mat-form-field>
+                
+                  </td>
+            </tr>
+            <tr > 
+                <td>Profession du client physique</td>
+                <td>   <mat-form-field class="example-full-width">
+                  <input   matInput [(ngModel)]="modele.noteProfession3" name="noteProfession3" id="noteProfession3"   type="number" >
+                
+                 
+                </mat-form-field>
+                
+                  </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+                       <p> <button  *ngIf="showChefBoard || showAdminBoard" mat-raised-button color="primary"  style="margin-left: 850px;" (click)="modifier(modele)" ><span class="material-icons">article</span>Modifier</button>
+                       </p>
+
+ 
+                        
+                        
+
+
+
+
+                    </div>
+                </div>
+            </div>               
+        </div>
+    </div>
+    
+  </div>
+
+
+
+

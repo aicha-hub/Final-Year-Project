@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top" >
+  <div class="container-fluid"  >
+    
+      <div class="navbar-wrapper" >
+        <a class="navbar-brand" href="javascript:void(0)">{{getTitle()}}</a>
+      </div>
+      <ul class="navbar-nav mr-auto" routerLinkActive="active">
+        <li class="nav-item" *ngIf="showAdminBoard">
+          <a href="/admin" class="nav-link" routerLink="admin"><span class="material-icons">
+            lock_open
+            </span>Administrateur</a>
+        </li>
+        <li class="nav-item" *ngIf="showResponsableBoard">
+          <a href="/mod" class="nav-link" routerLink="mod"><span class="material-icons">
+            lock_open
+            </span>Responsable conformite</a>
+        </li>
+        <li class="nav-item">
+          <a href="/user" class="nav-link" *ngIf="showConseillerBoard" routerLink="user"><span class="material-icons">
+            lock_open
+            </span>Conseiller Client</a>
+        </li>
+        <li class="nav-item">
+          <a href="/user" class="nav-link" *ngIf="showChefBoard" routerLink="user"><span class="material-icons">
+            lock_open
+            </span>Chef Agence</a>
+        </li>
+        <li class="nav-item">
+          <a href="/profile" class="nav-link" routerLink="profile"><span class="material-icons">
+            
+              account_circle
+              
+            </span>{{ username }}</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+        <li class="nav-item">
+          <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a href="/login" class="nav-link" routerLink="login">Login</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+        <li  class="nav-item">
+          
+          <a *ngIf="showChefBoard || showAdminBoard" href="http://localhost:4200/#/ajouterUtilisateur" class="nav-link" ><span class="material-icons">
+            add
+            </span>Ajouter utilisateur</a>
+          
+        </li>
+        
+        <li  class="nav-item">
+          
+          <a *ngIf="showChefBoard || showAdminBoard || showConseillerBoard " href="http://localhost:4200/#/modeleCotationDeRisque" class="nav-link" ><span *ngIf="showChefBoard || showAdminBoard" class="material-icons">
+            edit
+            </span>modele cotation</a>
+          
+        </li>
+        <li class="nav-item">
+          <a href class="nav-link" (click)="logout()"><span class="material-icons">
+            logout
+            </span>LogOut</a>
+        </li>
+      </ul>
+</div>
+</nav>

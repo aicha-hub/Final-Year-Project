@@ -1,0 +1,238 @@
+<div class="main-content">
+  <div class="container-fluid">
+    
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title"> Fiche KYC du client :</h4>
+                  </div>
+                  <div class="card-body">
+                      <form>
+
+                        <label class="l1">DONNÉES DE BASE DU CLIENT PERSONNE MORALE*
+                        </label>
+                        <mat-form-field class="example-full-width">
+                          <input  required  matInput [(ngModel)]="personne_morale.codeClient" name="codeClient" id="codeClient"  placeholder="Matricule Fiscale" type="number" disabled>
+                            
+                        </mat-form-field>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                <input  required matInput [(ngModel)]="personne_morale.denominationSociale" name="denominationSociale" id="denominationSociale" placeholder="Dénomination Sociale" type="text" disabled >
+                              </mat-form-field>
+                              </div>
+                              <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                <input  required matInput [(ngModel)]="personne_morale.formeJuridique" name="formeJuridique" id="formeJuridique" placeholder="Forme Juridique" type="text" disabled>
+                              </mat-form-field>
+                              </div>
+                            </div>
+                           <div class="row">
+                             <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                <input  required matInput [(ngModel)]="personne_morale.objetSocial" name="objetSocial" id="objetSocial" placeholder="Objet Social" type="text" disabled>
+                                </mat-form-field>
+                              </div>
+        
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                <input  required matInput [(ngModel)]="personne_morale.secteurTravail" name="secteurTravail" id="secteurTravail" placeholder="secteur du Travail" type="text" disabled>
+                                </mat-form-field>
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input   required [(ngModel)]="personne_morale.dateConstrution" name="dateConstrution" id="dateConstrution" type="date" matInput placeholder="Date de constitution" disabled >
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-6">
+                              
+                              <mat-form-field class="example-full-width">
+                              <mat-label>Pays Construction</mat-label>
+                              <input [(ngModel)]="personne_morale.paysConstruction" id="paysCons" name="paysCons" matInput placeholder="Pays Construction" type="text" disabled>
+                               </mat-form-field>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input   required [(ngModel)]="personne_morale.dateEnregistrement" name="dateEnregistrement" id="dateEnregistrement" type="date" matInput placeholder="Date d'enregistrement" disabled >
+                                </mat-form-field>
+                               </div>
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+        
+                                  <mat-label>Pays residence</mat-label>
+                                <input [(ngModel)]="personne_morale.paysResidence" id="paysResidence" name="paysResidence" matInput placeholder="Pays residence" type="text" disabled>
+                                </mat-form-field>
+                              </div> 
+                            </div>
+                            <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                              <input required [(ngModel)]="personne_morale.adresse" id="adresse" name="adresse" matInput placeholder="Adresse" type="text" disabled>
+                              </mat-form-field>
+                            </div> 
+                            <div class="row">
+                            <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                <input required [(ngModel)]="personne_morale.email" id="email" name="email"matInput placeholder="Email" type="email"  disabled>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                              <input required [(ngModel)]="personne_morale.numTelephone" id="numTelephone" name="numTelephone" matInput placeholder="Telephone de contact" type="number" disabled>
+                              </mat-form-field>
+                            </div> 
+                            </div>
+                            <label class="l1">DONNÉES DU REPRÉSENTANT/MANDATAIRE QUI TRAITE L’OPÉRATION *</label>
+                            <div class="row">
+                              <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                <input [(ngModel)]="representant_legal.nom" id="nom" name="nom"matInput placeholder="Nom representant" required disabled>
+                                
+                              </mat-form-field>
+                              </div>
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input   required [(ngModel)]="representant_legal.prenom" name="prenom" id="prenom" matInput placeholder="Prenom representant" disabled >
+                                </mat-form-field>
+                               </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input   required [(ngModel)]="representant_legal.codeClient" name="codeClient1" id="codeClient1"  matInput placeholder="CIN du representant" disabled >
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                 <mat-form-field class="example-full-width">
+                                  <input  required matInput [(ngModel)]="representant_legal.dateNaissance" name="Date_naiss" id="Date_naiss" placeholder="Date de naissance" type="date" disabled>
+                                </mat-form-field>
+                                </div>
+                              </div>
+                              <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+        
+                                  <mat-label>Pays Residence</mat-label>
+                                <input [(ngModel)]="representant_legal.paysResidence" id="paysResidence2" name="paysResidence2" matInput placeholder="Pays residence" type="text" disabled>
+                                 
+                                </mat-form-field>
+                              </div>
+                             <div class="col-md-6">
+                             <mat-form-field class="example-full-width">
+                              <input  required matInput [(ngModel)]="representant_legal.fonctionOrganisme" name="fonctionOrganisme" id="fonctionOrganisme" placeholder="Fonction dans l'organisme" type="text" disabled>
+                            </mat-form-field>
+                          </div>
+                          </div>
+                          
+                          
+
+
+                          <p></p>
+                          <label  class="l1">STATUT FATCA:</label>
+                          <div *ngIf="personne_morale.statutFatca;else elseBlock">  
+
+                            <p class="l2"> -La société posséde un statut Fatca </p>
+                          </div>
+                             
+                          <ng-template #elseBlock><p></p><p>-La société ne posséde pas un statut Fatca</p></ng-template>
+                          <p></p>
+
+                          <div *ngIf="personne_morale.us">  
+                            <p class="l2"> -La société est créée en vertu de la loi américaine </p>
+                          </div>
+
+                          <div *ngIf="personne_morale.actionnaireUs">  
+                            <p class="l2"> - Le capital de la société est détenu par un actionnaire ou plus qui sont des contribuables américains </p>
+                          </div>
+
+                          <div *ngIf="personne_morale.codeTin">  
+                            <p class="l2"> - La société dispose d'un code TIN </p>
+                          </div>
+
+                          <div *ngIf="personne_morale.giin">  
+                            <p class="l2"> - il s'agit d'une institution Financière non américaine (disposant ou non d’un code GIIN)</p>
+                          </div>
+                          <!--<label class="l1">DÉCLARATION DE BÉNÉFICIAIRE EFFECTIF OU TITULAIRE RÉEL *  </label>
+                              <div class="col-md-6">
+                              <button mat-stroked-button color="warn" (click)="onClick(personne_morale,representant_legal.codeClient)" >
+                                <span class="material-icons">
+                                  playlist_add
+                                  </span>  Ajouter les bénéficiaires effectifs
+                              </button>
+                            </div>--> 
+                            <label class="l1">DÉCLARATION DE PERSONNES POLITIQUEMENT EXPOSÉES *</label>
+                              <h5>La société possède parmi ses bénéficiaires effectifs/titulaires réels ou ses administrateurs, ou parmi les plus proches 
+                                membres de leur famille et des personnes connues pour leur être étroitement associées, une personne occupant ou 
+                                ayant occupé durant les 12 derniers mois une haute fonction publique représentative ou un poste important au sein 
+                                des administrations publiques en Andorre, dans des États membres de l’Union européenne ou dans des pays tiers ?
+                              </h5>
+                              <div *ngIf="personne_morale.associesPpe; else elseBlock">  
+                                <p class="l2"> Oui</p>
+                              </div>
+                              <ng-template #elseBlock>-Non</ng-template>
+                              <p></p>
+                              <label class="l1">INFORMATIONS SUR LES ACTIONNAIRES</label>
+                              <div *ngIf="personne_morale.actionnaireOffshore">  
+                                <p class="l2"> -  La société a un actionnariat sur plusieurs niveaux et/ou des actionnaires
+                                  sociétés offshore </p>
+                              </div>
+                              <label class="l1">DESCRIPTION DE L’OPÉRATION  *</label>
+                              
+                              <div class="row">
+                              <div class="col-md-12">
+                              <mat-form-field class="example-full-width">
+                                <input  required matInput [(ngModel)]="personne_morale.natureOperation" name="natureOperation" id="natureOperation" placeholder="Nature de l'operation" type="text" disabled>
+                              </mat-form-field>
+                              </div>
+                              </div>
+                              <label class="l1">DÉCLARATION DE L’ORIGINE DES FONDS *</label>
+                              
+                              <div class="col-md-6">
+                              <div *ngIf="personne_morale.paysOrigineFonds">  
+                                <p class="l2"> Pays de provenance</p> {{personne_morale.paysOrigineFonds}}
+                              </div>
+                            </div>
+                            <p></p>
+                            <mat-form-field class="example-full-width">
+                                <input  required matInput [(ngModel)]="personne_morale.origineFonds" name="origineFonds" id="origineFonds" placeholder="Origine des fonds" type="text" disabled>
+                              </mat-form-field>
+                              <p></p>
+                              <label class="l1">AUTRES INFORMATIONs SUR LA PERSONNE MORALE *</label>
+                              <h4 >Chiffre d'affaires : </h4>
+                              <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                              <input  required  matInput [(ngModel)]="personne_morale.chiffreAffaire" name="chiffreAffaire" id="chiffreAffaire"  placeholder="Chiffre d'affaires" type="number" disabled>
+                              </mat-form-field>
+                              </div>
+                              <!--<h4 >Domaine d'activite : </h4>-->
+                              <mat-form-field class="example-full-width">
+                                <input  required matInput [(ngModel)]="personne_morale.domaineActivite" name="domaineActivite" id="domaineActivite" placeholder="Domaine Activite" type="text" disabled>
+                              </mat-form-field>
+      
+                            <!--<h4 >Nature de la Personne morale : </h4>--> 
+                             <mat-form-field class="example-full-width">
+                              <input  required matInput [(ngModel)]="personne_morale.nature" name="nature" id="nature" placeholder="Nature" type="text" disabled>
+                            </mat-form-field>
+      
+                       
+                              <p></p>
+                             
+                              <div *ngIf="personne_morale.marcheBoursier">  
+                                <p class="l2"> -La société est cotée sur le marché boursier </p>
+                              </div>
+                             
+                              
+                                
+                                <div *ngIf="personne_morale.participationPub">  
+                                  <p class="l2"> -La société est à participation publique </p>
+                                </div>
+                              
+                                  
+
+</form>
+</div> </div> </div></div></div></div>

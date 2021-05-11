@@ -1,0 +1,218 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <button mat-raised-button color="warn" style="margin-left: 850px" (click)="clientsMorales()" >
+                    <span class="material-icons">
+                    east
+                    </span>Voir clients morales</button>
+
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Vos clients </h4>
+                        <p class="card-category"> Clients Physiques </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">
+                            <p></p>
+                            <h2>Risque elevé</h2>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th style="color: indigo;">
+                                        ID
+                                    </th>
+                                    <th style="color: indigo;">
+                                        Contact
+                                    </th>
+                                    <th style="color: indigo;">
+                                        Pays Residence
+                                    </th>
+                                    <th style="color: indigo;">
+                                       Statut Fatca
+                                    </th>
+                                    
+                                    <th style="color: indigo;">
+                                        Revue
+                                    </th>
+
+                                    
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let personne_physique of personne_physique">
+                                      
+                                      <td>{{personne_physique.codeClient}}</td>
+                                      <td>{{personne_physique.numTelephone}}</td>
+                                      <td>{{personne_physique.paysResidence}}</td>
+                                      <td>{{personne_physique.statutFatca}}</td>
+                                      <td>{{personne_physique.revue}}</td>
+                                      
+                                      
+                                      
+  
+                                      <td class="text-center"><button class="btn btn-primary btn-xs" (click)="details(personne_physique.codeClient)" ><span class="material-icons">article</span></button></td>
+                                      
+                                      <td class="text-center"><button mat-stroked-button color="warn" (click)="risque(personne_physique.codeClient)" ><span class="material-icons">warning_amber</span></button>
+
+                                
+                                          
+                                    </td>
+                                    </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                        <div class="card-title">
+                            <p></p>
+                            <h2>Risque moyennement elevé</h2>
+                        </div>
+                        <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                
+                                <th style="color: indigo;">
+                                    ID
+                                </th>
+                                <th style="color: indigo;">
+                                    Contact
+                                </th>
+                                <th style="color: indigo;">
+                                    Pays Residence
+                                </th>
+                                <th style="color: indigo;">
+                                   Statut Fatca
+                                </th>
+                                
+                                <th style="color: indigo;">
+                                    Revue
+                                </th>
+
+                                
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let personne_physique1 of personne_physique1">
+                                  
+                                  <td>{{personne_physique1.codeClient}}</td>
+                                  <td>{{personne_physique1.numTelephone}}</td>
+                                  <td>{{personne_physique1.paysResidence}}</td>
+                                  <td>{{personne_physique1.statutFatca}}</td>
+                                  <td>{{personne_physique1.revue}}</td>
+                                  
+                                  
+
+                                  <td class="text-center"><button class="btn btn-primary btn-xs" (click)="details(personne_physique1.codeClient)" ><span class="material-icons">article</span> </button></td>
+                                  <td class="text-center"><button mat-stroked-button color="warn" (click)="risque(personne_physique1.codeClient)" ><span class="material-icons">warning_amber</span></button>
+
+                                </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                    <div class="card-title">
+                        <p></p>
+                        <h2>Risque moyennement faible </h2>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th style="color: indigo;">
+                                    ID
+                                </th>
+                                <th style="color: indigo;">
+                                    Contact
+                                </th>
+                                <th style="color: indigo;">
+                                    Pays Residence
+                                </th>
+                                <th style="color: indigo;">
+                                   Statut Fatca
+                                </th>
+                                
+                                <th style="color: indigo;">
+                                    Revue
+                                </th>
+
+                                
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let personne_physique2 of personne_physique2">
+                                  
+                                  <td>{{personne_physique2.codeClient}}</td>
+                                  <td>{{personne_physique2.numTelephone}}</td>
+                                  <td>{{personne_physique2.paysResidence}}</td>
+                                  <td>{{personne_physique2.statutFatca}}</td>
+                                  <td>{{personne_physique2.revue}}</td>
+                                  
+                                  
+                                  
+
+                                  <td class="text-center"><button class="btn btn-primary btn-xs" (click)="details(personne_physique2.codeClient)" ><span class="material-icons">article</span></button></td>
+                                  
+                                  <td class="text-center"><button mat-stroked-button color="warn" (click)="risque(personne_physique2.codeClient)" ><span class="material-icons">gpp_maybe</span></button>
+
+                            
+                                      
+                                </td>
+                                </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                    <div class="card-title">
+                        <p></p>
+                        <h2>Risque faible</h2>
+                    </div>
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            
+                            <th style="color: indigo;">
+                                ID
+                            </th>
+                            <th style="color: indigo;">
+                                Contact
+                            </th>
+                            <th style="color: indigo;">
+                                Pays Residence
+                            </th>
+                            <th style="color: indigo;">
+                               Statut Fatca
+                            </th>
+                            
+                            <th style="color: indigo;">
+                                Revue
+                            </th>
+
+                            
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let personne_physique3 of personne_physique3">
+                              
+                              <td>{{personne_physique3.codeClient}}</td>
+                              <td>{{personne_physique3.numTelephone}}</td>
+                              <td>{{personne_physique3.paysResidence}}</td>
+                              <td>{{personne_physique3.statutFatca}}</td>
+                              <td>{{personne_physique3.revue}}</td>
+                              
+                              
+
+                              <td class="text-center"><button style="background-color: indigo;" class="btn btn-primary btn-xs" (click)="details(personne_physique3.codeClient)" ><span class="material-icons">article</span> </button></td>
+                              <td class="text-center"><button mat-stroked-button color="warn" (click)="risque(personne_physique3.codeClient)" ><span class="material-icons">gpp_maybe</span></button>
+
+                            </tr>
+                      </tbody>
+                    </table>
+                </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>               
+        </div>
+    </div>
+    
+  </div>
+
+

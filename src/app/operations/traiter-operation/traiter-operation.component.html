@@ -1,0 +1,53 @@
+<!-- num:number ; //identifiant de la transaction
+    personneE:boolean; //type de la transaction : credit, debit
+    personneD:boolean; //statut de la transaction : achevée ou bloquée
+    paysSecteurSuspect:boolean;//montant
+    paysBlackList:boolean; //date de la transaction
+    montantMaximal:boolean; //nom du l'emetteur
+    compteInactif:boolean//type du compte de l'emetteur-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form>
+                                <h4 class="card-title" style ="margin-top: 50px;"> Fiche Transaction : {{risqueTransaction.num}}</h4>
+                               <div *ngIf="risqueTransaction">
+                               <!-- <label class="l1" ><b> <section class="mat-typography">
+                                    <h2>LES RISQUES LIES A CETTE TRANSACTION</h2>
+                                  </section> </b></label>-->
+                                <div *ngIf="risqueTransaction.personneE">
+                                    L'emetteur est mentionné dans la liste noire
+                                </div>
+                                <div *ngIf="risqueTransaction.personneD">
+                                    Le destinataire est mentionné dans la liste noire
+                                </div>
+                                <div *ngIf="risqueTransaction.paysSecteurSuspec">
+                                </div>
+                                <div *ngIf="risqueTransaction.paysBlackList">
+                                    Le pays destinataire est mentionné dans la liste noire
+                                </div>
+                                <div *ngIf="risqueTransaction.montantMaximal">
+                                    Le montant dépasse 5000 dinars
+                                </div>
+                                <div *ngIf="risqueTransaction.compteInactif">
+                                    Ce compte est inactif depuis une année
+                                </div>
+                               </div>
+                             <p></p>
+                            <tr>
+                                <td><button  mat-raised-button color="primary"  style="margin-left: 350px;" (click)="confirmer()" ><span class="material-icons">article</span>Valider</button>
+                                </td>
+                                <td><button  mat-raised-button color="warn" style="margin-left: 20px;" (click)="Close()"> Refuser</button>
+                                </td>
+                            </tr>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>

@@ -1,0 +1,116 @@
+
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Vos clients </h4>
+                        <p class="card-category"> Clients ayant un statut fatca actif</p>
+                    </div>
+                    <div class="card-body">
+                        <label class="l1">Clients morales</label>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th style="color: indigo;">
+                                        ID
+                                    </th>
+                                    <th style="color: indigo;">
+                                        Nature
+                                    </th>
+                                    <th style="color: indigo;">
+                                        Forme Juridique
+                                    </th>
+                                    <th style="color: indigo;">
+                                       Statut Fatca
+                                    </th>
+                                    <th style="color: indigo;">
+                                       Niveau risque
+                                    </th>
+                                    <th style="color: indigo;">
+                                        Revue
+                                    </th>
+
+                                    
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let personne_morale of personne_morale">
+                                      
+                                      <td>{{personne_morale.codeClient}}</td>
+                                      <td>{{personne_morale.nature}}</td>
+                                      <td>{{personne_morale.formeJuridique}}</td>
+                                      <td>{{personne_morale.statutFatca}}</td>
+                                      <td>{{personne_morale.niveauRisque}}</td>
+                                      <td>{{personne_morale.revue}}</td>
+                                      
+                                      
+                                      
+  
+                                      <td class="text-center"><button class="btn btn-primary btn-xs" (click)="details(personne_morale)" ><span class="material-icons">article</span>Afficher Fiche</button></td>
+                                      
+                                     
+                                
+                                          
+                        
+                                    </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                        <label class="l1">Clients physiques</label>
+                        <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                
+                                <th style="color: indigo;">
+                                    ID
+                                </th>
+                                <th style="color: indigo;">
+                                    Nom 
+                                </th>
+                                <th style="color: indigo;">
+                                    Prenom
+                                </th>
+                                <th style="color: indigo;">
+                                    Statut Fatca
+                                </th>
+                                <th style="color: indigo;">
+                                    Niveau risque
+                                </th>
+                                <th style="color: indigo;">
+                                    Revue
+                                </th>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let personne_physique of personne_physique">
+                                  
+                                  <td>{{personne_physique.codeClient}}</td>
+                                  <td>{{personne_physique.nom}} </td>
+                                  <td>{{personne_physique.prenom}}</td>
+                                  
+                                  <td>{{personne_physique.statutFatca}}</td>
+                                  <td>{{personne_physique.niveauRisque}}</td>
+                                  <td>{{personne_physique.revue}}</td>
+                                  
+
+                                  <td class="text-center"><button class="btn btn-primary btn-xs" (click)="detailsPP(personne_physique)" ><span class="material-icons">article</span> Afficher Fiche</button></td>
+                               
+
+                                </tr>
+                          </tbody>
+                        </table>
+                    </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>               
+        </div>
+    </div>
+    
+  </div>
+
