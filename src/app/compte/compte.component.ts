@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { personne_morale } from 'app/client/personne_morale';
+import { personne_physique } from 'app/client/personne_physique';
 import { TokenStorageService } from 'app/securityServices/token-storage.service';
 import { ContactService } from 'app/service_clients/contact.service';
 import { PersonneMoraleServiceService } from 'app/service_clients/personne-morale-service.service';
@@ -13,6 +18,16 @@ import { PersonnePhysiqueService } from 'app/service_clients/personne-physique.s
 export class CompteComponent implements OnInit {
   personnePhysique:any;
   personneMorale:any;
+  personne_physique:any;
+  personne_morale:any;
+  columnsToDisplay : string[] = ['codeClient','numTelephone','nature','formeJuridique','statutPersonne','detailsAction'];
+  columnsToDisplay1 : string[] = ['codeClient','numTelephone','nom','prenom','statutPersonne','detailsAction'];
+  dataSource : MatTableDataSource<personne_morale>;
+  dataSource1 : MatTableDataSource<personne_physique>;
+ @ViewChild(MatPaginator) paginator: MatPaginator;
+ @ViewChild(MatSort) sort: MatSort;
+ @ViewChild(MatPaginator) paginator1: MatPaginator;
+ @ViewChild(MatSort) sort1: MatSort;
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
@@ -35,21 +50,71 @@ export class CompteComponent implements OnInit {
       if(this.showConseillerBoard)
       {
     let resp=this.service.getDossiersRisqueFaible();
-    resp.subscribe((data)=>this.personneMorale=data);
+    resp.subscribe(
+      response => {
+       this.personne_morale = response;
+        console.log(response);
+        this.dataSource = new MatTableDataSource(this.personne_morale); 
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },
+      error => {
+        console.log(error);
+      });
     let resp1=this.service1.getDossiersRisqueFaible();
     resp1.subscribe((data)=>this.personnePhysique=data);
       }
       if(this.showAdminBoard){
         let resp=this.service.getPMS();
-        resp.subscribe((data)=>this.personneMorale=data);
+        resp.subscribe(
+          response => {
+           this.personne_morale = response;
+            console.log(response);
+            this.dataSource = new MatTableDataSource(this.personne_morale); 
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
+          },
+          error => {
+            console.log(error);
+          });
         let resp1=this.service1.getPPS();
-        resp1.subscribe((data)=>this.personnePhysique=data);
+        resp1.subscribe(
+          response1 => {
+           this.personne_physique= response1;
+            console.log(response1);
+            this.dataSource1 = new MatTableDataSource(this.personne_physique); 
+            this.dataSource1.paginator = this.paginator1;
+            this.dataSource1.sort = this.sort1;
+          },
+          error => {
+            console.log(error);
+          });
       }
       if(this.showModeratorBoard){
         let resp=this.service.getDossiersRisqueMEMF();
-        resp.subscribe((data)=>this.personneMorale=data);
+        resp.subscribe(
+          response => {
+           this.personne_morale = response;
+            console.log(response);
+            this.dataSource = new MatTableDataSource(this.personne_morale); 
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
+          },
+          error => {
+            console.log(error);
+          });
         let resp1=this.service1.getDossiersRisqueMEMF();
-        resp1.subscribe((data)=>this.personnePhysique=data);
+        resp1.subscribe(
+          response1 => {
+           this.personne_physique= response1;
+            console.log(response1);
+            this.dataSource1 = new MatTableDataSource(this.personne_physique); 
+            this.dataSource1.paginator = this.paginator1;
+            this.dataSource1.sort = this.sort1;
+          },
+          error => {
+            console.log(error);
+          });
       }
     }
    }

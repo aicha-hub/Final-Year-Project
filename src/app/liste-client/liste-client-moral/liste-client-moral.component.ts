@@ -1,39 +1,39 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { personne_morale } from 'app/client/personne_morale';
 import { personne_physique } from 'app/client/personne_physique';
 import { TokenStorageService } from 'app/securityServices/token-storage.service';
-import { PersonnePhysiqueService } from 'app/service_clients/personne-physique.service';
+import { PersonneMoraleServiceService } from 'app/service_clients/personne-morale-service.service';
 
 @Component({
-  selector: 'app-liste-personne-phy',
-  templateUrl: './liste-personne-phy.component.html',
-  styleUrls: ['./liste-personne-phy.component.css']
+  selector: 'app-liste-client-moral',
+  templateUrl: './liste-client-moral.component.html',
+  styleUrls: ['./liste-client-moral.component.css']
 })
-export class ListePersonnePhyComponent implements OnInit {
-  columnsToDisplay : string[] = ['codeClient','nom','prenom','statutPersonne','niveauRisque','detailsAction','deleteAction'];
-  personne_physique:any;
-  code:Number;
-  private roles: string[];
-  isLoggedIn = false;
-  showAdminBoard = false;
-  showModeratorBoard = false;
-  showConseillerBoard=false;
-  showChefBoard=false;
-  res=false;
-  username: string;
-  dataSource : MatTableDataSource<personne_physique>;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  constructor( private service:PersonnePhysiqueService,private router: Router, private dialog:MatDialog,private tokenStorageService: TokenStorageService) { }
-
+export class ListeClientMoralComponent implements OnInit {
  
-  
+  columnsToDisplay : string[] = ['codeClient','numTelephone','nature','formeJuridique','denominationSociale','niveauRisque','detailsAction','deleteAction'];
+  personne_physique:any;
+ personne_morale:any;
+ message:any;
+ private roles: string[];
+ isLoggedIn = false;
+ showAdminBoard = false;
+ showModeratorBoard = false;
+ showConseillerBoard=false;
+ showChefBoard=false;
+ res=false;
+ username: string;
+ dataSource : MatTableDataSource<personne_morale>;
+ @ViewChild(MatPaginator) paginator: MatPaginator;
+ @ViewChild(MatSort) sort: MatSort;
+ 
+  constructor(private service:PersonneMoraleServiceService,private router: Router,private tokenStorageService: TokenStorageService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
@@ -45,16 +45,15 @@ export class ListePersonnePhyComponent implements OnInit {
       if( this.showAdminBoard || this.showConseillerBoard || this.showChefBoard ){this.res=true}
       this.username = user.username;
       console.log(this.res);}
-    
     this.reloadData();}
   
   reloadData() {
-    let resp=this.service.getPPS();
+    let resp=this.service.getPMS();
        resp.subscribe(
          response => {
-           this.personne_physique = response;
+          this.personne_morale = response;
            console.log(response);
-           this.dataSource = new MatTableDataSource(this.personne_physique); 
+           this.dataSource = new MatTableDataSource(this.personne_morale); 
            this.dataSource.paginator = this.paginator;
            this.dataSource.sort = this.sort;
          },
@@ -72,14 +71,31 @@ export class ListePersonnePhyComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  
+  details(id: number){
+    this.router.navigate(['/detailsClientMorale', id])
+  }
+
+  risque(id : number)
+  {  
+    this.router.navigate(['/risqueClientMorale',id])
+  }
 
   chercher(id : number )
   {
-   this.router.navigate(['/clientPhysique' , id])
+   this.router.navigate(['/clientMoral' , id])
 
-  } 
+  }  
+  
+  public deletePP(id:number){
+    let resp= this.service.deletePM(id);
+    resp.subscribe((data)=> {
+      console.log(data);
+      this.reloadData();
+    },
+    error => console.log(error));}
 
-  clientsMorales()
+    clientsMorales()
    {
      this.router.navigate(['/clientsMorales'])
    }
@@ -96,34 +112,8 @@ export class ListePersonnePhyComponent implements OnInit {
    AjoutclientPhysique(){
     this.router.navigate(['/user-profile'])
   }
+}
 
-  public findId(){
-    let resp= this.service.getPP(this.personne_physique.Code_clt);
-    resp.subscribe((data)=>this.personne_physique=data);
-   }
 
-   risque(id:number)
-   {
-     this.router.navigate(['/risqueClientPhysique', id])
-   }
-     
-   details(id: number){
-    this.router.navigate(['/details', id])
-  }
-  
-  AjoutPP(id: number)
-  {this.router.navigate(['/Personne/CreatePersonnePhysique'])}
-  
-  public deletePP(id:number){
-    let resp= this.service.deletePP(id);
-    resp.subscribe((data)=> {
-      console.log(data);
-      this.reloadData();
-    },
-    error => console.log(error));}
-    
-  }
 
-  
-   
 

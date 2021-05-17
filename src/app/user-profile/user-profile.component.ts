@@ -113,7 +113,7 @@ export class UserProfileComponent implements OnInit {
       duration: 3000
     });
 
-    this.router.navigate(['table-list']);
+    this.router.navigate(['listeClient']);
    
   }
      

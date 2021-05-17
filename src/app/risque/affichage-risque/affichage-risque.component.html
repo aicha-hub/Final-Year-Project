@@ -2,213 +2,259 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <button mat-raised-button color="warn" style="margin-left: 850px" (click)="clientsMorales()" >
+                <button mat-raised-button color="" style="margin-left: 850px" (click)="clientsMorales()" >
                     <span class="material-icons">
                     east
-                    </span>Voir clients morales</button>
-
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Vos clients </h4>
-                        <p class="card-category"> Clients Physiques </p>
-                    </div>
+                    </span>Voir clients moraux</button>
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title ">Vos clients </h4>
+                            <p class="card-category"> Clients Physiques</p>
+                        </div>
                     <div class="card-body">
-                        <div class="card-title">
-                            <p></p>
-                            <h2>Risque elevé</h2>
-                        </div>
-                        
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead class=" text-primary">
-                                    <th style="color: indigo;">
-                                        ID
-                                    </th>
-                                    <th style="color: indigo;">
-                                        Contact
-                                    </th>
-                                    <th style="color: indigo;">
-                                        Pays Residence
-                                    </th>
-                                    <th style="color: indigo;">
-                                       Statut Fatca
-                                    </th>
-                                    
-                                    <th style="color: indigo;">
-                                        Revue
-                                    </th>
+                        <label class="l1">Risque elevé</label>
+                        <div style="margin-top: 40px;margin-right: 10px;">
 
-                                    
-                                </thead>
-                                <tbody>
-                                  <tr *ngFor="let personne_physique of personne_physique">
-                                      
-                                      <td>{{personne_physique.codeClient}}</td>
-                                      <td>{{personne_physique.numTelephone}}</td>
-                                      <td>{{personne_physique.paysResidence}}</td>
-                                      <td>{{personne_physique.statutFatca}}</td>
-                                      <td>{{personne_physique.revue}}</td>
-                                      
-                                      
-                                      
-  
-                                      <td class="text-center"><button class="btn btn-primary btn-xs" (click)="details(personne_physique.codeClient)" ><span class="material-icons">article</span></button></td>
-                                      
-                                      <td class="text-center"><button mat-stroked-button color="warn" (click)="risque(personne_physique.codeClient)" ><span class="material-icons">warning_amber</span></button>
-
+                            <mat-form-field >
+                              <mat-label>Filter</mat-label>
+                              <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+                            </mat-form-field>
+                            
+                            <div class="mat-elevation-z8">
+                              <table mat-table [dataSource]="dataSource" matSort>
+                            
                                 
-                                          
-                                    </td>
-                                    </tr>
-                              </tbody>
-                            </table>
-                        </div>
-                        <div class="card-title">
-                            <p></p>
-                            <h2>Risque moyennement elevé</h2>
-                        </div>
-                        <div class="table-responsive">
-                        <table class="table">
-                            <thead class=" text-primary">
+        <!-- ID Column -->
+        <ng-container matColumnDef="codeClient">
+            <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header> ID Client </th>
+            <td mat-cell *matCellDef="let personne_physique"> {{personne_physique.codeClient}} </td>
+          </ng-container>
+      
+        <!-- ID Column -->
+        <ng-container matColumnDef="numTelephone">
+          <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header> Contact </th>
+          <td mat-cell *matCellDef="let personne_physique"> {{personne_physique.numTelephone}} </td>
+        </ng-container>
+          <!-- ID Column -->
+          <ng-container matColumnDef="statutPersonne">
+            <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header>  Statut</th>
+            <td mat-cell *matCellDef="let personne_physique"> {{personne_physique.statutPersonne}} </td>
+          </ng-container>
+          <!-- ID Column -->
+          <ng-container matColumnDef="paysResidence">
+            <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header>  Pays  </th>
+            <td mat-cell *matCellDef="let personne_physique"> {{personne_physique.paysResidence}} </td>
+          </ng-container>
+            <!-- ID Column -->
+            <ng-container matColumnDef="niveauRisque">
+              <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header>Risque </th>
+              <td mat-cell *matCellDef="let personne_physique"> {{personne_physique.niveauRisque}} </td>
+              
+            </ng-container>
+                                  <ng-container matColumnDef="detailsAction">
+                                    <th mat-header-cell *matHeaderCellDef> </th>
+                                      <td mat-cell *matCellDef="let personne_physique" style="color: rgb(130, 26, 0);"><i class="material-icons" (click)="details(personne_physique.codeClient)">description</i>
+                                </ng-container> 
                                 
-                                <th style="color: indigo;">
-                                    ID
-                                </th>
-                                <th style="color: indigo;">
-                                    Contact
-                                </th>
-                                <th style="color: indigo;">
-                                    Pays Residence
-                                </th>
-                                <th style="color: indigo;">
-                                   Statut Fatca
-                                </th>
-                                
-                                <th style="color: indigo;">
-                                    Revue
-                                </th>
+                                <ng-container matColumnDef="risqueAction">
+                                    <th mat-header-cell *matHeaderCellDef> </th>
+                                      <td mat-cell *matCellDef="let personne_physique" style="color: indigo;"><i class="material-icons" (click)="risque(personne_physique.codeClient)" >warning_amber</i>
+                                </ng-container> 
 
-                                
-                            </thead>
-                            <tbody>
-                              <tr *ngFor="let personne_physique1 of personne_physique1">
-                                  
-                                  <td>{{personne_physique1.codeClient}}</td>
-                                  <td>{{personne_physique1.numTelephone}}</td>
-                                  <td>{{personne_physique1.paysResidence}}</td>
-                                  <td>{{personne_physique1.statutFatca}}</td>
-                                  <td>{{personne_physique1.revue}}</td>
-                                  
-                                  
-
-                                  <td class="text-center"><button class="btn btn-primary btn-xs" (click)="details(personne_physique1.codeClient)" ><span class="material-icons">article</span> </button></td>
-                                  <td class="text-center"><button mat-stroked-button color="warn" (click)="risque(personne_physique1.codeClient)" ><span class="material-icons">warning_amber</span></button>
-
+                                <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                                <tr mat-row *matRowDef="let personne_physique; columns: columnsToDisplay ;"></tr>
+                            
+                                <!-- Row shown when there is no matching data. -->
+                                <tr class="mat-row" *matNoDataRow>
+                                  <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
                                 </tr>
-                          </tbody>
-                        </table>
-                    </div>
-                    <div class="card-title">
-                        <p></p>
-                        <h2>Risque moyennement faible </h2>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class=" text-primary">
-                                <th style="color: indigo;">
-                                    ID
-                                </th>
-                                <th style="color: indigo;">
-                                    Contact
-                                </th>
-                                <th style="color: indigo;">
-                                    Pays Residence
-                                </th>
-                                <th style="color: indigo;">
-                                   Statut Fatca
-                                </th>
-                                
-                                <th style="color: indigo;">
-                                    Revue
-                                </th>
-
-                                
-                            </thead>
-                            <tbody>
-                              <tr *ngFor="let personne_physique2 of personne_physique2">
-                                  
-                                  <td>{{personne_physique2.codeClient}}</td>
-                                  <td>{{personne_physique2.numTelephone}}</td>
-                                  <td>{{personne_physique2.paysResidence}}</td>
-                                  <td>{{personne_physique2.statutFatca}}</td>
-                                  <td>{{personne_physique2.revue}}</td>
-                                  
-                                  
-                                  
-
-                                  <td class="text-center"><button class="btn btn-primary btn-xs" (click)="details(personne_physique2.codeClient)" ><span class="material-icons">article</span></button></td>
-                                  
-                                  <td class="text-center"><button mat-stroked-button color="warn" (click)="risque(personne_physique2.codeClient)" ><span class="material-icons">gpp_maybe</span></button>
-
+                              </table>
                             
-                                      
-                                </td>
+                              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                            </div>
+                        </div>
+                     
+
+                        <label class="l1">Risque moyennement elevé</label>
+                        <div style="margin-top: 40px;margin-right: 10px;">
+
+                          
+                            
+                            <div class="mat-elevation-z8">
+                              <table mat-table [dataSource]="dataSource1" matSort>
+                             <!-- ID Column -->
+        <ng-container matColumnDef="codeClient">
+            <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header> ID Client </th>
+            <td mat-cell *matCellDef="let personne_physique1"> {{personne_physique1.codeClient}} </td>
+          </ng-container>
+      
+        <!-- ID Column -->
+        <ng-container matColumnDef="numTelephone">
+          <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header> Contact </th>
+          <td mat-cell *matCellDef="let personne_physique1"> {{personne_physique1.numTelephone}} </td>
+        </ng-container>
+          <!-- ID Column -->
+          <ng-container matColumnDef="statutPersonne">
+            <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header>  Statut</th>
+            <td mat-cell *matCellDef="let personne_physique1"> {{personne_physique1.statutPersonne}} </td>
+          </ng-container>
+          <!-- ID Column -->
+          <ng-container matColumnDef="paysResidence">
+            <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header>  Pays  </th>
+            <td mat-cell *matCellDef="let personne_physique1"> {{personne_physique1.paysResidence}} </td>
+          </ng-container>
+            <!-- ID Column -->
+            <ng-container matColumnDef="niveauRisque">
+              <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header>Risque </th>
+              <td mat-cell *matCellDef="let personne_physique1"> {{personne_physique1.niveauRisque}} </td>
+              
+            </ng-container>
+                                  <ng-container matColumnDef="detailsAction">
+                                    <th mat-header-cell *matHeaderCellDef> </th>
+                                      <td mat-cell *matCellDef="let personne_physique1" style="color: rgb(130, 26, 0);"><i class="material-icons" (click)="details(personne_physique1.codeClient)">article</i>
+                                </ng-container> 
+                                 
+                                <ng-container matColumnDef="risqueAction">
+                                    <th mat-header-cell *matHeaderCellDef> </th>
+                                      <td mat-cell *matCellDef="let personne_physique1" style="color: indigo;"><i class="material-icons" (click)="risque(personne_physique1.codeClient)" >warning_amber</i>
+                                </ng-container> 
+
+                                <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                                <tr mat-row *matRowDef="let personne_physique; columns: columnsToDisplay ;"></tr>
+                            
+                                <!-- Row shown when there is no matching data. -->
+                                <tr class="mat-row" *matNoDataRow>
+                                  <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
                                 </tr>
-                          </tbody>
-                        </table>
-                    </div>
-                    <div class="card-title">
-                        <p></p>
-                        <h2>Risque faible</h2>
-                    </div>
-                    <div class="table-responsive">
-                    <table class="table">
-                        <thead class=" text-primary">
+                              </table>
                             
-                            <th style="color: indigo;">
-                                ID
-                            </th>
-                            <th style="color: indigo;">
-                                Contact
-                            </th>
-                            <th style="color: indigo;">
-                                Pays Residence
-                            </th>
-                            <th style="color: indigo;">
-                               Statut Fatca
-                            </th>
                             
-                            <th style="color: indigo;">
-                                Revue
-                            </th>
+                              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                            </div>
+                        </div>
 
+                        <label class="l1">Risque moyennement faible</label>
+                        <div style="margin-top: 40px;margin-right: 10px;">
+
+                          
                             
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let personne_physique3 of personne_physique3">
-                              
-                              <td>{{personne_physique3.codeClient}}</td>
-                              <td>{{personne_physique3.numTelephone}}</td>
-                              <td>{{personne_physique3.paysResidence}}</td>
-                              <td>{{personne_physique3.statutFatca}}</td>
-                              <td>{{personne_physique3.revue}}</td>
-                              
-                              
+                            <div class="mat-elevation-z8">
+                              <table mat-table [dataSource]="dataSource2" matSort>
+                             <!-- ID Column -->
+        <ng-container matColumnDef="codeClient">
+            <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header> ID Client </th>
+            <td mat-cell *matCellDef="let personne_physique2"> {{personne_physique2.codeClient}} </td>
+          </ng-container>
+      
+        <!-- ID Column -->
+        <ng-container matColumnDef="numTelephone">
+          <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header> Contact </th>
+          <td mat-cell *matCellDef="let personne_physique2"> {{personne_physique2.numTelephone}} </td>
+        </ng-container>
+          <!-- ID Column -->
+          <ng-container matColumnDef="statutPersonne">
+            <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header>  Statut</th>
+            <td mat-cell *matCellDef="let personne_physique2"> {{personne_physique2.statutPersonne}} </td>
+          </ng-container>
+          <!-- ID Column -->
+          <ng-container matColumnDef="paysResidence">
+            <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header>  Pays  </th>
+            <td mat-cell *matCellDef="let personne_physique2"> {{personne_physique2.paysResidence}} </td>
+          </ng-container>
+            <!-- ID Column -->
+            <ng-container matColumnDef="niveauRisque">
+              <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header>Risque </th>
+              <td mat-cell *matCellDef="let personne_physique2"> {{personne_physique2.niveauRisque}} </td>
+              
+            </ng-container>
+                                  <ng-container matColumnDef="detailsAction">
+                                    <th mat-header-cell *matHeaderCellDef> </th>
+                                      <td mat-cell *matCellDef="let personne_physique2" style="color: rgb(130, 26, 0);"><i class="material-icons" (click)="details(personne_physique2.codeClient)">article</i>
+                                </ng-container> 
+                                 
+                                <ng-container matColumnDef="risqueAction">
+                                    <th mat-header-cell *matHeaderCellDef> </th>
+                                      <td mat-cell *matCellDef="let personne_physique2" style="color: indigo;"><i class="material-icons" (click)="risque(personne_physique2.codeClient)" >warning_amber</i>
+                                </ng-container> 
 
-                              <td class="text-center"><button style="background-color: indigo;" class="btn btn-primary btn-xs" (click)="details(personne_physique3.codeClient)" ><span class="material-icons">article</span> </button></td>
-                              <td class="text-center"><button mat-stroked-button color="warn" (click)="risque(personne_physique3.codeClient)" ><span class="material-icons">gpp_maybe</span></button>
+                                <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                                <tr mat-row *matRowDef="let personne_physique; columns: columnsToDisplay ;"></tr>
+                            
+                                <!-- Row shown when there is no matching data. -->
+                                <tr class="mat-row" *matNoDataRow>
+                                  <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                                </tr>
+                              </table>
+                            
+                            
+                              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                            </div>
+                        </div>
 
-                            </tr>
-                      </tbody>
-                    </table>
-                </div>
+                        <label class="l1">Risque faible</label>
+                        <div style="margin-top: 40px;margin-right: 10px;">
+
+                          
+                            
+                            <div class="mat-elevation-z8">
+                              <table mat-table [dataSource]="dataSource3" matSort>
+                             <!-- ID Column -->
+        <ng-container matColumnDef="codeClient">
+            <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header> ID Client </th>
+            <td mat-cell *matCellDef="let personne_physique3"> {{personne_physique3.codeClient}} </td>
+          </ng-container>
+      
+        <!-- ID Column -->
+        <ng-container matColumnDef="numTelephone">
+          <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header> Contact </th>
+          <td mat-cell *matCellDef="let personne_physique3"> {{personne_physique3.numTelephone}} </td>
+        </ng-container>
+          <!-- ID Column -->
+          <ng-container matColumnDef="statutPersonne">
+            <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header>  Statut</th>
+            <td mat-cell *matCellDef="let personne_physique3"> {{personne_physique3.statutPersonne}} </td>
+          </ng-container>
+          <!-- ID Column -->
+          <ng-container matColumnDef="paysResidence">
+            <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header>  Pays  </th>
+            <td mat-cell *matCellDef="let personne_physique3"> {{personne_physique3.paysResidence}} </td>
+          </ng-container>
+            <!-- ID Column -->
+            <ng-container matColumnDef="niveauRisque">
+              <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header>Risque </th>
+              <td mat-cell *matCellDef="let personne_physique3"> {{personne_physique3.niveauRisque}} </td>
+              
+            </ng-container>
+                                  <ng-container matColumnDef="detailsAction">
+                                    <th mat-header-cell *matHeaderCellDef> </th>
+                                      <td mat-cell *matCellDef="let personne_physique3" style="color: rgb(130, 26, 0);"><i class="material-icons" (click)="details(personne_physique3.codeClient)">article</i>
+                                </ng-container> 
+                                 
+                                <ng-container matColumnDef="risqueAction">
+                                    <th mat-header-cell *matHeaderCellDef> </th>
+                                      <td mat-cell *matCellDef="let personne_physique3" style="color: indigo;"><i class="material-icons" (click)="risque(personne_physique3.codeClient)" >warning_amber</i>
+                                </ng-container> 
+
+                                <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                                <tr mat-row *matRowDef="let personne_physique; columns: columnsToDisplay ;"></tr>
+                            
+                                <!-- Row shown when there is no matching data. -->
+                                <tr class="mat-row" *matNoDataRow>
+                                  <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                                </tr>
+                              </table>
+                            
+                            
+                              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                            </div>
+                        </div>
 
 
 
 
 
                     </div>
-                </div>
+               
             </div>               
         </div>
     </div>

@@ -17,7 +17,7 @@ export class ListeClientComponent implements OnInit {
   contact:any;
   code:Number;
   totalRecords:Number=100;
-  columnsToDisplay : string[] = ['codeClient','numTelephone','statutPersonne','paysResidence','niveauRisque'];
+  columnsToDisplay : string[] = ['codeClient','numTelephone','statutPersonne','paysResidence','niveauRisque','deleteAction'];
   private roles: string[];
   isLoggedIn = false;
   showAdminBoard = false;
@@ -62,7 +62,7 @@ export class ListeClientComponent implements OnInit {
          response => {
            this.contact = response;
            console.log(response);
-           this.dataSource = new MatTableDataSource(response); 
+           this.dataSource = new MatTableDataSource(this.contact); 
            this.dataSource.paginator = this.paginator;
            this.dataSource.sort = this.sort;
          },
@@ -79,4 +79,21 @@ export class ListeClientComponent implements OnInit {
         this.dataSource.paginator.firstPage();
       }
     }
+    
+    clientsMorales()
+   {
+     this.router.navigate(['/clientsMorales'])
+   }
+     
+   clientsPhysiques(){
+    this.router.navigate(['/clientsPhysiques'])
+  }
+
+    public deletePP(id:number){
+      let resp= this.service.deleteContact(id);
+      resp.subscribe((data)=> {
+        console.log(data);
+        this.fetchPosts();
+      },
+      error => console.log(error));}
 }

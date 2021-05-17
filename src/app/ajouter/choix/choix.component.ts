@@ -9,20 +9,28 @@ import { Router } from '@angular/router';
 })
 export class ChoixComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<ChoixComponent>, private router :Router ) { }
+  constructor(public dialogRef: MatDialogRef<ChoixComponent>, private router :Router) { }
 
   ngOnInit(): void {
   }
 
   ajouterClientMoral()
-  { this.dialogRef.close();
-    this.router.navigate(['/typography'])
-    
+  { 
+    this.dialogRef.close();
+    this.router.navigate(['/typography'])   
   }
     
-  ajouterClientPhysique(){
+  ajouterClientPhysique()
+  {
    this.router.navigate(['/user-profile'])
    this.dialogRef.close();
- }
+  }
+
+close():void
+{
+  this.dialogRef.close();
+  this.router.navigate(['/listeClient'])
+}
+
 
 }

@@ -47,6 +47,7 @@ import { ModeleComponent } from 'app/modeleCotation/modele/modele.component';
 import { NiveauRisqueComponent } from 'app/modeleCotation/niveau-risque/niveau-risque.component';
 import { VisualiserCompteComponent } from 'app/compte/visualiser-compte/visualiser-compte.component';
 import { ListeClientComponent } from 'app/liste-client/liste-client.component';
+import { ListeClientMoralComponent } from 'app/liste-client/liste-client-moral/liste-client-moral.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -95,7 +96,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'table-list',     component: TableListComponent },
     { path: 'typography',     component: TypographyComponent },
-    { path: 'clientsMorales',          component: IconsComponent },
+    { path: 'clientsMorales',          component:ListeClientMoralComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },

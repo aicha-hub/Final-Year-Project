@@ -9,3 +9,14 @@ label {
     color: rgb(61, 59, 59);
     margin-bottom: 25px;
 }
+table {
+    width: 100%;
+  }
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 18%;
+  }

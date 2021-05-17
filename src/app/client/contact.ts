@@ -1,3 +1,4 @@
+import { compte } from "app/compte/compte";
 
 export class contact
 {   codeClient:number; //Code du client
@@ -10,7 +11,7 @@ export class contact
     niveauRisque:String;
     revue:String; 
     indiTelephonique:String; //indicatif telephonique
-     
+     contactCompte:number;
  
  
 }

@@ -11,7 +11,7 @@
                             <h2>Fiche FATCA</h2>
                           </section> </b></label> 
 
-                          <div *ngIf="personne_physique.paysNaiss" aria-disabled="false">  
+                          <div *ngIf="personne_physique.paysNaiss">  
                             <p class="l2"> - Lieu de naissance du client situé aux Etats-Unis  </p>
                           </div>
 
@@ -28,16 +28,8 @@
                           </div>
 
                           <div *ngIf="personne_physique.indiTelephonique==1">  
-                            <p class="l2" > - Le client dispose d’une ligne téléphonique américaine .                           </p>
-                     
+                            <p class="l2" > - Le client dispose d’une ligne téléphonique américaine .</p>                   
                           </div>
-                        
-                          
-
-
-
-                         
-
                     </div>
                 </div>
             </div>               

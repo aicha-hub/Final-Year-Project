@@ -75,6 +75,8 @@ import { ModeleComponent } from './modeleCotation/modele/modele.component';
 import { VisualiserCompteComponent } from './compte/visualiser-compte/visualiser-compte.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ListeClientComponent } from './liste-client/liste-client.component';
+import { ListeClientMoralComponent } from './liste-client/liste-client-moral/liste-client-moral.component';
+
 
 
 
@@ -204,6 +206,8 @@ import { ListeClientComponent } from './liste-client/liste-client.component';
    
     VisualiserCompteComponent,
                  ListeClientComponent,
+                 ListeClientMoralComponent,
+              
    
   ],
   providers: [],
