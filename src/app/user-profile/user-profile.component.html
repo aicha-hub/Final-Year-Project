@@ -1,224 +1,167 @@
 <div class="main-content">
-  <div class="container-fluid">
-    
+  <div class="container-fluid">  
       <div class="row">
-          <div class="col-md-10">
+          <div class="col-md-12">
               <div class="card">
                   <div class="card-header card-header-danger">
-                      <h4 class="card-title">Edit Profile</h4>
-                      <p class="card-category">Complete your profile</p>
+                      <h4 class="card-title">Ajouter Client Physique</h4>
+                      <p class="card-category">Completer les données necessaires d'un client</p>
                   </div>
                   <div class="card-body">
-                      <form>
-                        <td><mat-form-field class="example-full-width">
-                          <mat-label>Code client</mat-label>
-                          <input matInput [(ngModel)]="personne_physique.codeClient"   name="code_clt" id="code_clt" type="number"  required>
+                    <form #Form="ngForm"  [formGroup]="this.form">
+                        <td><mat-form-field class="example-full-width" > 
+                          <input matInput [(ngModel)]="personne_physique.codeClient"   formControlName="codeClient" placeholder="Code client" id="codeClient" type="number"  required>
+                          <mat-error>Champs obligatoire.</mat-error>
                         </mat-form-field></td>
-                        <div>
-                          <label class="l1">DESIGNATION :</label>
+                       <div>
+                         <label class="l1">DESIGNATION :</label>
                         </div>
                         <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                           <mat-form-field class="example-full-width">
-                            <input matInput [(ngModel)]="personne_physique.prenom" name="prenom" id="firstname" placeholder="Prenom" type="text" >
+                            <input matInput [(ngModel)]="personne_physique.prenom"  formControlName="prenom" id="prenom" placeholder="Prenom" type="text" required>
+                            <mat-error>Champs obligatoire.</mat-error>
+                          </mat-form-field>
+                        </div>                           
+                        <div class="col-md-4">
+                          <mat-form-field class="example-full-width">
+                            <input matInput [(ngModel)]="personne_physique.nom" formControlName="nom" id="nom" placeholder="Nom" type="text" required>
+                            <mat-error>Champs obligatoire.</mat-error>
                           </mat-form-field>
                         </div>
-                            
-                        <div class="col-md-6">
-                          <mat-form-field class="example-full-width">
-                            <input matInput [(ngModel)]="personne_physique.nom" name="nom" id="lastname" placeholder="Nom" type="text">
-                          </mat-form-field>
                         </div>
-                        </div>
-                    <label class="l1">NAISSANCE & SITUATION :</label>
+                   <label class="l1">NAISSANCE & SITUATION :</label>
                     <div class="row">
-                      <div class="col-md-8">
+                      <div class="col-md-6">
                         <mat-form-field class="example-full-width">
-                            <input [(ngModel)]="personne_physique.dateNaiss" name="dateNaiss" id="dateNaiss" type="date" matInput placeholder="Date de naissance"  >
+                            <input [(ngModel)]="personne_physique.dateNaissance"  formControlName="dateNaissance" id="dateNaissance" type="date" matInput placeholder="Date de naissance"  required>
+                            <mat-error>Champs obligatoire.</mat-error>
                           </mat-form-field>
                       </div>
                       <mat-form-field appearance="fill">
                         <mat-label>Pays naissance</mat-label>
-                        <mat-select [(ngModel)]="personne_physique.paysNaissance" name="paysNaissance" type="text" id="paysNaiss">
+                        <mat-select [(ngModel)]="personne_physique.paysNaissance" formControlName="paysNaissance" type="text" id="paysNaissance">
                           <mat-option *ngFor="let liste_nationnalite of liste_nationnalite" [value]="liste_nationnalite.nationalite"  matInput >
                             {{liste_nationnalite.nationalite}}
                           </mat-option>
                         </mat-select>
+                        <mat-error>Champs obligatoire.</mat-error>
                       </mat-form-field>                   
                   </div>
-                  <div style="padding-top: 20px;">
-                    <h5>Sexe:
-                    <input [(ngModel)]="personne_physique.sexe" style="margin-left:102px;" type="radio" id="huey" name="drone" value="homme"
+                 <div style="padding-top:30px;">
+                    <h3> Sexe : 
+                    <input [(ngModel)]="personne_physique.sexe" style="margin-left:97px;" type="radio" id="FO1" formControlName="FO1" value="homme"
                            checked>
-                    <label for="huey">Homme</label>              
-                    <input type="radio"  [(ngModel)]="personne_physique.sexe" id="dewey" name="drone" value="femme">
-                    <label for="dewey">Femme</label> </h5>
+                    <label style="margin-right: 10px;" for="FO1">Homme</label>              
+                    <input type="radio"  [(ngModel)]="personne_physique.sexe" id="FO1" formControlName="FO1" value="femme">
+                    <label for="FO1">Femme</label> </h3>
                   </div>
                   <div>
-                    <h5>Etat civil:
-                    <input  style="margin-left:78px;" type="radio" [(ngModel)]="personne_physique.etatCivil" id="etat_civil" name="etat_civil" value="Marié"
+                    <h3>Etat civil :
+                    <input  style="margin-left:70px;" type="radio" [(ngModel)]="personne_physique.etatCivil" id="us" formControlName="us" value="Marié"
                            checked>
-                    <label style="margin-right: 10px;" for="huey1">Marié(e)</label>
-                    <input  type="radio" [(ngModel)]="personne_physique.etatCivil"  id="etat_civil" name="etatCivil" value="Celibataire"
+                    <label style="margin-right: 10px;" for="etat_civil">Marié(e)</label>
+                    <input  type="radio" [(ngModel)]="personne_physique.etatCivil"  id="us" formControlName="us" value="Celibataire"
                     checked>
-                    <label  style="margin-right: 10px;" for="huey1">Celibataire</label>
-                    <input  type="radio" [(ngModel)]="personne_physique.etatCivil"   name="etat_civil" id="etatCivil" value="Veuf" 
+                    <label  style="margin-right: 10px;" for="etatCivil1">Celibataire</label>
+                    <input  type="radio" [(ngModel)]="personne_physique.etatCivil"  formControlName="us" id="us" value="Veuf" 
                     checked >
-                    <label   style="margin-right: 10px;" for="huey1">Veuf(e)</label>
-                    <input  type="radio" [(ngModel)]="personne_physique.etatCivil"  id="etat_civil" name="etatCivil" value="Divorcé">
-                    <label for="dewey1">Divorcé(e)</label> </h5>
+                    <label   style="margin-right: 10px;" for="etat_civil2">Veuf(e)</label>
+                    <input  type="radio" [(ngModel)]="personne_physique.etatCivil"  id="us" formControlName="us" value="Divorcé">
+                    <label for="etat_civil3">Divorcé(e)</label> </h3>
+                   
                   </div>
-                  <div>
-                    <h5>Capacité juridique:
-                    <input type="radio" [(ngModel)]="personne_physique.capaciteJuridique" id="c_juridique" name="c_juridique" value="Majeur capable"
+          <div>
+                    <h3>Capacité juridique:
+                    <input type="radio" [(ngModel)]="personne_physique.capaciteJuridique" id="c_juridique" formControlName="c_juridique" value="Majeur capable"
                            checked>
-                    <label  style="margin-right: 10px;" for="huey2">Majeur capable</label>
-                    <input type="radio" [(ngModel)]="personne_physique.capaciteJuridique" id="c_juridique" name="c_juridique" value="Majeur incapable"
+                    <label  style="margin-right: 10px;" for="c_juridique">Majeur capable</label>
+                    <input type="radio" [(ngModel)]="personne_physique.capaciteJuridique" id="c_juridique" formControlName="c_juridique" value="Majeur incapable"
                     checked>
-                    <label  style="margin-right: 10px;" for="huey2">Majeur incapable</label>
-                    <input type="radio" [(ngModel)]="personne_physique.capaciteJuridique" name="c_juridique" id="c_juridique" value="Mineur incapable"
+                    <label  style="margin-right: 10px;" for="c_juridique1">Majeur incapable</label>
+                    <input type="radio" [(ngModel)]="personne_physique.capaciteJuridique" formControlName="c_juridique" id="c_juridique" value="Mineur incapable"
                     checked >
-                    <label   style="margin-right: 10px;" for="huey2">Mineur incapable</label> 
-                    <input type="radio" [(ngModel)]="personne_physique.capaciteJuridique" id="c_juridique" name="c_juridique" value="Mineur émancipé">
-                    <label for="dewey2">Mineur émancipé</label> </h5>
+                    <label   style="margin-right: 10px;" for="c_juridique2">Mineur incapable</label> 
+                    <input type="radio" [(ngModel)]="personne_physique.capaciteJuridique" id="c_juridique" formControlName="c_juridique" value="Mineur émancipé">
+                    <label for="c_juridique3">Mineur émancipé</label> </h3>
+                    <h3> Situation Intermédiaire : 
+                      <input [(ngModel)]="personne_physique.intermediaire" style="margin-left:21px;" type="radio" id="v" formControlName="v" value="true"
+                             checked>
+                      <label style="margin-right: 10px;" for="v">Oui</label>              
+                      <input type="radio"  [(ngModel)]="personne_physique.intermediaire" id="v" formControlName="v" value="false">
+                      <label for="v">non</label> </h3>
                   </div>
-                
+            
 
 <div>
                          <div>
                            <label class="l1">PIECES D’IDENTITE :</label>
                          </div>
-                         <div class="row">
-                         <div class="col-md-6">
-                          <mat-form-field class="example-full-width">
-                            <input type="date" matInput  [(ngModel)]="personne_physique.dateLivraisonCin" id="delais_d_pass" name="delais_d_pass" placeholder="Date de livraison"  >
-                          </mat-form-field>
-                        </div>
-                        <div class="col-md-6">
-                          <mat-form-field class="example-full-width">
-                            <input type="date" matInput  [(ngModel)]="personne_physique.dateExpirationCin" id="delais_f_pass" name="delais_f_pass"  placeholder="Date d'expiration"  >
-                          </mat-form-field>
-                        </div>
-                        </div>
+                        
             
                           <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                               <mat-form-field class="example-full-width">
-                                <input matInput  [(ngModel)]="personne_physique.numPassport" id="passeport" name="passeport" placeholder="Num passeport" type="text">
+                                <input matInput  [(ngModel)]="personne_physique.numPassport" id="passeport" formControlName="passeport" placeholder="Num passeport" type="text">
                               </mat-form-field>
                             </div>
-                            <div class="col-md-4">
-                              <mat-form-field class="example-full-width">
-                                <input type="date" matInput  [(ngModel)]="personne_physique.dateLivraisonPassport" id="delais_d_pass" name="delais_d_pass" placeholder="Date de livraison"  >
-                              </mat-form-field>
-                            </div>
-                            <div class="col-md-4">
-                              <mat-form-field class="example-full-width">
-                                <input type="date" matInput  [(ngModel)]="personne_physique.dateExpirationPassport" id="delais_f_pass" name="delais_f_pass"  placeholder="Date d'expiration"  >
-                              </mat-form-field>
-                            </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-4">
+                            <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput [(ngModel)]="personne_physique.carteSejour" id="carte_sejour" name="carte_sejour"  placeholder="Carte sejour" type="text">
+                                  <input matInput [(ngModel)]="personne_physique.carteSejour" id="carte_sejour" formControlName="carte_sejour"  placeholder="Carte sejour" type="text">
                                 </mat-form-field>
                               </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input type="date" matInput [(ngModel)]="personne_physique.dateLivraisonCarteSejour" id="delais_d_carte" name="delais_d_carte"  placeholder="Date de livraison"  >
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input type="date" matInput [(ngModel)]="personne_physique.dateExpirationCarteSejour" id="delais_f_carte" name="delais_f_carte"  placeholder="Date d'expiration"  >
-                                </mat-form-field>
-                              </div></div>                                                    
+                            </div>
+                                                                              
                           </div>
 
-
+            
                           <label  class="l1">STATUT US:</label>
                           <p>1-Vous avez residé de facon permenante dans les 3 dernieres annees dans les Etats Unis? </p>
-                        <h5>  <input  type="radio"   id="huey12" name="drone12" [(ngModel)]="personne_physique.usResident" value="true"
+                        <h5>  <input  type="radio"   id="huey12" formControlName="huey12" [(ngModel)]="personne_physique.usResident" value="true"
                                  checked>
                           <label for="huey12" style="margin-right:50px;">Oui </label>
-                          <input type="radio" id="dewey12"   name="drone12"  [(ngModel)]="personne_physique.usResident" value="false">
-                          <label for="dewey12">Non</label> </h5>
+                          <input type="radio" id="huey12"  formControlName="huey12"  [(ngModel)]="personne_physique.usResident" value="false">
+                          <label for="huey12">Non</label> </h5>
         
                           <p>2-Vous disposez d'une carte verte ?
                              </p>
-                             <h5>  <input  type="radio" id="huey11"  [(ngModel)]="personne_physique.carteVerte" name="drone11" value="true"
+                             <h5>  <input  type="radio" id="huey11"  [(ngModel)]="personne_physique.carteVerte" formControlName="huey11" value="true"
                               checked>
-                       <label for="huey" style="margin-right:50px;">Oui </label>
-                       <input type="radio" id="dewey11"  name="drone11"  [(ngModel)]="personne_physique.carteVerte" value="false">
-                       <label for="dewey11">Non</label> </h5>
+                       <label for="huey11" style="margin-right:50px;">Oui </label>
+                       <input type="radio" id="huey11"  formControlName="huey11"  [(ngModel)]="personne_physique.carteVerte" value="false">
+                       <label for="huey11">Non</label> </h5>
                        <p>2-Vous disposez d'un code TIN ?
                       </p>
-                      <h5>  <input   type="radio" id="huey13" name="drone13" value="true" [(ngModel)]="personne_physique.codeTin"
+                      <h5>  <input   type="radio" id="huey13" formControlName="huey13" value="true" [(ngModel)]="personne_physique.codeTin"
                        checked>
                 <label for="huey13" style="margin-right:50px;">Oui </label>
-                <input type="radio"  id="dewey13" name="drone13" value="false" [(ngModel)]="personne_physique.codeTin">
-                <label for="dewey13">Non</label> </h5>
+                <input type="radio"  id="huey13"  formControlName="huey13" value="false" [(ngModel)]="personne_physique.codeTin">
+                <label for="huey13">Non</label> </h5>
 
-                <div class="row">
-                  <div class="col-md-6">
-                <mat-form-field appearance="standard">
-                  <mat-label *ngIf="selectedFiles; else newFile">{{selectedFiles.item(0).name}}</mat-label>
-                  <ng-template #newFile>
-                      <mat-label>Ajouter Justificatif</mat-label>
-                  </ng-template>
-                  <input matInput disabled>
-                  <button matSuffix mat-icon-button matTooltip="Click to upload" (click)="fileInput.click()">
-                    <span class="material-icons">
-                      attach_file
-                      </span>
-                  </button>
-                  <input hidden (change)="selectFile($event)" #fileInput type="file"name="file" ngModel>
-                  </mat-form-field>
-                  <!--<button class="btn btn-primary btn-xs" (click)="Add(Form)" type="submit"  ><span class="material-icons">article</span> Ajouter</button>
-                  -->
-                  </div>
-                </div>
+            
 
+  
 
-                        <label  class="l1">NATIONALITE ET RESIDENCE :</label>                        
-                        <div>
-                        <div class="row">
-                          
-                          <div class="col-md-8">
-                              <mat-form-field class="example-full-width">
-                                <mat-label style="margin-right: 15px;">Pays du residence</mat-label>
-                                <mat-select [(ngModel)]="personne_physique.paysResidence" id="pays_res" name="pays_res">
-                                  <mat-option *ngFor="let liste_nationnalite of liste_nationnalite" [value]="liste_nationnalite.nationalite"  matInput >
-                                    {{liste_nationnalite.nationalite}}
-                                  </mat-option>
-                                </mat-select>
-                              </mat-form-field>
-                          </div>   
-                        </div> 
-                        <p></p>
-                    <button mat-raised-button  mat-stroked-button color="warn"  (click)="onClick2(personne_physique.codeClient,personne_physique,Form)">
-                      <span class="material-icons">
-                        playlist_add
-                        </span> Ajouter nationalite
-                    </button>
-                    <p></p>
-                  </div>
+                  
                   <label  class="l1">CONTACT :</label>                        
                   <div class="row">
                       <div class="col-md-6">
                         <mat-form-field class="example-full-width">
-                          <input [(ngModel)]="personne_physique.adresse" id="adresse" name="adresse" matInput placeholder="Adresse" type="text">
+                          <input [(ngModel)]="personne_physique.adresse" id="adresse" formControlName="adresse" matInput placeholder="Adresse" type="text"required>
+                          <mat-error>Champs obligatoire.</mat-error>  
                         </mat-form-field>
                       </div>
                       <div class="col-md-2">
                         <mat-form-field class="example-full-width">
-                          <input [(ngModel)]="personne_physique.indiTelephonique" id="indiTelephonique" name="indiTelephonique" matInput placeholder="Indicatif Tel : +216 " type="number">
+                          <input [(ngModel)]="personne_physique.indiTelephonique" id="indiTelephonique" formControlName="indiTelephonique" matInput placeholder="Indicatif Tel : +216 " type="number" required>
+                          <mat-error>Champs obligatoire.</mat-error>  
                         </mat-form-field>
                       </div>  
                       <div class="col-md-4">
                         <mat-form-field class="example-full-width">
-                          <input [(ngModel)]="personne_physique.numTelephone" id="num_tel" name="num_tel" matInput placeholder="Num telephone " type="number">
+                          <input [(ngModel)]="personne_physique.numTelephone" id="contact" formControlName="contact" matInput placeholder="Telephone de contact" type="number" required >
+                          <mat-error *ngIf="this.form.controls['contact'].errors?.required">Champs obligatoire.</mat-error>
+                          <mat-error *ngIf="this.form.controls['contact'].errors?.maxlength">Maximum 8 caracteres.</mat-error> 
                         </mat-form-field>
                       </div>                       
                   </div>
@@ -226,161 +169,178 @@
                           <div class="row">
                             <div class="col-md-8">
                               <mat-form-field class="example-full-width">
-                                <input [(ngModel)]="personne_physique.email" id="email" name="email" matInput placeholder="Email" type="email" [formControl]="email" required>
-                                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                                <input [(ngModel)]="personne_physique.email" id="email" formControlName="email" matInput placeholder="Email" type="email"  required>
+                                <mat-error>adresse email invalide.</mat-error>
                               </mat-form-field>
                             </div>
                         </div>
-       
+      
                         <label  class="l1">SITUATION PROFESSIONNELLE       :</label>
                         <div>
-                          <h5>
-                          <input [(ngModel)]="personne_physique.catSocioprofessionnelle" id="Cat_sociopro" name="Cat_sociopro" type="radio"  value="Entrepreneur individuel"
-                                 checked>
-                          <label   style="margin-right: 10px;" for="huey3">Entrepreneur individuel</label>
-                          <input [(ngModel)]="personne_physique.catSocioprofessionnelle" id="Cat_sociopro" name="Cat_sociopro"  type="radio"  value="Fonctionnaire/Salarié"
-                          checked>
-                          <label  style="margin-right: 10px;" for="huey3">Fonctionnaire/Salarié</label>
-                          <input  [(ngModel)]="personne_physique.catSocioprofessionnelle" id="Cat_sociopro" name="Cat_sociopro"  type="radio"   value="Ouvrier"
-                          checked >
-                          <label  style="margin-right: 10px;" for="huey3">Ouvrier</label>         
-                          <input [(ngModel)]="personne_physique.catSocioprofessionnelle" id="Cat_sociopro" name="Cat_sociopro"  type="radio" value="Sans profession">
-                          <label  for="dewey3">Sans profession</label> </h5>
+                          
                                                    
                           <div class="row">
                       
                             <div class="col-md-4">
                               <mat-form-field class="example-full-width">
                                 <mat-label style="margin-right: 15px;">Profession</mat-label>
-                                <mat-select  [(ngModel)]="personne_physique.profession"  id="Profession" name="Profession">
+                                <mat-select  [(ngModel)]="personne_physique.profession"  id="Profession" formControlName="Profession">
                                   <mat-option *ngFor="let listeProfession of listeProfession" [value]="listeProfession.name" matInput>
                                     {{listeProfession.name}}
                                   </mat-option>
-                                </mat-select>                                 
+                                </mat-select>   
+                                <mat-error>Champs obligatoire.</mat-error>                                
                               </mat-form-field>
                           </div> 
                             <div class="col-md-4">
                               <mat-form-field class="example-full-width">
                                 <mat-label style="margin-right: 15px;">Secteur du travail</mat-label>
-                                <mat-select  [(ngModel)]="personne_physique.secteurTravail" id="secteurTravail" name="secteurTravail" type="text">
+                                <mat-select  [(ngModel)]="personne_physique.secteurTravail" id="secteurTravail" formControlName="secteurTravail" type="text">
                                   <mat-option *ngFor="let listeSecteur of listeSecteur" [value]="listeSecteur.name" matInput>
                                     {{listeSecteur.name}}
                                   </mat-option>
-                                </mat-select>                                 
+                                </mat-select>   
+                                <mat-error>Champs obligatoire.</mat-error>                                
                               </mat-form-field> 
                           </div> 
                             <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
                                   <mat-label style="margin-right: 15px;">Pays du travail</mat-label>
-                                  <mat-select  [(ngModel)]="personne_physique.paysTravail" id="paysTravail" name="paysTravail">
+                                  <mat-select  [(ngModel)]="personne_physique.paysTravail" id="paysTravail" formControlName="paysTravail">
                                     <mat-option *ngFor="let liste_nationnalite of liste_nationnalite" [value]="liste_nationnalite.nationalite"  matInput >
                                       {{liste_nationnalite.nationalite}}
                                     </mat-option>
-                                  </mat-select>                                 
+                                  </mat-select>   
+                                  <mat-error>Champs obligatoire.</mat-error>                                
                                 </mat-form-field>
                             </div>                     
                         </div>
                         </div>
-                        <label  class="l1">EMPLOYEUR (POUR LES SALARIES ET FONCTIONNAIRES):</label>
+                        
+                  <label  class="l1">EMPLOYEUR (POUR LES SALARIES ET FONCTIONNAIRES):</label>
                         <div>
                           <h5> Catégorie Employeur:
-                          <input type="radio" id="huey4"  [(ngModel)]="personne_physique.categorieEmployeur"  name="drone4"  value="Entreprise Privée"
+                          <input type="radio" id="drone41"  [(ngModel)]="personne_physique.categorieEmployeur"  formControlName="drone41"  value="Entreprise Privée"
                                  checked>
-                          <label  style="margin-right: 10px;" for="huey4">Entreprise Privée</label>
-                          <input type="radio" id="huey4"  [(ngModel)]="personne_physique.categorieEmployeur"  name="drone4" value="Entreprise Publique"
+                          <label  style="margin-right: 10px;" for="drone41">Entreprise Privée</label>
+                          <input type="radio" id="drone41"  [(ngModel)]="personne_physique.categorieEmployeur"  formControlName="drone41" value="Entreprise Publique"
                           checked>
-                          <label  style="margin-right: 10px;" for="huey4">Entreprise Publique</label>
-                          <input type="radio" id="huey4"   [(ngModel)]="personne_physique.categorieEmployeur"  name="drone4" value="Ministère"
+                          <label  style="margin-right: 10px;" for="drone41">Entreprise Publique</label>
+                          <input type="radio" id="drone41"   [(ngModel)]="personne_physique.categorieEmployeur"  formControlName="drone41" value="Ministère"
                           checked >
-                          <label   style="margin-right: 10px;" for="huey">Ministère</label>    
-                          <input type="radio" id="dewey4"  [(ngModel)]="personne_physique.categorieEmployeur" name="drone4" value="Autre">
-                          <label for="dewey">Autre</label> </h5>
+                          <label   style="margin-right: 10px;" for="drone41">Ministère</label>    
+                          <input type="radio" id="drone41"  [(ngModel)]="personne_physique.categorieEmployeur" formControlName="drone41" value="Autre">
+                          <label for="drone41">Autre</label> </h5>
                           <h5>Contrat de Travail:
-                            <input  style="margin-left:30px;" type="radio" id="huey5" [(ngModel)]="personne_physique.contratTravail" name="drone5" value="CDI"
+                            <input  style="margin-left:30px;" type="radio" id="huey5" [(ngModel)]="personne_physique.contratTravail" formControlName="huey5" value="CDI"
                                    checked>
                             <label  style="margin-right: 10px;" for="huey5">CDI</label>
-                            <input type="radio" id="huey5" name="drone5" [(ngModel)]="personne_physique.contratTravail" value="CDD"
+                            <input type="radio" id="huey5"formControlName="huey5" [(ngModel)]="personne_physique.contratTravail" value="CDD"
                             checked>
                             <label  style="margin-right: 10px;" for="huey5">CDD</label>
-                            <input type="radio" id="huey5" [(ngModel)]="personne_physique.contratTravail"  name="drone5" value="Stage"
+                            <input type="radio" id="huey5" [(ngModel)]="personne_physique.contratTravail"  formControlName="huey5" value="Stage"
                             checked >
                             <label   style="margin-right: 10px;" for="huey5">Stage</label>
-                            <input type="radio" id="huey5" [(ngModel)]="personne_physique.contratTravail" name="drone5" value="Occasionnel"
+                            <input type="radio" id="huey5" [(ngModel)]="personne_physique.contratTravail" formControlName="huey5" value="Occasionnel"
                             checked >
                             <label   style="margin-right: 10px;" for="huey5">Occasionnel</label>
-                            <input type="radio" id="dewey5" [(ngModel)]="personne_physique.contratTravail" name="drone5" value="Autre">
-                            <label for="dewey4">Autre</label> </h5>
-                          <div class="row">
-                            <div class="col-md-8">
-                              <mat-form-field class="example-full-width">
-                                  <input type="date" matInput [(ngModel)]="personne_physique.dateTitularisation"   name="date_Tit" id="date_Tit"  placeholder="Date Titularisation"  >
-                                </mat-form-field>
-                            </div>                    
+                            <input type="radio" id="huey5" [(ngModel)]="personne_physique.contratTravail" formControlName="huey5" value="Autre">
+                            <label for="huey5">Autre</label> </h5>
+                        
                         </div>
-                        </div>
+
+                             
                         <div>
-                          <label >IDENTIFICATION COMPLEMENTAIRE ( POUR LES ENTREPRENEURS INDIVIDUELS) :</label>
+                          <label class="l1" >IDENTIFICATION COMPLEMENTAIRE ( POUR LES ENTREPRENEURS INDIVIDUELS) :</label>
                         </div>
                         <p style="margin-left: 10px;">1- Registre National des Entreprises (R.N.E)</p>
                     <div class="row">                   
                         <div class="col-md-6">
                           <mat-form-field class="example-full-width">
-                            <input matInput  [(ngModel)]="personne_physique.numeroRne"   name="num_RNE" id="num_RNE" type="number" placeholder="N° RNE" >
+                            <input matInput  [(ngModel)]="personne_physique.numeroRne"   formControlName="num_RNE" id="num_RNE" type="number" placeholder="N° RNE" >
                           </mat-form-field>
                         </div>
                         <div class="col-md-6">
                           <mat-form-field class="example-full-width">
-                              <input [(ngModel)]="personne_physique.dateExtraitRne" id="date_extrait_rne" name="date_extrait_rne"  type="date" matInput placeholder="Date de l’Extrait RNE"  >
+                              <input [(ngModel)]="personne_physique.dateExtraitRne" id="date_extrait_rne" formControlName="date_extrait_rne"  type="date" matInput placeholder="Date de l’Extrait RNE"  >
                             </mat-form-field>
                         </div>                     
                     </div>
                     <p style="margin-left: 10px;">2- Immatriculation Fiscale et Douanière</p>
-                    <h5>Régime Fiscal:
-                      <input type="radio" id="huey6" name="drone6" value="Réel" [(ngModel)]="personne_physique.regimeFiscal"
+                    <h3>Régime Fiscal:
+                      <input type="radio" id="drone6" formControlName="drone6" value="Réel" [(ngModel)]="personne_physique.regimeFiscal"
                              checked>
-                      <label  style="margin-right: 100px;" for="huey6">Réel</label>
-                      <input type="radio" id="huey6" name="drone6" value="Forfaitaire"    [(ngModel)]="personne_physique.regimeFiscal"
+                      <label  style="margin-right: 40px;" for="drone6">Réel</label>
+                      <input type="radio" id="drone6" formControlName="drone6" value="Forfaitaire"    [(ngModel)]="personne_physique.regimeFiscal"
                       checked>
-                      <label  style="margin-right: 40px;" for="huey6">Forfaitaire</label>
-                      <input  style="margin-left:20px;" type="radio"  name="drone6" value="Autre"  [(ngModel)]="personne_physique.regimeFiscal"                     
+                      <label  style="margin-right: 40px;" for="drone6">Forfaitaire</label>
+                      <input  style="margin-left:40px;" type="radio"  formControlName="drone6" value="Autre"  [(ngModel)]="personne_physique.regimeFiscal"                     
                       checked >
-                      <label   style="margin-right: 10px;" for="huey6">Autre</label>  </h5>   
+                      <label   style="margin-right: 40px;" for="drone6">Autre</label>  </h3>   
                       <div class="row">                
                         <div class="col-md-6">
                           <mat-form-field class="example-full-width">
-                            <input  [(ngModel)]="personne_physique.matriculeFiscaleP" id="matricule_fiscal" name="matricule_fiscal" matInput placeholder="Matricule Fiscal" type="number">
+                            <input  [(ngModel)]="personne_physique.matriculeFiscaleP" id="matricule_fiscal" formControlName="matricule_fiscal" matInput placeholder="Matricule Fiscal" type="number">
                           </mat-form-field>
                         </div>
                         <div class="col-md-6">
                           <mat-form-field class="example-full-width">
-                            <input [(ngModel)]="personne_physique.codeDouane" id="code_douane" name="code_douane" matInput placeholder="Code En Douane" type="text">
+                            <input [(ngModel)]="personne_physique.codeDouane" id="code_douane"  formControlName="code_douane" matInput placeholder="Code En Douane" type="text">
                           </mat-form-field>
                         </div>
                     </div>
-
-<label >REVENUS & REGIME SOCIAL:</label>
+                    <label  class="l1">NATIONALITE ET RESIDENCE :</label>                        
+                    <div>
+                    <div class="row">
+                      
+                      <div class="col-md-8">
+                          <mat-form-field class="example-full-width">
+                            <mat-label style="margin-right: 15px;">Pays du residence</mat-label>
+                            <mat-select [(ngModel)]="personne_physique.paysResidence" id="pays_res" formControlName="pays_res">
+                              <mat-option *ngFor="let liste_nationnalite of liste_nationnalite" [value]="liste_nationnalite.nationalite"  matInput >
+                                {{liste_nationnalite.nationalite}}
+                              </mat-option>
+                            </mat-select>
+                            <mat-error>Champs obligatoire.</mat-error>
+                          </mat-form-field>
+                      </div>   
+                    </div> 
+                    <p></p>
+                <button mat-raised-button  mat-stroked-button color="warn"  (click)="onClick2(personne_physique.codeClient,personne_physique,Form)">
+                  <span class="material-icons">
+                    playlist_add
+                    </span> Ajouter nationalite
+                </button>
+                <p></p>
+              </div> 
+                  
+<label class="l1" >REVENUS & REGIME SOCIAL:</label>
                     <div>                    
-                    <h5>Affiliation Sociale:
-                      <input type="radio" id="huey7" name="drone7" value="Aucune" [(ngModel)]="personne_physique.affSociale"
+                    <h3>Affiliation Sociale:
+                      <input type="radio" id="huey7" formControlName="huey7" value="Aucune" [(ngModel)]="personne_physique.affSociale"
                              checked>
-                      <label  style="margin-right: 100px;" for="huey7">Aucune</label>
-                      <input type="radio" id="huey7" name="drone7" value="CNSS" [(ngModel)]="personne_physique.affSociale"
+                      <label  style="margin-right: 30px;" for="huey7">Aucune</label>
+                      <input type="radio" id="huey7" formControlName="huey7" value="CNSS" [(ngModel)]="personne_physique.affSociale"
                       checked>
-                      <label  style="margin-right: 40px;" for="huey7">CNSS</label>
-                      <input  style="margin-left:20px;" type="radio"  name="drone7" value="CNRPS" [(ngModel)]="personne_physique.affSociale"
+                      <label  style="margin-right: 30px;" for="huey7">CNSS</label>
+                      <input  style="margin-left:20px;" type="radio"  formControlName="huey7" value="CNRPS" [(ngModel)]="personne_physique.affSociale"
                       checked >
-                      <label   style="margin-right: 10px;" for="huey7">CNRPS</label> 
-                      <input  style="margin-left:20px;" type="radio"  name="drone7" value="Autre" [(ngModel)]="personne_physique.affSociale"
+                      <label   style="margin-right: 30px;" for="huey7">CNRPS</label> 
+                      <input  style="margin-left:20px;" type="radio" formControlName="huey7" value="Autre" [(ngModel)]="personne_physique.affSociale"
                       checked >
-                      <label   style="margin-right: 10px;" for="huey7">Autre</label>  </h5>   
+                      <label   style="margin-right: 30px;" for="huey7">Autre</label>  </h3>   
                       <div class="row">                
                         <div class="col-md-6">
                           <mat-form-field class="example-full-width">
-                            <input [(ngModel)]="personne_physique.numAff" id="num_aff" name="num_aff" matInput placeholder="Numéro d’affiliation" type="text">
+                            <input [(ngModel)]="personne_physique.numAff" id="num_aff"  formControlName="num_aff" matInput placeholder="Numéro d’affiliation" type="text">
+                            <mat-error>Champs obligatoire.</mat-error> 
                           </mat-form-field>
+              
                         </div>  
                     </div>
                     </div>
+
+                    
                     <p></p>
                     <button mat-raised-button  mat-stroked-button color="warn"  (click)="onClick(personne_physique.codeClient)">
                       <span class="material-icons">
@@ -388,46 +348,30 @@
                         </span> Ajouter Revenu
                     </button>
                     <p></p>
-                   <label >SITUATION D’HABITATION :</label>
-                   <div>                   
-                   <h5>
-                     <input [(ngModel)]="personne_physique.situationHabitation" name="drone8" value="Location" type="radio" id="Location"  
-                            checked>
-                     <label  style="margin-right: 100px;" for="huey8">Location</label>
-                     <input type="radio" id="huey8"  [(ngModel)]="personne_physique.situationHabitation" name="drone8" value="Pleine Propriété"
-                     checked>
-                     <label  style="margin-right: 40px;" for="huey8">Pleine Propriété</label>
-                     <input  style="margin-left:20px;"  [(ngModel)]="personne_physique.situationHabitation" type="radio"  name="drone8" id="huey8"  value="Copropriété"
-                     checked >
-                     <label   style="margin-right: 10px;" for="huey8">Copropriété</label> 
-                     <input  style="margin-left:20px;"  [(ngModel)]="personne_physique.situationHabitation" type="radio"  name="drone8" id="huey8"  value="Partage"
-                     checked >
-                     <label   style="margin-right: 10px;" for="huey8">Partage (avec la famille)</label>  </h5>   
-                     
-                   </div>
+                   
                    <div>
                     <label  class="l1">PERSONNE POLITIQUEMENT EXPOSEE:</label>
-                    <p>1-Exercez-vous ou avez-vous exercé une fonction politique, juridictionnelle ou administrative importante </p>
-                    <h5>  <input  type="radio"  id="huey20" name="drone20"  [(ngModel)]="personne_physique.statutPep" (click)="onClick1(personne_physique.codeClient)" value="true"
+                    <p>1-Exercez-vous ou avez-vous exercé une fonction politique, juridictionnelle ou administrative importante ?</p>
+                    <h5>  <input  type="radio"  id="huey20" formControlName="huey20"  [(ngModel)]="personne_physique.statutPep"  value="true"
                       checked>
                <label for="huey20" style="margin-right:50px;">Oui </label>            
-               <input type="radio" id="dewey20"  name="drone20" [(ngModel)]="personne_physique.statutPep"   value="false">
-               <label for="dewey20">Non</label>
+               <input type="radio" id="huey20"  formControlName="huey20" [(ngModel)]="personne_physique.statutPep"   value="false">
+               <label for="huey20">Non</label>
                      </h5> 
                     <p>2-Une personne de votre famille exerce-t-elle ou a-t-elle exercé une fonction politique, juridictionnelle ou administrative
                       importante ?
                        </p>
-                       <h5>  <input  type="radio"  id="huey10" name="drone10"  [(ngModel)]="personne_physique.parentePep" (click)="onClick3(personne_physique.codeClient)" value="true"
+                       <h5>  <input  type="radio"  id="dewey10" formControlName="dewey10"  [(ngModel)]="personne_physique.parentePep"  value="true"
                         checked>
-                 <label for="huey10" style="margin-right:50px;">Oui </label>            
-                 <input type="radio" id="dewey10"  name="drone10" [(ngModel)]="personne_physique.parentePep" value="false">
+                 <label for="dewey10" style="margin-right:50px;">Oui </label>            
+                 <input type="radio" id="dewey10"  formControlName="dewey10" [(ngModel)]="personne_physique.parentePep" value="false">
                  <label for="dewey10">Non</label>
                        </h5>
                         </div> 
 
-
+                      
                      
-                        <button mat-raised-button  mat-stroked-button color="primary" style="width: 15%;"  (click)="CreateNow()">
+                        <button mat-raised-button  mat-stroked-button color="primary" style="width: 15%;"   [disabled]="this.form.invalid"  (click)="CreateNow()">
                           <span class="material-icons">article</span> Ajouter 
                         </button>                      </form>
                   </div>

@@ -1,15 +1,19 @@
 
-
+ 
 <div class="main-content">
+  <button  mat-icon-button color="warn" style="margin-left:730px;" (click)="close()">
+    <span class="material-icons">close</span> </button>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    
+                 
                     <div class="card-body">
                       <label class="l1" ><b> <section class="mat-typography">
                         <h2>Fiche FATCA</h2>
                       </section> </b></label> 
+
+                      
 
                           <div *ngIf="personne_morale.paysResidence">  
                             <p class="l2">Lieu de residence de la societé situé aux Etats-Unis  </p>
@@ -31,8 +35,31 @@
                             <p class="l2"> Il s'agit d'une institution Financière non américaine </p>
                           </div>
                         
-                        
-
+                          <form #Form="ngForm" >
+                          <div class="row">
+                      
+                            <div class="col-md-6">
+                             
+                          <mat-form-field appearance="standard"  >
+                            <mat-label *ngIf="selectedFiles; else newFile">{{selectedFiles.item(0).name}}</mat-label>
+                            <ng-template #newFile>
+                                <mat-label>Ajouter Justificatif</mat-label>
+                            </ng-template>
+                           
+                            <input matInput disabled formControlName="justificatif">
+                            <button matSuffix mat-icon-button matTooltip="Click to upload" (click)="fileInput.click()">
+                              <span class="material-icons">
+                                attach_file
+                                </span>
+                            </button>
+                            <input hidden (change)="selectFile($event)" #fileInput type="file" formControlName="file" ngModel>
+                            </mat-form-field>
+                            
+                          <button mat-stroked-button color="primary" (click)="Add(Form)" type="submit"  ><span class="material-icons">article</span> Ajouter</button>
+                            
+                            </div>
+                          </div>
+                          </form>
 
 
 
@@ -42,6 +69,5 @@
             </div>               
         </div>
     </div>
-    <button mat-stroked-button color="warn" (click)="close()" style="margin-left: 600px;" >Fermer</button> 
   </div>
 

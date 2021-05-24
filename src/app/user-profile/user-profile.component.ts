@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { personne_physique } from 'app/client/personne_physique';
 import { PersonnePhysiqueService } from 'app/service_clients/personne-physique.service';
 import {pays} from 'app/client/pays';
-import { FormControl, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { RevenuComponent } from './revenu/revenu.component';
@@ -35,7 +35,8 @@ export class UserProfileComponent implements OnInit {
   test: Boolean;
   listeSecteur=listeSecteur;
   listeProfession=listeProfession;
-
+  form: FormGroup ;
+  form1: FormGroup ;
   selectedFiles : FileList ; 
   creationDate : string ; 
   progress : Number ;
@@ -48,17 +49,46 @@ export class UserProfileComponent implements OnInit {
 
 
   
-  email = new FormControl('', [Validators.required, Validators.email]);
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
+  
    
   ngOnInit(): void {
+    this.form= new FormGroup({
+      codeClient : new FormControl(0,Validators.required),
+      prenom: new FormControl('', Validators.required),
+      nom: new FormControl('', Validators.required),
+      dateNaissance: new FormControl('', Validators.required),
+      paysNaissance: new FormControl('', Validators.required),
+      FO1 : new FormControl('', Validators.required), 
+      v : new FormControl('', Validators.required),    
+      us : new FormControl('', Validators.required),
+      c_juridique : new FormControl('', Validators.required),
+      passeport: new FormControl(''),
+      carte_sejour : new FormControl(''),
+      huey12 : new FormControl('', Validators.required),
+      huey11 : new FormControl('', Validators.required),
+      huey13 : new FormControl('', Validators.required),
+      pays_res : new FormControl('', Validators.required),
+      adresse: new FormControl('', Validators.required),
+      indiTelephonique: new FormControl(0,Validators.required),
+      contact: new FormControl(0,[Validators.required, Validators.maxLength(8)]),
+      email: new FormControl('', Validators.email),
+      Profession: new FormControl('', Validators.required),
+      secteurTravail: new FormControl('', Validators.required),
+      paysTravail: new FormControl('', Validators.required),
+      drone41: new FormControl('', Validators.required),
+      huey5: new FormControl('', Validators.required),
+      num_RNE: new FormControl(''),
+      date_extrait_rne: new FormControl(''),
+      drone6: new FormControl(''),
+      matricule_fiscal: new FormControl(''),
+      code_douane:new FormControl(''),
+      huey7: new FormControl('', Validators.required),
+      num_aff: new FormControl('', Validators.required),
+      huey20: new FormControl('', Validators.required),
+      dewey10: new FormControl('', Validators.required),
+     
+    });  
   }
 
   selectFile(event:any) {
@@ -113,7 +143,7 @@ export class UserProfileComponent implements OnInit {
       duration: 3000
     });
 
-    this.router.navigate(['listeClient']);
+    this.router.navigate(['clientsPhysiques']);
    
   }
      

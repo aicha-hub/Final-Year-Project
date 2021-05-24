@@ -23,5 +23,5 @@ export class NationaliteServiceService {
   }
 
   public getN(id:number)
-  {return this.http.get("http://localhost:9090/nationalite/Get/"+id,{responseType:'text' as 'json'})}
+  {return this.http.get("http://localhost:9090/nationalite/Get/"+id)}
 }

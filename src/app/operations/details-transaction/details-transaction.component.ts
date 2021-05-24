@@ -17,14 +17,14 @@ export class DetailsTransactionComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
 
-    let resp=this.service.getPP(this.id);
+    let resp=this.service.getPPT(this.id);
     resp.subscribe((data)=>this.transaction=data);
 
   }
 
   retour(id:number)
   {
-    this.router.navigate(['/transactionsClient',id])
+    this.router.navigate(['/listeTransactions'])
   }
 
 }

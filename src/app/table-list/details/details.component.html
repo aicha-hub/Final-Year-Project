@@ -5,7 +5,7 @@
           <div class="col-md-12">
               <div class="card">
                   <div class="card-header card-header-danger">
-                      <h4 class="card-title"> Fiche KYC du client :</h4>
+                      <h4 class="card-title"> Fiche KYC du client : </h4>
                   </div>
                   <div class="card-body">
                       <form>
@@ -14,7 +14,7 @@
 
 <div *ngIf="personne_physique">
   <div>
-    <label class="l1">DESIGNATION :</label> <br>
+    <label class="l1">DESIGNATION : </label> <br>
     <td><mat-form-field class="example-full-width">
       <mat-label>code</mat-label>
       <input matInput [(ngModel)]="personne_physique.codeClient"   name="code_clt" id="code_clt" type="number"  required disabled>
@@ -33,7 +33,7 @@
                         </div>
                         </div>
   
-    <label class="l1">NAISSANCE & SITUATION :</label> <br>
+    <label class="l1">NAISSANCE & SITUATION : </label> <br>
     
         
     <div class="row">
@@ -69,81 +69,46 @@
           </mat-form-field>
         </div>
         </div>
-
+<label > <h3> Nationalité(s) :</h3></label>
       
-      
+        <ul>
+          <li *ngFor="let book of nat">{{ book.nationalite}}</li>
+          
+      </ul>
        
 
 
     <div>
-      <label class="l1">PIECES D’IDENTITE :</label>
+      <label class="l1">PIECES D’IDENTITE : </label>
     </div>
+  
+  
+       
     <div class="row">
       <div class="col-md-4">
         <mat-form-field class="example-full-width">
           <input matInput [(ngModel)]="personne_physique.numCin" name="num_cin" id="num_cin" placeholder="Code CIN " type="text"  disabled>
         </mat-form-field>
       </div>
-          
       <div class="col-md-4">
         <mat-form-field class="example-full-width">
-          <input matInput [(ngModel)]="personne_physique.dateLivraisonCin" name="delais_d_cin" id="delais_d_cin" placeholder="delais debut CIN " type="text" disabled>
+          <input matInput [(ngModel)]="personne_physique.numPassport" name="num_passport" id="num_passport" placeholder="Numero du passport" type="text"  disabled>
         </mat-form-field>
-      </div>
-
+      </div> 
       <div class="col-md-4">
         <mat-form-field class="example-full-width">
-          <input matInput [(ngModel)]="personne_physique.dateExpirationCin" name="delais_f_cin" id="delais_f_cin" placeholder="delais fin CIN" type="text" disabled>
+          <input matInput [(ngModel)]="personne_physique.carteSejour" name="carte_sejour" id="carte_sejour" placeholder="Num carte sejour :" type="text"  disabled>
         </mat-form-field>
       </div>
       </div>
-  
-      <div class="row">
-        <div class="col-md-4">
-          <mat-form-field class="example-full-width">
-            <input matInput [(ngModel)]="personne_physique.numPassport" name="num_passport" id="num_passport" placeholder="Numero du passport" type="text"  disabled>
-          </mat-form-field>
-        </div>
-            
-        <div class="col-md-4">
-          <mat-form-field class="example-full-width">
-            <input matInput [(ngModel)]="personne_physique.dateLivraisonPassport" name="delais_d_pass" id="delais_d_pass" placeholder="delais debut Passport " type="text"  disabled>
-          </mat-form-field>
-        </div>
-  
-        <div class="col-md-4">
-          <mat-form-field class="example-full-width">
-            <input matInput [(ngModel)]="personne_physique.dateExpirationPassport" name="delais_f_pass" id="delais_f_pass" placeholder="delais fin Passport" type="text" disabled >
-          </mat-form-field>
-        </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <mat-form-field class="example-full-width">
-              <input matInput [(ngModel)]="personne_physique.carteSejour" name="carte_sejour" id="carte_sejour" placeholder="Num carte sejour :" type="text"  disabled>
-            </mat-form-field>
-          </div>
-              
-          <div class="col-md-4">
-            <mat-form-field class="example-full-width">
-              <input matInput [(ngModel)]="personne_physique.dateLivraisonCarteSejour" name="delais_f_carte" id="delais_f_carte" placeholder="delais debut Passport " type="text" disabled>
-            </mat-form-field>
-          </div>
-    
-          <div class="col-md-4">
-            <mat-form-field class="example-full-width">
-              <input matInput [(ngModel)]="personne_physique.dateExpirationCarteSejour" name="delais_f_carte" id="delais_f_carte" placeholder="delais fin Passport" type="text" disabled>
-            </mat-form-field>
-          </div>
-          </div>
-          <label  class="l1">STATUT US:</label>  <br>
+          <label  class="l1">STATUT US : </label>  <br>
           
-                          <div *ngIf="personne_physique.statutFatca;else elseBlock">  
+                          <div *ngIf="personne_physique.statutFatca;else elseBlock11">  
 
-                            <p class="l2"> -La société posséde un statut Fatca </p>
+                            <p class="l2"> -Cette personne  posséde un statut Fatca </p>
                           </div>
                              
-                          <ng-template #elseBlock><p></p><p>-La société ne posséde pas un statut Fatca</p></ng-template>
+                          <ng-template #elseBlock11><p></p><p>-Cette personne ne posséde pas un statut Fatca</p></ng-template>
                           <p></p>
 
 
@@ -164,29 +129,25 @@
 
 
 
-    <label  class="l1">EMPLOYEUR (POUR LES SALARIES ET FONCTIONNAIRES):</label> <br>
+    <label  class="l1">EMPLOYEUR (POUR LES SALARIES ET FONCTIONNAIRES) : </label> <br>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-6">
         <mat-form-field class="example-full-width">
           <input matInput [(ngModel)]="personne_physique.categorieEmployeur" name="cat_employeur" id="cat_employeur" placeholder="Categorie employeur " type="text"  disabled>
         </mat-form-field>
       </div>
           
-      <div class="col-md-4">
+      <div class="col-md-6">
         <mat-form-field class="example-full-width">
           <input matInput [(ngModel)]="personne_physique.contratTravail" name="contrat_travail" id="contrat_travail" placeholder="Contrat du travail" type="text"  disabled>
         </mat-form-field>
       </div>
 
-      <div class="col-md-4">
-        <mat-form-field class="example-full-width">
-          <input matInput [(ngModel)]="personne_physique.dateTitularisation" name="date_tit" id="date_tit" placeholder="Date de titularisation :" type="text" disabled >
-        </mat-form-field>
-      </div>
+   
       </div>
     
 
-    <label class="l1" >IDENTIFICATION COMPLEMENTAIRE ( POUR LES ENTREPRENEURS INDIVIDUELS) :</label> <br>
+    <label class="l1" >IDENTIFICATION COMPLEMENTAIRE ( POUR LES ENTREPRENEURS INDIVIDUELS) : </label> <br>
     <div class="row">
       <div class="col-md-6">
         <mat-form-field class="example-full-width">
@@ -223,7 +184,7 @@
 
 
 
-    <label class="l1">REVENUS & REGIME SOCIAL:</label> <br>
+    <label class="l1">REVENUS & REGIME SOCIAL : </label> <br>
     <div class="row">
       <div class="col-md-6">
         <mat-form-field class="example-full-width">
@@ -237,97 +198,172 @@
         </mat-form-field>
       </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <mat-form-field class="example-full-width">
-           
-             <input matInput [(ngModel)]="personne_physique.listRevenu[0].revenuNet"   name="revenu_net" id="revenu_net" type="number" placeholder="Revenu Mensuel Net :" required disabled>
-           </mat-form-field>
-        </div>
-            
-        <div class="col-md-6">
-          <mat-form-field class="example-full-width">
-
-            <input matInput [(ngModel)]="personne_physique.listRevenu[0].deviseRevenuNet"   name="devise_revenu_net" id="devise_revenu_net" placeholder="Devise :"  required disabled>
-          </mat-form-field>
-        </div>
-        </div>
-     
-        <div class="row">
-          <div class="col-md-3">  
-      <mat-form-field class="example-full-width">
-        <mat-label>Nature</mat-label>
-        <input matInput [(ngModel)]="personne_physique.listRevenu[0].nature"  name="nature" id="nature" type="text"  required disabled>
-      </mat-form-field>
-      </div>
-      <div class="col-md-3"> 
-      <mat-form-field class="example-full-width">
-        <mat-label>Periodicite</mat-label>
-        <input matInput [(ngModel)]="personne_physique.listRevenu[0].periodicite"  name="periodicite" id="periodicite" type="text" placeholder="Ex Mensuel" required disabled>
-      </mat-form-field>
-      
-      </div>
-      <div class="col-md-3"> 
-   <mat-form-field class="example-full-width">
-      <input matInput [(ngModel)]="personne_physique.listRevenu[0].montant"  name="montant" id="montant"  type="number" class="example-full-width"  placeholder="Montant" required disabled>
-    </mat-form-field>
-    </div>
-
-    <div class="col-md-3"> 
-    <mat-form-field class="example-full-width">  
-      <input matInput #devise maxlength="10" [(ngModel)]="personne_physique.listRevenu[0].devise"  name="devise" id="devise" type="text" placeholder="Ex.dinars" value="Dinars" required disabled>
-    </mat-form-field>
-    </div>
-
-  </div>
-      <label class="l1">SITUATION D’HABITATION :</label> <br>
-      <td><mat-form-field class="example-full-width">
-        <mat-label>Statut d'habitation</mat-label>
-        <input matInput [(ngModel)]="personne_physique.situationHabitation"   name="sit_habitat" id="sit_habitat" type="text"  required disabled>
-      </mat-form-field></td>
-     
-  
-      <label  class="l1">PERSONNE POLITIQUEMENT EXPOSEE:</label> <br>
-      <div *ngIf="personne_physique.parentePep">  
-        <p> <b>Lien du parente :</b>    </p>
-        <ul>
-          <li *ngFor="let book of personne_physique.listPersPar">
-           <p class="l2">Lien parente :  {{ book.lienParente }}   </p >       </li>
-
-           <li *ngFor="let book of personne_physique.listPersPar">
-            <p class="l2">Num CIN: {{book.codeParente}}  </p>          </li>
-      </ul>
-       </div>
-  
-  
-      <div *ngIf="personne_physique.statutPep">  
-        <p> <b> Statut PEP  : </b>   </p>
-        <div class="row">
-          <div class="col-md-3"> 
-          <mat-form-field class="example-full-width">
-          <mat-label>Fonction PEP</mat-label>       
-          <input matInput [(ngModel)]="personne_physique.pep.fonctionPep"   name="fonction_pep" id="fonction_pep" type="text" disabled >         
-          </mat-form-field>  </div>
+      <label style="margin-bottom: -45px;" >Revenu(s) : </label>
        
-          <div class="col-md-3"> 
-          <mat-form-field class="example-full-width">
-          <mat-label>date_debut</mat-label>
-          <input matInput [(ngModel)]="personne_physique.pep.dateDebut"   name="date_debut" id="date_debut" type="text"  disabled>
-          </mat-form-field></div>
-         
-            <div class="col-md-3">  <mat-form-field class="example-full-width">
-            <mat-label>date_fin</mat-label>
-            <input matInput [(ngModel)]="personne_physique.pep.dateFin"   name="date_fin" id="date_fin" type="text" disabled>
-          </mat-form-field></div>  
+      <div class="row">
+        <div class="col-md-3">  
+    <mat-form-field class="example-full-width">
+      <mat-label>Nature</mat-label>
+      <input matInput [(ngModel)]="personne_physique.listRevenu[0].nature"  name="nature" id="nature" type="text"  required disabled>
+    </mat-form-field>
+    </div>
+    <div class="col-md-3"> 
+    <mat-form-field class="example-full-width">
+      <mat-label>Periodicite</mat-label>
+      <input matInput [(ngModel)]="personne_physique.listRevenu[0].periodicite"  name="periodicite" id="periodicite" type="text" placeholder="Ex Mensuel" required disabled>
+    </mat-form-field>
+    
+    </div>
+    <div class="col-md-3"> 
+ <mat-form-field class="example-full-width">
+    <input matInput [(ngModel)]="personne_physique.listRevenu[0].montant"  name="montant" id="montant"  type="number" class="example-full-width"  placeholder="Montant" required disabled>
+  </mat-form-field>
+  </div>
 
-          <div class="col-md-3"> 
-            <mat-form-field class="example-full-width">
-            <mat-label>Pays du PEP</mat-label>          
-              <input matInput [(ngModel)]="personne_physique.pep.paysPep"   name="pays_pep" id="pays_pep" type="text" disabled>          
-          </mat-form-field>  </div>
-         </div>
+  <div class="col-md-3"> 
+  <mat-form-field class="example-full-width">  
+    <input matInput #devise maxlength="10" [(ngModel)]="personne_physique.listRevenu[0].devise"  name="devise" id="devise" type="text" placeholder="Ex.dinars" value="Dinars" required disabled>
+  </mat-form-field>
+  </div>
+
+</div>
+
+<div class="row" *ngIf="!personne_physique.listRevenu[1]==''">
+  <div class="col-md-3">  
+<mat-form-field class="example-full-width">
+<mat-label>Nature</mat-label>
+<input matInput [(ngModel)]="personne_physique.listRevenu[1].nature"  name="nature1" id="nature1" type="text"  required disabled>
+</mat-form-field>
+</div>
+<div class="col-md-3"> 
+<mat-form-field class="example-full-width">
+<mat-label>Periodicite</mat-label>
+<input matInput [(ngModel)]="personne_physique.listRevenu[1].periodicite"  name="periodicite1" id="periodicite1" type="text" placeholder="Ex Mensuel" required disabled>
+</mat-form-field>
+
+</div>
+<div class="col-md-3"> 
+<mat-form-field class="example-full-width">
+   <input matInput [(ngModel)]="personne_physique.listRevenu[1].montant"  name="montant1" id="montant1"  type="number" class="example-full-width"  placeholder="Montant" required disabled >
+ </mat-form-field>
+ </div>
+
+ <div class="col-md-3"> 
+ <mat-form-field class="example-full-width">  
+   <input matInput #devise maxlength="10" [(ngModel)]="personne_physique.listRevenu[1].devise"  name="devise1" id="devise1" type="text" placeholder="Ex.dinars" value="Dinars" required disabled>
+ </mat-form-field>
+ </div>
+
+</div>
+
+<div class="row" *ngIf="!personne_physique.listRevenu[2]==''">
+<div class="col-md-3">  
+<mat-form-field class="example-full-width">
+<mat-label>Nature</mat-label>
+<input matInput [(ngModel)]="personne_physique.listRevenu[2].nature"  name="nature2" id="nature2" type="text"  required disabled >
+</mat-form-field>
+</div>
+<div class="col-md-3"> 
+<mat-form-field class="example-full-width">
+<mat-label>Periodicite</mat-label>
+<input matInput [(ngModel)]="personne_physique.listRevenu[2].periodicite"  name="periodicite2" id="periodicite2" type="text" placeholder="Ex Mensuel" required disabled>
+</mat-form-field>
+
+</div>
+<div class="col-md-3"> 
+<mat-form-field class="example-full-width">
+ <input matInput [(ngModel)]="personne_physique.listRevenu[2].montant"  name="montant2" id="montant2"  type="number" class="example-full-width"  placeholder="Montant" required disabled>
+</mat-form-field>
+</div>
+
+<div class="col-md-3"> 
+<mat-form-field class="example-full-width">  
+ <input matInput #devise maxlength="10" [(ngModel)]="personne_physique.listRevenu[2].devise"  name="devise2" id="devise2" type="text" placeholder="Ex.dinars" value="Dinars" required disabled>
+</mat-form-field>
+</div>
+
+</div>
+   
+<div class="row" *ngIf="!personne_physique.listRevenu[3]==''">
+  <div class="col-md-3">  
+  <mat-form-field class="example-full-width">
+  <mat-label>Nature</mat-label>
+  <input matInput [(ngModel)]="personne_physique.listRevenu[3].nature"  name="nature3" id="nature3" type="text"  required disabled >
+  </mat-form-field>
+  </div>
+  <div class="col-md-3"> 
+  <mat-form-field class="example-full-width">
+  <mat-label>Periodicite</mat-label>
+  <input matInput [(ngModel)]="personne_physique.listRevenu[3].periodicite"  name="periodicite3" id="periodicite3" type="text" placeholder="Ex Mensuel" required disabled>
+  </mat-form-field>
+  
+  </div>
+  <div class="col-md-3"> 
+  <mat-form-field class="example-full-width">
+   <input matInput [(ngModel)]="personne_physique.listRevenu[3].montant"  name="montant3" id="montant3"  type="number" class="example-full-width"  placeholder="Montant" required disabled>
+  </mat-form-field>
+  </div>
+  
+  <div class="col-md-3"> 
+  <mat-form-field class="example-full-width">  
+   <input matInput #devise maxlength="10" [(ngModel)]="personne_physique.listRevenu[3].devise"  name="devise3" id="devise3" type="text" placeholder="Ex.dinars" value="Dinars" required disabled>
+  </mat-form-field>
+  </div>
+  
+  </div>
+  
+<div class="row" *ngIf="!personne_physique.listRevenu[4]==''">
+  <div class="col-md-3">  
+  <mat-form-field class="example-full-width">
+  <mat-label>Nature</mat-label>
+  <input matInput [(ngModel)]="personne_physique.listRevenu[4].nature"  name="nature4" id="nature4" type="text"  required disabled >
+  </mat-form-field>
+  </div>
+  <div class="col-md-3"> 
+  <mat-form-field class="example-full-width">
+  <mat-label>Periodicite</mat-label>
+  <input matInput [(ngModel)]="personne_physique.listRevenu[4].periodicite"  name="periodicite4" id="periodicite4" type="text" placeholder="Ex Mensuel" required disabled>
+  </mat-form-field>
+  
+  </div>
+  <div class="col-md-3"> 
+  <mat-form-field class="example-full-width">
+   <input matInput [(ngModel)]="personne_physique.listRevenu[4].montant"  name="montant4" id="montant4"  type="number" class="example-full-width"  placeholder="Montant" required disabled>
+  </mat-form-field>
+  </div>
+  
+  <div class="col-md-3"> 
+  <mat-form-field class="example-full-width">  
+   <input matInput #devise maxlength="10" [(ngModel)]="personne_physique.listRevenu[4].devise"  name="devise4" id="devise4" type="text" placeholder="Ex.dinars" value="Dinars" required disabled>
+  </mat-form-field>
+  </div>
+  
+  </div>
+     
+     
+  
+ 
+  
+      <label  class="l1">PERSONNE POLITIQUEMENT EXPOSEE : </label> <br>
+      <div *ngIf="personne_physique.parentePep;else elseBlock14">  
+        <p> <b>Lien du parente :</b> Il y a un lien de parenté politiquement exposé .  </p>
+       
        </div>
+       <ng-template #elseBlock14><p></p><p>-Cette personne ne posséde pas  un lien de parenté politiquement exposé .</p></ng-template>
+  
+      <div *ngIf="personne_physique.statutPep ;else elseBlock15">  
+        <p> <b> Statut PEP  : </b>  
+       
+        -Cette personne est politiquement exposé. </p>
+       
+        
+         
+       
 
+          
+         
+       </div>
+       <ng-template #elseBlock15><p></p><p>-Cette personne n'est pas politiquement exposé. </p></ng-template>
 
   </div>
   

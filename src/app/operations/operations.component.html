@@ -8,12 +8,12 @@
                       <p class="card-category">Entrez le type de l'operation</p>
                   </div>
                   <div class="card-body">
-                      <form>
+                      <form [formGroup]="this.form">
                           <div class="row">
                               <div class="col-md-8">
                                   <mat-form-field class="example-full-width">
                                       <mat-label>Type operation</mat-label>
-                                    <mat-select  matInput  #operation name="operation" type="text" id="operation" type="text">
+                                    <mat-select  matInput  #operation formControlName="operation" type="text" id="operation" type="text">
                                       <mat-option value="virement">virement</mat-option>
                                       <mat-option value="prelevement">prelevement</mat-option>
                                       <mat-option value="versement">versement</mat-option>
@@ -26,17 +26,17 @@
                               <div class="row">
                                   <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                      <input  matInput [(ngModel)]="transaction.nomEmetteur"   name="nomEmetteur" id="nomEmetteur"  placeholder="Nom complet" type="text" >
+                                      <input  matInput [(ngModel)]="transaction.nomEmetteur"   formControlName="nomEmetteur" id="nomEmetteur"  placeholder="Nom complet" type="text" >
                                     </mat-form-field>
                                   </div>
                                   <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                      <input matInput [(ngModel)]="transaction.cinEmetteur"   name="cinEmetteur" id="cinEmetteur"  placeholder="CIN Emetteur " type="number" >
+                                      <input matInput [(ngModel)]="transaction.cinEmetteur"   formControlName="cinEmetteur" id="cinEmetteur"  placeholder="CIN Emetteur " type="number" >
                                     </mat-form-field>
                                 </div>
                                   <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                      <input matInput [(ngModel)]="transaction.compteTransaction"    #v1 name="compteTransaction" id="compteTransaction"  placeholder="RIB " type="number" >
+                                      <input matInput [(ngModel)]="transaction.compteTransaction"    #v1 formControlName="compteTransaction" id="compteTransaction"  placeholder="RIB" type="number" >
                                     </mat-form-field>
                                   </div>
                               </div>
@@ -45,117 +45,134 @@
                               <div class="row">
                                   <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                      <input  matInput [(ngModel)]="transaction.nomDestinataire"   name="nomDestinataire" id="nomDestinataire"  placeholder="Nom complet" type="text" >
+                                      <input  matInput [(ngModel)]="transaction.nomDestinataire"   formControlName="nomDestinataire" id="nomDestinataire"  placeholder="Nom complet" type="text" >
                                     </mat-form-field>
                                   </div>
                                   <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                      <input matInput [(ngModel)]="transaction.cinDestinataire"   name="cinDestinataire" id="cinDestinataire"  placeholder="CIN Destinataire " type="number" >
+                                      <input matInput [(ngModel)]="transaction.cinDestinataire"   formControlName="cinDestinataire" id="cinDestinataire"  placeholder="CIN Destinataire " type="number" >
                                     </mat-form-field>
                                 </div>
                                   <div class="col-md-4">
                                       <mat-form-field class="example-full-width">
-                                        <input matInput [(ngModel)]="transaction.ribDestinataire" #v2   name="ribDestinataire" id="ribDestinataire"  placeholder="RIB " type="text" >
+                                        <input matInput [(ngModel)]="transaction.ribDestinataire" #v2   formControlName="ribDestinataire" id="ribDestinataire"  placeholder="RIB " type="text" >
                                       </mat-form-field>
                                   </div>
                               </div>
                               <label class="l1">DETAILS DE LA TRANSACTION:</label>
                               <div class="row">
-                                  <div class="col-md-6">
+                                  <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                      <input matInput [(ngModel)]="transaction.montant"  #v3  name="montant" id="montant"  placeholder="Montant " type="number" >
+                                      <input matInput [(ngModel)]="transaction.montant"  #v3  formControlName="montant" id="montant"  placeholder="Montant " type="number" >
                                     </mat-form-field>
                                   </div>
-                                  <div class="col-md-6">                      
-                                      <mat-form-field appearance="fill">
+                                  <div class="col-md-4">                      
+                                      <mat-form-field class="example-full-width" style="margin-top: 15px;">
                                         <mat-label>Pays Destinataire</mat-label>
-                                        <mat-select [(ngModel)]="transaction.paysDestinataire" name="paysDestinataire" type="text" id="paysDestinataire">
+                                        <mat-select [(ngModel)]="transaction.paysDestinataire" formControlName="paysDestinataire" type="text" id="paysDestinataire">
                                           <mat-option *ngFor="let liste_nationnalite of liste_nationnalite" [value]="liste_nationnalite.nationalite"  matInput >
                                             {{liste_nationnalite.nationalite}}
                                           </mat-option>
                                         </mat-select>
                                       </mat-form-field> 
+                                    
                                   </div>
+                                  <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput formControlName="date" placeholder="Date" type="date" >
+                                    </mat-form-field>
+                                </div>
+                                 
                               </div>
-                              <button class="btn btn-primary btn-xs" (click)="virement(transaction.compteTransaction,v1.value,v2.value,v3.value)" ><span class="material-icons">article</span>Enregistrer</button>
+                              <button class="btn btn-primary btn-xs" (click)="virement(transaction.compteTransaction,v1.value,v2.value,v3.value)"  ><span class="material-icons">article</span>Enregistrer</button>
                               </div>
                           <div *ngIf="operation.value=='prelevement'">  
                               <label class="l1">DETAILS COMPTE CLIENT :</label>
                               <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                   <mat-form-field class="example-full-width">
-                                    <input  matInput [(ngModel)]="transaction.nomEmetteur"   name="nomEmetteur" id="nomEmetteur"  placeholder="Nom" type="text" >
+                                    <input  matInput [(ngModel)]="transaction.nomEmetteur"   formControlName="nomEmetteur1" id="nomEmetteur1"  placeholder="Nom complet" type="text" >
                                   </mat-form-field>
                                 </div>
-                                <div class="col-md-6">
-                                    <mat-form-field class="example-full-width">
-                                      <input matInput [(ngModel)]="transaction.prenomEmetteur"   name="prenomEmetteur" id="prenomEmetteur"  placeholder="prenom " type="text" >
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput [(ngModel)]="transaction.typeCompteEmetteur"   name="typeCompteEmetteur" id="typeCompteEmetteur"  placeholder="Type compte " type="text" >
+                                    <input matInput [(ngModel)]="transaction.cinEmetteur"   formControlName="cinEmetteur1" id="cinEmetteur1"  placeholder="CIN Emetteur " type="number" >
                                   </mat-form-field>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput [(ngModel)]="transaction.compteTransaction"   name="compteTransaction" id="compteTransaction"  placeholder="num compte" type="number" >
+                                    <input matInput [(ngModel)]="transaction.compteTransaction"   formControlName="compteTransaction1" id="compteTransaction1"  placeholder="RIB" type="number" >
                                   </mat-form-field>
                               </div>
                             </div>
+                           <!-- <div class="row">
+                             <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput [(ngModel)]="transaction.typeCompteEmetteur"   formControlName="typeCompteEmetteur1" id="typeCompteEmetteur1"  placeholder="Type compte " type="text" >
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput [(ngModel)]="transaction.compteTransaction"   formControlName="compteTransaction1" id="compteTransaction1"  placeholder="RIB" type="number" >
+                                  </mat-form-field>
+                              </div>
+                            </div>--> 
                               <label class="l1">DETAILS DE LA TRANSACTION:</label>
                               <div class="row">
                                 <div class="col-md-6">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput [(ngModel)]="transaction.montant" #v3  name="montant" id="montant"  placeholder="Montant " type="number" >
+                                    <input matInput [(ngModel)]="transaction.montant" #v3  formControlName="montant1" id="montant1"  placeholder="Montant " type="number" >
                                   </mat-form-field>
                                 </div>
                                   <div class="col-md-6">
                                       <mat-form-field class="example-full-width">
-                                        <input matInput  placeholder="Date" type="date" >
+                                        <input matInput formControlName="date1" placeholder="Date" type="date" >
                                       </mat-form-field>
                                   </div>
                               </div>
-                              <button class="btn btn-primary btn-xs" (click)="prelevement(v3.value)" ><span class="material-icons">article</span> Confirmer</button>
+                              <button class="btn btn-primary btn-xs" (click)="prelevement(v3.value)"  ><span class="material-icons">article</span> Confirmer</button>
                           </div>
                         <div *ngIf="operation.value=='versement'">  
                             <label class="l1">DETAILS COMPTE CLIENT :</label>
                             <div class="row">
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input  matInput [(ngModel)]="transaction.nomEmetteur"   name="nomEmetteur" id="nomEmetteur"  placeholder="Nom" type="text" >
+                                  <input  matInput [(ngModel)]="transaction.nomEmetteur"   formControlName="nomEmetteur2" id="nomEmetteur2"  placeholder="Nom Complet" type="text" >
                                 </mat-form-field>
                               </div>
-                              <div class="col-md-6">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput [(ngModel)]="transaction.prenomEmetteur"   name="prenomEmetteur" id="prenomEmetteur"  placeholder="prenom " type="text" >
-                                  </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput [(ngModel)]="transaction.typeCompteEmetteur"   name="typeCompteEmetteur" id="typeCompteEmetteur"  placeholder="Type compte " type="text" >
+                                  <input matInput [(ngModel)]="transaction.cinEmetteur"   formControlName="cinEmetteur2" id="cinEmetteur2"  placeholder="CIN Emetteur " type="number" >
                                 </mat-form-field>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput [(ngModel)]="transaction.compteTransaction"   name="compteTransaction" id="compteTransaction"  placeholder="RIB " type="number" >
+                                  <input matInput [(ngModel)]="transaction.compteTransaction"   formControlName="compteTransaction2" id="compteTransaction2"  placeholder="RIB " type="number" >
                                 </mat-form-field>
                             </div>
                           </div>
+                         <!-- <div class="row">
+                             <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput [(ngModel)]="transaction.typeCompteEmetteur"   formControlName="typeCompteEmetteur2" id="typeCompteEmetteur2"  placeholder="Type compte " type="text" >
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput [(ngModel)]="transaction.compteTransaction"   formControlName="compteTransaction2" id="compteTransaction2"  placeholder="RIB " type="number" >
+                                </mat-form-field>
+                            </div>
+                          </div>--> 
                             <label class="l1">DETAILS DE LA TRANSACTION:</label>
                             <div class="row" >
                               <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput [(ngModel)]="transaction.montant"  #v3  name="montant" id="montant"  placeholder="Montant " type="number" >
+                                  <input matInput [(ngModel)]="transaction.montant"  #v3  formControlName="montant2" id="montant2"  placeholder="Montant " type="number" >
                                 </mat-form-field>
                               </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                      <input matInput  placeholder="Date" type="date" >
+                                      <input matInput formControlName="date2" placeholder="Date" type="date" >
                                     </mat-form-field>
                                 </div>
                             </div>

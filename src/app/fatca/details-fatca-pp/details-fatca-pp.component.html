@@ -1,6 +1,8 @@
 
 
 <div class="main-content">
+  <button  mat-icon-button color="warn" style="margin-left:730px;" (click)="close()">
+    <span class="material-icons">close</span> </button>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -30,6 +32,31 @@
                           <div *ngIf="personne_physique.indiTelephonique==1">  
                             <p class="l2" > - Le client dispose d’une ligne téléphonique américaine .</p>                   
                           </div>
+                          <form #Form="ngForm" >
+                            <div class="row">
+                        
+                              <div class="col-md-6">
+                               
+                            <mat-form-field appearance="standard"  >
+                              <mat-label *ngIf="selectedFiles; else newFile">{{selectedFiles.item(0).name}}</mat-label>
+                              <ng-template #newFile>
+                                  <mat-label>Ajouter Justificatif</mat-label>
+                              </ng-template>
+                             
+                              <input matInput disabled formControlName="justificatif">
+                              <button matSuffix mat-icon-button matTooltip="Click to upload" (click)="fileInput.click()">
+                                <span class="material-icons">
+                                  attach_file
+                                  </span>
+                              </button>
+                              <input hidden (change)="selectFile($event)" #fileInput type="file" formControlName="file" ngModel>
+                              </mat-form-field>
+                              
+                            <button mat-stroked-button color="primary" (click)="Add(Form)" type="submit"  ><span class="material-icons">article</span> Ajouter</button>
+                              
+                              </div>
+                            </div>
+                            </form>
                     </div>
                 </div>
             </div>               

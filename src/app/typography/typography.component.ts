@@ -68,56 +68,23 @@ export class TypographyComponent implements OnInit {
     Date_naiss : new FormControl('', Validators.required),
     paysResidence2 : new FormControl('', Validators.required),
     FO1 : new FormControl(''),
-    FO2 : new FormControl(''),
     us1 : new FormControl(''),
-    us2 : new FormControl(''),
     actionnaire1 : new FormControl(''),
-    actionnaire2 : new FormControl(''),
     codeTin1 : new FormControl(''),
-    codeTin2 : new FormControl(''),
     GIIN1 : new FormControl(''),
-    GIIN2 : new FormControl(''),
     justificatif : new FormControl(),
     file : new FormControl(),
     PPE1 : new FormControl(),
-    PPE2 : new FormControl(), 
     offshore1 : new FormControl(),
-    offshore2 : new FormControl(),
     natureOperation1 : new FormControl() ,
-    natureOperation2 : new FormControl() ,
-    natureOperation3 : new FormControl() ,
-    natureOperation4 : new FormControl() ,
-    natureOperation5 : new FormControl()  ,
-    natureOperation6 : new FormControl()  ,
     origineFonds1 : new FormControl() ,
-    origineFonds2 : new FormControl() , 
-    origineFonds3 : new FormControl() ,
-    origineFonds4 : new FormControl() ,
     paysOF : new FormControl() ,
     chiffreAffaire : new FormControl (0),
     domaineActivite1 : new FormControl() ,
-    domaineActivite2 : new FormControl() ,
-    domaineActivite3 : new FormControl() ,
     nature1 : new FormControl() ,
-    nature2 : new FormControl() ,
-    nature3 : new FormControl() ,
-    nature4 : new FormControl() ,
-    nature5  : new FormControl() ,
-    nature6  : new FormControl() ,
     marcheBoursier1 : new FormControl() ,
-    marcheBoursier2 : new FormControl() ,
     participationPub1 :  new FormControl() ,
-    participationPub2 : new FormControl() ,
 
-    
-
-   
-    
-    //department: new FormControl(0),
-    
-   
-   
-    //isPermanent: new FormControl(false)
   });
     
   }
@@ -142,7 +109,7 @@ export class TypographyComponent implements OnInit {
     resp2.subscribe((data)=>this.message=data);   
     
     
-    this.router.navigate(['table-list']);
+    this.router.navigate(['listeClient']);
    
 
     }

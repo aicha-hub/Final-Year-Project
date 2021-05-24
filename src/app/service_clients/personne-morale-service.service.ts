@@ -66,6 +66,16 @@ public getDossiersRisqueMEMF()
 public getDossiersRisqueE()
 {return this.http.get("http://localhost:9090/personneMorale/DossiersRisqueEleve")}
 
+public getDossiers()
+{return this.http.get("http://localhost:9090/personneMorale/Dossiers")}
+
+public updatePersonne(id:number, PM:personne_morale)
+  {
+    return this.http.put("http://localhost:9090/personneMorale/UpdateRisque/"+id,PM,{responseType:'text' as 'json'})
+  }
+
+
+
 
 AddDocument(justificatif:justificatif,file:File):Observable<any>{
 
@@ -76,7 +86,7 @@ AddDocument(justificatif:justificatif,file:File):Observable<any>{
   formData.append('type',file.type);
   formData.append('file',file);
 
-  const req = new HttpRequest('POST', "http://localhost:9090/personneMorale/Add", formData, {
+  const req = new HttpRequest('POST', "http://localhost:9090/fatca/Add", formData, {
     reportProgress: true,
     responseType: 'json',
   });

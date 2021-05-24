@@ -20,6 +20,7 @@ export class DetailsComponent implements OnInit {
   id:number;
   pers_nat:any;
   pers1:personne_physique;
+  nat: any;
   
 
  
@@ -54,10 +55,10 @@ export class DetailsComponent implements OnInit {
             this.pep= data;
           }, error => console.log(error));
       
-          this.service4.getN(this.pers_nat.code_nationalite)
+          this.service4.getN(this.id)
           .subscribe(data => {
               console.log(data)
-              this.pep= data;
+              this.nat= data;
             }, error => console.log(error));
     
   }

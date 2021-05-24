@@ -13,7 +13,6 @@ import { transaction } from '../transaction';
 export class TraiterOperationComponent implements OnInit {
   id:number;
   risqueTransaction:any;
-  transaction: any ; 
   transaction1: transaction =new transaction();
   message :any ;
   constructor(@Inject(MAT_DIALOG_DATA) public data1,public dialogRef: MatDialogRef<TraiterOperationComponent>,private router: Router,private route: ActivatedRoute, private service : OperationDouteuseService, private snackBar : MatSnackBar, public service1: OperationService  ) { }
@@ -31,16 +30,26 @@ export class TraiterOperationComponent implements OnInit {
       duration: 3000
     });
     this.dialogRef.close();
+    this.router.navigate(['/listeTransactions']);
   }
   Close()
-  {
+  { 
     this.transaction1.statutTransaction="Refusée" ;
     let res=this.service1.updatePP(this.id,this.transaction1) ; 
-    res.subscribe((data)=>this.message=data);   
-      let resp1= this.service1.deleteTransaction(this.id);
+    res.subscribe((data1)=>this.message=data1); 
+     /*let resp1= this.service1.deleteTransaction(this.id);
+      resp1.subscribe((data)=> {
+        console.log(data);} , 
+        error => console.log(error));
+     let resp1= this.service1.deleteTransaction(this.id);
       resp1.subscribe((data)=> {
         console.log(data);
         this.dialogRef.close();
       },
-      error => console.log(error));   };
+      error => console.log(error)); */
+    //envoie de l email 
+    let resp= this.service1.sendEmail(this.id);
+    resp.subscribe((data)=>this.message=data); 
+    this.dialogRef.close();
+    this.router.navigate(['/listeTransactions']);  }
 }

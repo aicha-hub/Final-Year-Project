@@ -49,19 +49,20 @@
                                 </mat-form-field>
                               </div>
                               <div class="col-md-6">
-                              
-                              <mat-form-field class="example-full-width">
-                              <mat-label>Pays Construction</mat-label>
-                              <input [(ngModel)]="personne_morale.paysConstruction" id="paysCons" name="paysCons" matInput placeholder="Pays Construction" type="text" disabled>
-                               </mat-form-field>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
                                   <input   required [(ngModel)]="personne_morale.dateEnregistrement" name="dateEnregistrement" id="dateEnregistrement" type="date" matInput placeholder="Date d'enregistrement" disabled >
                                 </mat-form-field>
                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6">
+                              
+                                <mat-form-field class="example-full-width">
+                                <mat-label>Pays Construction</mat-label>
+                                <input [(ngModel)]="personne_morale.paysConstruction" id="paysCons" name="paysCons" matInput placeholder="Pays de l'établissement stable" type="text" disabled>
+                                 </mat-form-field>
+                                </div>
+                              
                               <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
         
@@ -72,30 +73,34 @@
                             </div>
                             <div class="col-md-6">
                               <mat-form-field class="example-full-width">
-                              <input required [(ngModel)]="personne_morale.adresse" id="adresse" name="adresse" matInput placeholder="Adresse" type="text" disabled>
+                              <input required [(ngModel)]="personne_morale.adresse" id="adresse" name="adresse" matInput placeholder="Adresse" type="text" disabled >
                               </mat-form-field>
                             </div> 
                             <div class="row">
                             <div class="col-md-6">
                               <mat-form-field class="example-full-width">
-                                <input required [(ngModel)]="personne_morale.email" id="email" name="email"matInput placeholder="Email" type="email"  disabled>
+                                <input required [(ngModel)]="personne_morale.email" id="email" name="email"matInput placeholder="Email" type="email" disabled >
                               </mat-form-field>
                             </div>
                             <div class="col-md-6">
                               <mat-form-field class="example-full-width">
-                              <input required [(ngModel)]="personne_morale.numTelephone" id="numTelephone" name="numTelephone" matInput placeholder="Telephone de contact" type="number" disabled>
+                              <input required [(ngModel)]="personne_morale.numTelephone" id="numTelephone" name="numTelephone" matInput placeholder="Telephone de contact" type="number"  disabled>
                               </mat-form-field>
                             </div> 
                             </div>
                             <label class="l1">DONNÉES DU REPRÉSENTANT/MANDATAIRE QUI TRAITE L’OPÉRATION *</label>
+                            <br>
                             <div class="row">
+                              
                               <div class="col-md-6">
+                                <br>
                               <mat-form-field class="example-full-width">
                                 <input [(ngModel)]="representant_legal.nom" id="nom" name="nom"matInput placeholder="Nom representant" required disabled>
                                 
                               </mat-form-field>
                               </div>
                               <div class="col-md-6">
+                                <br>
                                 <mat-form-field class="example-full-width">
                                   <input   required [(ngModel)]="representant_legal.prenom" name="prenom" id="prenom" matInput placeholder="Prenom representant" disabled >
                                 </mat-form-field>
@@ -108,35 +113,253 @@
                                   </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
-                                 <mat-form-field class="example-full-width">
-                                  <input  required matInput [(ngModel)]="representant_legal.dateNaissance" name="Date_naiss" id="Date_naiss" placeholder="Date de naissance" type="date" disabled>
+                                <mat-form-field class="example-full-width">
+                                <mat-label>Pays Residence</mat-label>
+                                <input [(ngModel)]="representant_legal.paysResidence" id="paysResidence2" name="paysResidence2" matInput placeholder="Pays residence" type="text" disabled>
                                 </mat-form-field>
-                                </div>
+                              </div>
                               </div>
                               <div class="row">
+                              
+                               
+                             <div class="col-md-6">
+                             <mat-form-field class="example-full-width">
+                              <input #fonction required matInput [(ngModel)]="representant_legal.fonctionOrganisme" name="fonctionOrganisme" id="fonctionOrganisme" placeholder="Fonction dans l'organisme" type="text" disabled>
+                            </mat-form-field>
+                             </div>
+
+                             </div>
+
+             
+                             <p></p> 
+                             <br>
+                             
+
+                                
+
+                        
+                          
+                          <label class="l1">DÉCLARATION DE BÉNÉFICIAIRE EFFECTIF OU TITULAIRE RÉEL   </label>
+                          <p></p>
+                          <br>
+                          <div *ngIf="beneficiaireEffectif">
+                          <h3>Beneficiaire Effectif 1 : </h3>
+                          <div class="row">
+                            
+                            <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                              <input [(ngModel)]="beneficiaireEffectif.nom" id="nomBeneficiaire1" name="nomBeneficiaire1" matInput placeholder="Nom beneficiaire effectif" required disabled>
+                              
+                            </mat-form-field>
+                            </div>
+                          
+                            <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                <input   required [(ngModel)]="beneficiaireEffectif.prenom" name="prenomBeneficiaire1" id="prenomBeneficiaire1" matInput placeholder="Prenom du beneficiaire effectif" disabled >
+                              </mat-form-field>
+                             </div>
+                            
+                            </div>
+                            <div class="row">
+                              
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input   required [(ngModel)]="beneficiaireEffectif.codeClient" name="codeBeneficiaire1" id="codeBeneficiaire1"  matInput placeholder="CIN beneficiaire effectif" disabled >
+                                </mat-form-field>
+                              </div>
+                            
+
                               <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
         
                                   <mat-label>Pays Residence</mat-label>
-                                <input [(ngModel)]="representant_legal.paysResidence" id="paysResidence2" name="paysResidence2" matInput placeholder="Pays residence" type="text" disabled>
+                                <input [(ngModel)]="beneficiaireEffectif.paysResidence" id="paysResidenceBeneficiaire1" name="paysResidenceBeneficiaire1" matInput placeholder="Pays residence" type="text" disabled >
                                  
                                 </mat-form-field>
                               </div>
-                             <div class="col-md-6">
-                             <mat-form-field class="example-full-width">
-                              <input  required matInput [(ngModel)]="representant_legal.fonctionOrganisme" name="fonctionOrganisme" id="fonctionOrganisme" placeholder="Fonction dans l'organisme" type="text" disabled>
-                            </mat-form-field>
-                          </div>
-                          </div>
+                              
+                            
+                            </div>
+                            <div class="row">
+                              
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                 <input  required matInput [(ngModel)]="beneficiaireEffectif.pourcentage" name="pourcentageBeneficiaire1" id="pourcentageBeneficiaire1" placeholder="Pourcentage" type="text" disabled >
+                               </mat-form-field>
+                               </div>
+                            
+                            </div>
                           
-                          
+                          </div>
+
+                          <div *ngIf="beneficiaireEffectif2">
+                            <p></p>
+                            <br>
+                            <h3>Beneficiaire Effectif 2 : </h3>
+                            <div class="row">
+                              
+                              <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                <input [(ngModel)]="beneficiaireEffectif2.nom" id="nomBeneficiaire2" name="nomBeneficiaire2" matInput placeholder="Nom beneficiaire effectif" required disabled>
+                                
+                              </mat-form-field>
+                              </div>
+                            
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input   required [(ngModel)]="beneficiaireEffectif2.prenom" name="prenomBeneficiaire2" id="prenomBeneficiaire2" matInput placeholder="Prenom du beneficiaire effectif" disabled >
+                                </mat-form-field>
+                               </div>
+                              
+                              </div>
+                              <div class="row">
+                                
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input   required [(ngModel)]="beneficiaireEffectif2.codeClient" name="codeBeneficiaire2" id="codeBeneficiaire2"  matInput placeholder="CIN beneficiaire effectif" disabled >
+                                  </mat-form-field>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                  <mat-label>Pays Residence</mat-label>
+                                  <input [(ngModel)]="beneficiaireEffectif2.paysResidence" id="paysResidenceBeneficiaire2" name="paysResidenceBeneficiaire2" matInput placeholder="Pays residence" type="text" disabled>
+                                  </mat-form-field>
+                                </div>
+                              
+                               
+                              
+                              </div>
+                              <div class="row">
+                                
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                   <input  required matInput [(ngModel)]="beneficiaireEffectif2.pourcentage" name="pourcentageBeneficiaire2" id="pourcentageBeneficiaire2" placeholder="pourcentage" type="text" disabled >
+                                 </mat-form-field>
+                                 </div>
+                              
+                              </div>
+                            
+                            </div>
+
+                            
+                          <div *ngIf="beneficiaireEffectif3">
+                            <p></p>
+                            <br>
+                            <h3>Beneficiaire Effectif 3 : </h3>
+                            <div class="row">
+                              
+                              <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                <input [(ngModel)]="beneficiaireEffectif3.nom" id="nomBeneficiaire3" name="nomBeneficiaire3" matInput placeholder="Nom beneficiaire effectif" required disabled>
+                                
+                              </mat-form-field>
+                              </div>
+                            
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input   required [(ngModel)]="beneficiaireEffectif3.prenom" name="prenomBeneficiaire3" id="prenomBeneficiaire3" matInput placeholder="Prenom du beneficiaire effectif" disabled >
+                                </mat-form-field>
+                               </div>
+                              
+                              </div>
+                              <div class="row">
+                                
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input   required [(ngModel)]="beneficiaireEffectif3.codeClient" name="codeBeneficiaire3" id="codeBeneficiaire3"  matInput placeholder="CIN beneficiaire effectif" disabled >
+                                  </mat-form-field>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                  <mat-label>Pays Residence</mat-label>
+                                  <input [(ngModel)]="beneficiaireEffectif3.paysResidence" id="paysResidenceBeneficiaire3" name="paysResidenceBeneficiaire3" matInput placeholder="Pays residence" type="text" disabled>
+                                 </mat-form-field>
+                                </div>
+                              
+                                
+                              
+                              </div>
+                              <div class="row">
+                                
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                   <input  required matInput [(ngModel)]="beneficiaireEffectif3.pourcentage" name="pourcentageBeneficiaire3" id="pourcentageBeneficiaire3" placeholder="pourcentage" type="text" disabled>
+                                 </mat-form-field>
+                                 </div>
+                              
+                              </div>
+                            
+                            </div>
+
+
+
+
+                            
+                          <div *ngIf="beneficiaireEffectif4">
+                            <p></p>
+                            <br>
+                            <h3>Beneficiaire Effectif 4 : </h3>
+                            
+                            <div class="row">
+                              
+                              <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                <input [(ngModel)]="beneficiaireEffectif4.nom" id="nomBeneficiaire4" name="nomBeneficiaire4" matInput placeholder="Nom beneficiaire effectif" required disabled>
+                                
+                              </mat-form-field>
+                              </div>
+                            
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input   required [(ngModel)]="beneficiaireEffectif4.prenom" name="prenomBeneficiaire4" id="prenomBeneficiaire4" matInput placeholder="Prenom du beneficiaire effectif" disabled >
+                                </mat-form-field>
+                               </div>
+                              
+                              </div>
+                              <div class="row">
+                                
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input   required [(ngModel)]="beneficiaireEffectif4.codeClient" name="codeBeneficiaire4" id="codeBeneficiaire4"  matInput placeholder="CIN beneficiaire effectif" disabled >
+                                  </mat-form-field>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                  <mat-label>Pays Residence</mat-label>
+                                  <input [(ngModel)]="beneficiaireEffectif4.paysResidence" id="paysResidenceBeneficiaire4" name="paysResidenceBeneficiaire4" matInput placeholder="Pays residence" type="text" disabled>
+                                   </mat-form-field>
+                                </div>
+                              
+                                
+                              
+                              </div>
+                              <div class="row">
+                                
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                   <input  required matInput [(ngModel)]="beneficiaireEffectif4.pourcentage" name="pourcentageBeneficiaire4" id="pourcentageBeneficiaire4" placeholder="Date de naissance" placeholder="pourcentage" type="text" disabled>
+                                 </mat-form-field>
+                                 </div>
+                              
+                              </div>
+                            
+                            </div>
+
+
+
+
+
+
 
 
                           <p></p>
                           <label  class="l1">STATUT FATCA:</label>
                           <div *ngIf="personne_morale.statutFatca;else elseBlock">  
 
-                            <p class="l2"> -La société posséde un statut Fatca </p>
+                            <p class="l2"> </p>
                           </div>
                              
                           <ng-template #elseBlock><p></p><p>-La société ne posséde pas un statut Fatca</p></ng-template>
@@ -157,80 +380,119 @@
                           <div *ngIf="personne_morale.giin">  
                             <p class="l2"> - il s'agit d'une institution Financière non américaine (disposant ou non d’un code GIIN)</p>
                           </div>
-                          <!--<label class="l1">DÉCLARATION DE BÉNÉFICIAIRE EFFECTIF OU TITULAIRE RÉEL *  </label>
-                              <div class="col-md-6">
-                              <button mat-stroked-button color="warn" (click)="onClick(personne_morale,representant_legal.codeClient)" >
-                                <span class="material-icons">
-                                  playlist_add
-                                  </span>  Ajouter les bénéficiaires effectifs
-                              </button>
-                            </div>--> 
+                          
+                          
                             <label class="l1">DÉCLARATION DE PERSONNES POLITIQUEMENT EXPOSÉES *</label>
                               <h5>La société possède parmi ses bénéficiaires effectifs/titulaires réels ou ses administrateurs, ou parmi les plus proches 
                                 membres de leur famille et des personnes connues pour leur être étroitement associées, une personne occupant ou 
                                 ayant occupé durant les 12 derniers mois une haute fonction publique représentative ou un poste important au sein 
-                                des administrations publiques en Andorre, dans des États membres de l’Union européenne ou dans des pays tiers ?
+                                des administrations publiques en Tunisie ou dans des pays tiers ?
                               </h5>
-                              <div *ngIf="personne_morale.associesPpe; else elseBlock">  
-                                <p class="l2"> Oui</p>
+                              <div *ngIf="personne_morale.associesPpe; else elseBlock1">
+                                <br>  
+                                <p class="l2"> -Oui </p>
+                                
+
                               </div>
-                              <ng-template #elseBlock>-Non</ng-template>
+                              <ng-template #elseBlock1>
+                                <p> -Non</p>
+                              </ng-template>
                               <p></p>
                               <label class="l1">INFORMATIONS SUR LES ACTIONNAIRES</label>
-                              <div *ngIf="personne_morale.actionnaireOffshore">  
+                              <br>
+                              <div *ngIf="personne_morale.actionnaireOffshore; else elseBlock2" >  
                                 <p class="l2"> -  La société a un actionnariat sur plusieurs niveaux et/ou des actionnaires
                                   sociétés offshore </p>
                               </div>
-                              <label class="l1">DESCRIPTION DE L’OPÉRATION  *</label>
+                              <ng-template #elseBlock2>
+                                <br>
+                                <p class="l2">-La société n'a pas un actionnariat sur plusieurs niveaux et/ou des actionnaires
+                                sociétés offshore</p></ng-template>
+
+                                <p></p>
+                                <br>
+                                <label class="l1">AUTRES INFORMATIONS SUR LE CLIENT MORAL</label>
                               
                               <div class="row">
-                              <div class="col-md-12">
+                              <div class="col-md-6">
+                                <br>
                               <mat-form-field class="example-full-width">
                                 <input  required matInput [(ngModel)]="personne_morale.natureOperation" name="natureOperation" id="natureOperation" placeholder="Nature de l'operation" type="text" disabled>
                               </mat-form-field>
                               </div>
-                              </div>
-                              <label class="l1">DÉCLARATION DE L’ORIGINE DES FONDS *</label>
+
                               
                               <div class="col-md-6">
+                                <br>
+                              <mat-form-field class="example-full-width">
+                              <input  required  matInput [(ngModel)]="personne_morale.chiffreAffaire" name="chiffreAffaire" id="chiffreAffaire"  placeholder="Chiffre d'affaires" type="number"disabled >
+                              </mat-form-field>
+                              </div>
+
+                              </div>
+                              
+                              <div class="row">
+
+                            <div class="col-md-6">
+                            
+                            <mat-form-field class="example-full-width">
+                                <input  required matInput [(ngModel)]="personne_morale.origineFonds" name="origineFonds" id="origineFonds" placeholder="Origine des fonds" type="text" disabled>
+                              </mat-form-field>
+                              
+                            </div>
+
+                            <div class="col-md-6">
                               <div *ngIf="personne_morale.paysOrigineFonds">  
                                 <p class="l2"> Pays de provenance</p> {{personne_morale.paysOrigineFonds}}
                               </div>
                             </div>
-                            <p></p>
-                            <mat-form-field class="example-full-width">
-                                <input  required matInput [(ngModel)]="personne_morale.origineFonds" name="origineFonds" id="origineFonds" placeholder="Origine des fonds" type="text" disabled>
-                              </mat-form-field>
-                              <p></p>
-                              <label class="l1">AUTRES INFORMATIONs SUR LA PERSONNE MORALE *</label>
-                              <h4 >Chiffre d'affaires : </h4>
+                          </div>
+                             <div class="row">
                               <div class="col-md-6">
-                              <mat-form-field class="example-full-width">
-                              <input  required  matInput [(ngModel)]="personne_morale.chiffreAffaire" name="chiffreAffaire" id="chiffreAffaire"  placeholder="Chiffre d'affaires" type="number" disabled>
-                              </mat-form-field>
-                              </div>
-                              <!--<h4 >Domaine d'activite : </h4>-->
                               <mat-form-field class="example-full-width">
                                 <input  required matInput [(ngModel)]="personne_morale.domaineActivite" name="domaineActivite" id="domaineActivite" placeholder="Domaine Activite" type="text" disabled>
                               </mat-form-field>
+                              </div>
       
-                            <!--<h4 >Nature de la Personne morale : </h4>--> 
+                              <div class="col-md-6">
                              <mat-form-field class="example-full-width">
                               <input  required matInput [(ngModel)]="personne_morale.nature" name="nature" id="nature" placeholder="Nature" type="text" disabled>
                             </mat-form-field>
+                            </div>
+                            </div>
       
                        
                               <p></p>
                              
-                              <div *ngIf="personne_morale.marcheBoursier">  
+                              <div *ngIf="personne_morale.marcheBoursier; else elseBlock4">  
                                 <p class="l2"> -La société est cotée sur le marché boursier </p>
-                              </div>
-                             
-                              
                                 
-                                <div *ngIf="personne_morale.participationPub">  
-                                  <p class="l2"> -La société est à participation publique </p>
-                                </div>
+                              </div>
+                              <ng-template #elseBlock4>
+                                -La société n'est pas cotée sur le marché boursier 
+                               
+                              </ng-template>
+                              
+                              
+                              <div *ngIf="personne_morale.participationPub; else elseBlock5">  
+                                  <p class="l2"> -La société est  à participation publique </p>
+                                  
+                              </div>
+
+
+
+                                <ng-template #elseBlock5>
+                                  <p></p>
+                                  -La société n'est pas participation publique 
+                                  
+                                </ng-template>
+
+                                <p></p>
+                                <br>
+                                <button mat-raised-button color="primary" (click)="modifier()"><span class="material-icons">edit</span>Modifier</button>
+                                
+                               
+
                               
                                   
 

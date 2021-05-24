@@ -28,7 +28,10 @@ export class PersonnePhysiqueService {
   {
     return this.http.put("http://localhost:9090/personnePhysique/Update/"+id,PP,{responseType:'text' as 'json'})
   }
-
+  public updateMAJ(id:number, PP:personne_physique)
+  {
+    return this.http.put("http://localhost:9090/personnePhysique/MAJ/"+id,PP,{responseType:'text' as 'json'})
+  }
   public getTrouverCompte(id:number)
   {return this.http.get("http://localhost:9090/compte/GetID/"+id)}
   
@@ -39,6 +42,9 @@ export class PersonnePhysiqueService {
 
   public getPP(id:number)
   {return this.http.get("http://localhost:9090/personnePhysique/Get/"+id)}
+
+  public getDossiers()
+{return this.http.get("http://localhost:9090/personnePhysique/Dossiers")}
 
 
   form: FormGroup = new FormGroup({
@@ -86,7 +92,7 @@ AddDocument(justificatif:justificatif,file:File):Observable<any>{
   formData.append('type',file.type);
   formData.append('file',file);
 
-  const req = new HttpRequest('POST', "http://localhost:9090/personneMorale/Add", formData, {
+  const req = new HttpRequest('POST', "http://localhost:9090/fatca/Add", formData, {
     reportProgress: true,
     responseType: 'json',
   });

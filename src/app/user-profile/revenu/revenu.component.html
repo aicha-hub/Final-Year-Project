@@ -1,25 +1,18 @@
-<form class="example-form"> 
+<form class="example-form" form #myForm="ngForm"> 
   <table class="example-full-width" cellspacing="0"><tr>   
     <td><mat-form-field class="example-full-width">
       <mat-label>Code client :</mat-label>      
       <input matInput [(ngModel)]="revenu.persPhy"   name="pers" id="pers" type="number" disabled required>
     </mat-form-field></td>    
-    <td><mat-form-field class="example-full-width">
-     <mat-label>Revenu Mensuel Net</mat-label>
-      <input matInput [(ngModel)]="revenu.revenuNet"   name="revenuNet" id="revenuNet" type="number" required>
-    </mat-form-field></td>
-    <td><mat-form-field class="example-full-width">
-      <mat-label>Devise</mat-label>
-      <input matInput [(ngModel)]="revenu.deviseRevenuNet"   name="deviseRevenuNet" id="deviseRevenuNet" required>
-    </mat-form-field></td>
+    
   </tr>   
 </table>
   <p></p>
   <p><mat-label> 
-     AUTRES REVENUS : </mat-label></p>
+     REVENUS : </mat-label></p>
   <table class="example-full-width" cellspacing="0"><tr>     
     <td><mat-form-field class="example-full-width">
-      <mat-label>Nature</mat-label>
+      <mat-label>Origine</mat-label>
       <input matInput [(ngModel)]="revenu.nature"  name="nature" id="nature" type="text"  required>
     </mat-form-field></td>
     <td><mat-form-field class="example-full-width">

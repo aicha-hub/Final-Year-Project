@@ -13,6 +13,7 @@ export class personne_physique extends contact{
     numCin:number; //numero de carte d'identite de la personne physique
     carteSejour:String; //numero carte sejour
     etatCivil:String; //etat civil
+    intermediaire:boolean;
     sexe:String; //sexe
     dateLivraisonCin:Date; //date de livraison de la carte d'identite
     dateExpirationCin:Date; //date d'expiration de la carte d'identite

@@ -13,10 +13,19 @@
                       <label class="l1">Clients moraux</label>
                       <div style="margin-top: 40px;margin-right: 10px;">
 
+                        <div class="row">
+   
+                          <div class="col-md-4" style="margin-left: 700px;">
                           <mat-form-field >
-                            <mat-label>Filter</mat-label>
-                            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+                           
+                            <mat-label>Chercher</mat-label>
+                            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. MATRICULE FISCALE" #input>
                           </mat-form-field>
+                        </div>
+                        <div class="col-md-1" style="width:60%;margin-top:15px;margin-right: -10px;">
+                          <span class="material-icons" >search</span>
+                          </div>
+                      </div> 
                           
                           <div class="mat-elevation-z8">
                             <table mat-table [dataSource]="dataSource" matSort>
@@ -51,15 +60,15 @@
                                
                                 <ng-container matColumnDef="detailsAction">
                                   <th mat-header-cell *matHeaderCellDef> </th>
-                                    <td mat-cell *matCellDef="let personne_morale" style="color: rgb(130, 26, 0);"><i class="material-icons" (click)="traiterClientMoral(personne_morale.codeClient)">description</i>traiter
-                              </ng-container> 
-                               
+                                    <td mat-cell *matCellDef="let personne_morale" style="color: rgb(130, 26, 0);"> <button mat-button (click)="traiterClientMoral(personne_morale.codeClient)"><span class="material-icons">edit</span>Traiter dossier</button>
+                                  </ng-container> 
+                              
                               <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
                               <tr mat-row *matRowDef="let personne_morale; columns: columnsToDisplay ;"></tr>
                           
                               <!-- Row shown when there is no matching data. -->
                               <tr class="mat-row" *matNoDataRow>
-                                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                                <td class="mat-cell" colspan="4">Aucune donnée correspondant au recherche  "{{input.value}}"</td>
                               </tr>
                             </table>
                           
@@ -71,11 +80,19 @@
                       <label class="l1">Clients physiques</label>
                       <div style="margin-top: 40px;margin-right: 10px;">
 
+                        <div class="row">
+   
+                          <div class="col-md-4" style="margin-left: 700px;">
                           <mat-form-field >
-                            <mat-label>Filter</mat-label>
-                            <input matInput (keyup)="applyFilterone($event)" placeholder="Ex. Mia" #input1>
+                           
+                            <mat-label>Chercher</mat-label>
+                            <input matInput (keyup)="applyFilterone($event)" placeholder="Ex. MATRICULE FISCALE" #input>
                           </mat-form-field>
-                          
+                        </div>
+                        <div class="col-md-1" style="width:60%;margin-top:15px;margin-right: -10px;">
+                          <span class="material-icons" >search</span>
+                          </div>
+                      </div> 
                           <div class="mat-elevation-z8">
                             <table mat-table [dataSource]="dataSource1" matSort>
                           
@@ -111,8 +128,9 @@
           
           <ng-container matColumnDef="detailsAction">
             <th mat-header-cell *matHeaderCellDef> </th>
-              <td mat-cell *matCellDef="let personne_physique" style="color: rgb(130, 26, 0);"><i class="material-icons" (click)="traiterClientPhysique(personnePhysique.codeClient)">description</i>Traiter
-        </ng-container> 
+                <td mat-cell *matCellDef="let personne_physique" style="color: rgb(130, 26, 0);"> <button mat-button (click)="traiterClientPhysique(personne_physique.codeClient)"><span class="material-icons">edit</span>Traiter dossier</button>
+
+              </ng-container> 
 
 
         <tr mat-header-row *matHeaderRowDef="columnsToDisplay1"></tr>
@@ -120,7 +138,7 @@
     
         <!-- Row shown when there is no matching data. -->
         <tr class="mat-row" *matNoDataRow>
-          <td class="mat-cell" colspan="4">No data matching the filter "{{input1.value}}"</td>
+          <td class="mat-cell" colspan="4">Aucune donnée correspondant au recherche  "{{input1.value}}"</td>
         </tr>
 
 

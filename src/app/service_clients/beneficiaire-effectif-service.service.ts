@@ -27,22 +27,52 @@ export class BeneficiaireEffectifServiceService {
   public getPR(id:number)
   {return this.http.get("http://localhost:9090/beneficiaireEffectif/Get/"+id,{responseType:'text' as 'json'})}
 
+
+  public getBeneficiaire1(id:number)
+  {
+    return this.http.get("http://localhost:9090/beneficiaireEffectif/GetBeneficiaire1/"+id)
+  }
+  public getBeneficiaire2(id:number)
+  {
+    return this.http.get("http://localhost:9090/beneficiaireEffectif/GetBeneficiaire2/"+id)
+  }
+  public getBeneficiaire3(id:number)
+  {
+    return this.http.get("http://localhost:9090/beneficiaireEffectif/GetBeneficiaire3/"+id)
+  }
+ 
+
+  public getBeneficiaire(id:number)
+  {
+    return this.http.get("http://localhost:9090/beneficiaireEffectif/GetBeneficiaire/"+id)
+  }
+
+  
+
+  
+
+
+
+
   form: FormGroup = new FormGroup({
   
     nom: new FormControl('', Validators.required),
     prenom: new FormControl('', Validators.required),
-    CIN: new FormControl('', [Validators.required, Validators.maxLength(8)]),
+    CIN: new FormControl(0, Validators.required),
     paysResidence: new FormControl('', Validators.required),
     pourcentage: new FormControl('', Validators.required),
+    numPassport:new FormControl(0)
    
   });
+   
+  
 
   initializeFormGroup() {
     this.form.setValue({
       
       nom: '',
       prenom: '',
-      CIN: '',
+      CIN: 0,
       paysResidence:'',
       pourcentage:'',
       

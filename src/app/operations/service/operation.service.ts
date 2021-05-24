@@ -49,6 +49,8 @@ export class OperationService {
   {return this.http.get("http://localhost:9090/transaction/Get/"+id)}
 
 
+  public getPPT(id:number)
+  {return this.http.get("http://localhost:9090/transaction/GetT/"+id)}
   public virement(t:transaction)
   { return this.http.post("http://localhost:9090/transaction/Virement",t,{responseType:'text' as 'json'})}
   
@@ -70,5 +72,9 @@ export class OperationService {
     return this.http.get("http://localhost:9090/transaction/GetTransactionDouteuses");
   }
 
+  public sendEmail(id:number)
+  {return this.http.get("http://localhost:9090/transaction/sendEmail/"+id);
+
+  }
 
 }

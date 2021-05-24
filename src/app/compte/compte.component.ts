@@ -20,8 +20,8 @@ export class CompteComponent implements OnInit {
   personneMorale:any;
   personne_physique:any;
   personne_morale:any;
-  columnsToDisplay : string[] = ['codeClient','numTelephone','nature','formeJuridique','statutPersonne','detailsAction'];
-  columnsToDisplay1 : string[] = ['codeClient','numTelephone','nom','prenom','statutPersonne','detailsAction'];
+  columnsToDisplay : string[] = ['codeClient','statutPersonne','nature','formeJuridique','numTelephone','detailsAction'];
+  columnsToDisplay1 : string[] = ['codeClient','statutPersonne','nom','prenom','numTelephone','detailsAction'];
   dataSource : MatTableDataSource<personne_morale>;
   dataSource1 : MatTableDataSource<personne_physique>;
  @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -30,8 +30,9 @@ export class CompteComponent implements OnInit {
  @ViewChild(MatSort) sort1: MatSort;
   isLoggedIn = false;
   showAdminBoard = false;
-  showModeratorBoard = false;
-  showConseillerBoard=false;
+  showResponsableBoard = false;
+  showConseillerBoard= false;
+  showChefBoard=false;
   res=false;
   username: string;
   private roles: string[];
@@ -44,8 +45,9 @@ export class CompteComponent implements OnInit {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-      this.showConseillerBoard = this.roles.includes('ROLE_USER');
+      this.showResponsableBoard = this.roles.includes('ROLE_RESPONSABLE');
+      this.showConseillerBoard = this.roles.includes('CONSEILLER_CLIENT');
+      this.showChefBoard = this.roles.includes('CHEF_AGENCE');
       this.username = user.username;
       if(this.showConseillerBoard)
       {
@@ -64,8 +66,12 @@ export class CompteComponent implements OnInit {
     let resp1=this.service1.getDossiersRisqueFaible();
     resp1.subscribe((data)=>this.personnePhysique=data);
       }
-      if(this.showAdminBoard){
-        let resp=this.service.getPMS();
+
+
+
+
+      if(this.showChefBoard){
+        let resp=this.service.getDossiersRisqueE();
         resp.subscribe(
           response => {
            this.personne_morale = response;
@@ -77,7 +83,7 @@ export class CompteComponent implements OnInit {
           error => {
             console.log(error);
           });
-        let resp1=this.service1.getPPS();
+        let resp1=this.service1.getDossiersRisqueE();
         resp1.subscribe(
           response1 => {
            this.personne_physique= response1;
@@ -90,7 +96,37 @@ export class CompteComponent implements OnInit {
             console.log(error);
           });
       }
-      if(this.showModeratorBoard){
+
+      
+      if(this.showAdminBoard){
+        let resp=this.service.getDossiers();
+        resp.subscribe(
+          response => {
+           this.personne_morale = response;
+            console.log(response);
+            this.dataSource = new MatTableDataSource(this.personne_morale); 
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
+          },
+          error => {
+            console.log(error);
+          });
+        let resp1=this.service1.getDossiers();
+        resp1.subscribe(
+          response1 => {
+           this.personne_physique= response1;
+            console.log(response1);
+            this.dataSource1 = new MatTableDataSource(this.personne_physique); 
+            this.dataSource1.paginator = this.paginator1;
+            this.dataSource1.sort = this.sort1;
+          },
+          error => {
+            console.log(error);
+          });
+      }
+
+
+      if(this.showResponsableBoard){
         let resp=this.service.getDossiersRisqueMEMF();
         resp.subscribe(
           response => {

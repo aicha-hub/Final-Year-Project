@@ -85,8 +85,8 @@ export class AffichageComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;   
-    dialogConfig.width = "50%";
-    dialogConfig.height = "70%";
+    dialogConfig.width = "60%";
+    dialogConfig.height = "83%";
     dialogConfig.data = {personne_morale};
     this.dialoge.open(DetailsFatcaComponent,dialogConfig);
   }
@@ -106,8 +106,8 @@ export class AffichageComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;   
-    dialogConfig.width = "50%";
-    dialogConfig.height = "50%";
+    dialogConfig.width = "60%";
+    dialogConfig.height = "80%";
     dialogConfig.data = {personne_physique};
     this.dialog.open(DetailsFatcaPPComponent,dialogConfig);
    

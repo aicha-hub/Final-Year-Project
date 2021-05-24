@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { liste_nat } from 'app/client/list_nat';
 import { compte } from 'app/compte/compte';
 import { CompteCourantService } from 'app/service_clients/compte-courant.service';
@@ -25,11 +27,37 @@ export class OperationsComponent implements OnInit {
   i:number;
   compt :compte;
   liste_nationnalite=liste_nat;
+  form: FormGroup ;
 
-  constructor(private service:OperationService, private snackBar: MatSnackBar,private dialog: MatDialog, private toastr : ToastrService,private servicec : CompteCourantService) { }
+  constructor(private service:OperationService, private snackBar: MatSnackBar,private dialog: MatDialog, private toastr : ToastrService,private servicec : CompteCourantService, private router: Router) { }
 
   ngOnInit(): void {
+    this.form= new FormGroup({
    
+      operation : new FormControl('',Validators.required),
+      nomEmetteur: new FormControl('', Validators.required),
+      cinEmetteur: new FormControl(0, [Validators.required, Validators.maxLength(8)]),
+      compteTransaction : new FormControl(0, Validators.required),
+      nomDestinataire: new FormControl('', Validators.required),
+      cinDestinataire: new FormControl(0, [Validators.required, Validators.maxLength(8)]),
+      ribDestinataire : new FormControl('', Validators.required),
+      montant: new FormControl(0, Validators.required),
+      paysDestinataire : new FormControl('', Validators.required),
+      date: new FormControl(''),
+      nomEmetteur1: new FormControl('', Validators.required),
+      cinEmetteur1: new FormControl(0, [Validators.required, Validators.maxLength(8)]),
+      //typeCompteEmetteur1:new FormControl('', Validators.required),
+      compteTransaction1:new FormControl('', Validators.required),
+      montant1: new FormControl(0, Validators.required),
+      date1: new FormControl(''),
+      nomEmetteur2: new FormControl('', Validators.required),
+      cinEmetteur2: new FormControl(0, [Validators.required, Validators.maxLength(8)]),
+      //typeCompteEmetteur2:new FormControl('', Validators.required),
+      compteTransaction2:new FormControl('', Validators.required),
+      montant2: new FormControl(0, Validators.required),
+      date2: new FormControl(''),
+  
+    });
    
   }
 
@@ -43,14 +71,16 @@ export class OperationsComponent implements OnInit {
       this.compt = res1;
     if(isEmptyObject(this.compt))    {this.toastr.error("Le compte de l'emetteur n'existe pas");}
     if(v1==this.d) {this.toastr.error("veuillez vérifier le RIB de votre destinataire et de votre emetteur");}
-    if(v3>this.compt.solde)  {this.toastr.error("Le solde est insuffisant");}
+    if(v3>this.compt.solde)  {this.toastr.error("Solde insuffisant");}
     else{
       let resp= this.service.virement(this.transaction);
       resp.subscribe((data)=>this.message=data);
       console.log(this.message);
       this.confirmer();}
     
-    }));}
+    }));
+   this.router.navigate(['/listeTransactions']);
+  }
    
 
   prelevement(v3)
@@ -61,7 +91,7 @@ export class OperationsComponent implements OnInit {
     console.log(res1);
     this.compt = res1;
    if(isEmptyObject(this.compt))    {this.toastr.error("Le compte de l'emetteur n'existe pas");}
-  if(v3>this.compt.solde)  {this.toastr.error("Le solde est insuffisant");}
+  if(v3>this.compt.solde)  {this.toastr.error("solde insuffisant");}
   else{
     let resp= this.service.prelevement(this.transaction);
     resp.subscribe((data)=>this.message=data); 
@@ -89,7 +119,7 @@ export class OperationsComponent implements OnInit {
     console.log(res1);
     this.compt = res1;
    if(isEmptyObject(this.compt))    {this.toastr.error("Le compte de l'emetteur n'existe pas");}
-  if(v3>this.compt.solde)  {this.toastr.error("Le solde est insuffisant");}
+   //if(v3>this.compt.solde)  {this.toastr.error("Le solde est insuffisant");}
   else{
     let resp= this.service.versement(this.transaction);
     resp.subscribe((data)=>this.message=data); 

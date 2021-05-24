@@ -48,6 +48,7 @@ import { NiveauRisqueComponent } from 'app/modeleCotation/niveau-risque/niveau-r
 import { VisualiserCompteComponent } from 'app/compte/visualiser-compte/visualiser-compte.component';
 import { ListeClientComponent } from 'app/liste-client/liste-client.component';
 import { ListeClientMoralComponent } from 'app/liste-client/liste-client-moral/liste-client-moral.component';
+import { ModifierComponent } from 'app/icons/modifier/modifier.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -137,9 +138,9 @@ export const AdminLayoutRoutes: Routes = [
     {path:'niveauRisque',component: NiveauRisqueComponent},
     {path:'visualiserCompte',component:VisualiserCompteComponent},
     {path:'visualiserCompte',component:VisualiserCompteComponent},
-    {path:'listeClient',component:ListeClientComponent}
+    {path:'listeClient',component:ListeClientComponent},
 
-    
+    {path:'modifier/:id',component:ModifierComponent}
 
 
     

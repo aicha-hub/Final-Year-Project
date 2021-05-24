@@ -63,6 +63,9 @@ this.dialogRef.close();}));
         this.dialogRef.close();
       },
       error => console.log(error));   }));
+      let snackBarRef = this.snackBar.open('operation annulée!', 'avec succés', {
+        duration: 3000
+      });
     }
 
 

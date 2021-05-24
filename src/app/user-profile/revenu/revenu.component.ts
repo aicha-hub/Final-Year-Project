@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { revenu } from 'app/client/revenu';
@@ -13,6 +14,7 @@ export class RevenuComponent implements OnInit {
   revenu :revenu =new revenu();
   message:any;
   id:number;
+  form: NgForm;
   constructor(@Inject(MAT_DIALOG_DATA) public data1, private service:RevenuService,private snackBar: MatSnackBar,public dialogRef: MatDialogRef<RevenuComponent>) { }
 
   ngOnInit(): void {                                                                                                    
@@ -29,7 +31,7 @@ export class RevenuComponent implements OnInit {
   
   let resp= this.service.CreateR(this.revenu);
      resp.subscribe((data)=>this.message=data);
-     this.dialogRef.close();
+
   }
 
   Close()

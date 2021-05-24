@@ -76,6 +76,7 @@ import { VisualiserCompteComponent } from './compte/visualiser-compte/visualiser
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ListeClientComponent } from './liste-client/liste-client.component';
 import { ListeClientMoralComponent } from './liste-client/liste-client-moral/liste-client-moral.component';
+import { ModifierComponent } from './icons/modifier/modifier.component';
 
 
 
@@ -207,6 +208,7 @@ import { ListeClientMoralComponent } from './liste-client/liste-client-moral/lis
     VisualiserCompteComponent,
                  ListeClientComponent,
                  ListeClientMoralComponent,
+                 ModifierComponent,
               
    
   ],
