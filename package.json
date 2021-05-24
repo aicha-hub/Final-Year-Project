@@ -30,6 +30,7 @@
     "@angular/platform-server": "11.2.13",
     "@angular/router": "11.2.13",
     "@auth0/angular-jwt": "^5.0.2",
+    "@swimlane/ngx-charts": "^18.0.1",
     "ajv": "6.12.5",
     "arrive": "2.4.1",
     "bootstrap": "^4.6.0",
