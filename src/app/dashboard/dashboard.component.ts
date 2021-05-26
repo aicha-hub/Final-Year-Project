@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { OperationService } from 'app/operations/service/operation.service';
+import { transaction } from 'app/operations/transaction';
 import * as Chartist from 'chartist';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -7,8 +10,12 @@ import * as Chartist from 'chartist';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { }
+  datelist:any[] = [];
+  labeltest:any[]=[];
+  serietest:number[]=[];
+ trans:transaction[] = [];
+  done: boolean;
+  constructor(private service :OperationService) { }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -68,13 +75,38 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
-      const dataDailySalesChart: any = {
-          labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-          series: [
-              [12, 17, 7, 17, 23, 18, 38]
-          ]
-      };
 
+ 
+       
+        this.service.getTransactionClient(5).subscribe(
+          (resp1:any[]=[])=>{
+            for (const i of resp1) {
+            
+         this.labeltest.push(i.typeTransaction);
+         this.serietest.push(i.montant);
+    
+            }
+         ;
+          },
+          (err)=>{
+            console.log(err);
+          }
+        );
+this.labeltest=[...this.labeltest]
+this.serietest=[...this.serietest]
+        console.log ( this.labeltest[0]);   
+// can take only x y values
+ 
+  
+      const dataDailySalesChart: any = {
+        labels: [this.labeltest],
+        series: [
+            [this.serietest]
+        ]
+
+          
+      };
+  
      const optionsDailySalesChart: any = {
           lineSmooth: Chartist.Interpolation.cardinal({
               tension: 0

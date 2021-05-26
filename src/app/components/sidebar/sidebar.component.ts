@@ -8,7 +8,7 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-  { path: '/dashboard', title: 'Tableau de bord',  icon: 'dashboard', class: '' },
+  { path: '/tableauxBords', title: 'Tableau de bord',  icon: 'dashboard', class: '' },
   { path: '/listeClient', title: 'Liste clients ',  icon:'list', class: '' },
   { path: '/ajouter', title: 'Ajouter client',  icon:'person_add', class: '' },
   {path:'/fatca', title:'Fatca',icon:'content_paste',class:''},
@@ -23,7 +23,7 @@ export const ROUTES: RouteInfo[] = [
 
 export const ROUTESChef: RouteInfo[] = [
 
-  { path: '/dashboard', title: 'Tableau de bord',  icon: 'dashboard', class: '' },
+  { path: '/tableauxBords', title: 'Tableau de bord',  icon: 'dashboard', class: '' },
   { path: '/table-list', title: 'Liste clients ',  icon:'list', class: '' },
   { path: '/ajouter', title: 'Ajouter client',  icon:'person_add', class: '' },
   {path:'/risqueClientPhysique', title:'Liste Surveillance',icon:'description',class:''},
@@ -38,7 +38,7 @@ export const ROUTESChef: RouteInfo[] = [
 ];
 
 export const ROUTESConseiller: RouteInfo[] = [
-  { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
+  { path: '/tableauxBords', title: 'Dashboard',  icon: 'dashboard', class: '' },
   { path: '/table-list', title: 'Liste clients ',  icon:'list', class: '' },
   { path: '/ajouter', title: 'Ajouter client',  icon:'person_add', class: '' },
   {path:'/fatca', title:'Fatca',icon:'content_paste',class:''},
@@ -50,7 +50,7 @@ export const ROUTESConseiller: RouteInfo[] = [
 ];
 
 export const ROUTESResponsable: RouteInfo[] = [
-  { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
+  { path: '/tableauxBords', title: 'Dashboard',  icon: 'dashboard', class: '' },
   {path: '/table-list', title: 'Liste clients ',  icon:'list', class: '' },
   {path:'/risqueClientPhysique', title:'Liste Surveillance',icon:'description',class:''},
   {path:'/fatca', title:'Fatca',icon:'content_paste',class:''},

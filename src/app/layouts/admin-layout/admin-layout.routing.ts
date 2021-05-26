@@ -49,6 +49,8 @@ import { VisualiserCompteComponent } from 'app/compte/visualiser-compte/visualis
 import { ListeClientComponent } from 'app/liste-client/liste-client.component';
 import { ListeClientMoralComponent } from 'app/liste-client/liste-client-moral/liste-client-moral.component';
 import { ModifierComponent } from 'app/icons/modifier/modifier.component';
+import { TableauxBordsComponent } from 'app/tableaux-bords/tableaux-bords.component';
+
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -139,9 +141,8 @@ export const AdminLayoutRoutes: Routes = [
     {path:'visualiserCompte',component:VisualiserCompteComponent},
     {path:'visualiserCompte',component:VisualiserCompteComponent},
     {path:'listeClient',component:ListeClientComponent},
-
-    {path:'modifier/:id',component:ModifierComponent}
-
+    {path:'modifier/:id',component:ModifierComponent},
+    {path:'tableauxBords',component:TableauxBordsComponent}
 
     
 ];

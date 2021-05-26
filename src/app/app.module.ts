@@ -77,7 +77,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ListeClientComponent } from './liste-client/liste-client.component';
 import { ListeClientMoralComponent } from './liste-client/liste-client-moral/liste-client-moral.component';
 import { ModifierComponent } from './icons/modifier/modifier.component';
-
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { TableauxBordsComponent } from './tableaux-bords/tableaux-bords.component';
 
 
 
@@ -93,8 +94,10 @@ import { ModifierComponent } from './icons/modifier/modifier.component';
     AppRoutingModule,
     MaterialModule,
     Ng2SearchPipeModule,
-	  ToastrModule.forRoot()
-    
+	  ToastrModule.forRoot(),
+    NgxChartsModule,
+ 
+
     
     
 
@@ -209,6 +212,8 @@ import { ModifierComponent } from './icons/modifier/modifier.component';
                  ListeClientComponent,
                  ListeClientMoralComponent,
                  ModifierComponent,
+                 TableauxBordsComponent,
+            
               
    
   ],

@@ -16,11 +16,21 @@ export class OperationService {
   public getTransaction()
   {return this.http.get("http://localhost:9090/transaction/GetAll")}
 
+
+  public getType()
+  {return this.http.get("http://localhost:9090/transaction/GetAllType")}
+
+  public getDN()
+  {return this.http.get("http://localhost:9090/transaction/GetAllDN")}
+
   public getRisqueTransaction()
   {return this.http.get("http://localhost:9090/RisqueTransaction/Get")}
 
   public getTransactionClient(id:number)
   {return this.http.get("http://localhost:9090/transaction/GetAll/"+id)}
+
+  public getTransactionClt(id:number)
+  {return this.http.get("http://localhost:9090/transaction/GetNbre/"+id)}
 
   public getTransactionClientDouteuse(id:number)
   {return this.http.get("http://localhost:9090/transaction/GetAllDD/"+id)}
@@ -70,6 +80,11 @@ export class OperationService {
   public GetTransactionDouteuses():Observable<any>
   {
     return this.http.get("http://localhost:9090/transaction/GetTransactionDouteuses");
+  }
+
+  public GetTransactionD():Observable<any>
+  {
+    return this.http.get("http://localhost:9090/transaction/GetAllD");
   }
 
   public sendEmail(id:number)

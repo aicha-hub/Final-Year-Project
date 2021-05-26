@@ -1,0 +1,105 @@
+<div class="row" style="margin-top: 20px;margin-left: 50px;" >
+     
+    <ngx-charts-advanced-pie-chart *ngIf="done4"
+    [results]="categoriesList4"
+    [view]="[500,500]"
+    [scheme]="colorScheme"
+    [gradient]="gradient"
+    (select)="onSelect($event)"
+    (activate)="onActivate($event)"
+    (deactivate)="onDeactivate($event)">
+    </ngx-charts-advanced-pie-chart> 
+</div>
+
+
+<div style="margin-top: 5px;margin-bottom:400px;">
+    <ngx-charts-pie-chart *ngIf="done"
+    [results]="categoriesList"
+    [legend]="legend"
+    [legendTitle]="'Les clients classés par risque: '" 
+    [view]="[1200,500]"
+    [labels]="true" 
+    [doughnut]="true"
+    [trimLabels]="true"
+    [scheme]="colorScheme"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxis]="xAxis"
+    [yAxis]="yAxis"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [timeline]="timeline"
+    [maxLabelLength]="20">
+    </ngx-charts-pie-chart>
+    </div>
+
+<div class="row" style="margin-top: 20px;">
+     <div class="col-md-6">
+        <ngx-charts-pie-chart *ngIf="done1"
+        [results]="categoriesList1"
+        [legend]="legend"
+        [legendTitle]="'Transactions : '" 
+        [view]="[550,550]"
+        [labels]="true" 
+        [doughnut]="true"
+        [trimLabels]="true"
+        [scheme]="colorScheme"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxis]="xAxis"
+        [yAxis]="yAxis"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        [timeline]="timeline"
+        [maxLabelLength]="20">
+        </ngx-charts-pie-chart>
+    </div>   
+    <div class="col-md-6" >
+        <ngx-charts-pie-chart *ngIf="done3"
+[results]="categoriesList3"
+[legend]="legend"
+[legendTitle]="'Transactions : '" 
+[view]="[550,550]"
+[labels]="true" 
+[doughnut]="true"
+[trimLabels]="true"
+[showXAxisLabel]="showXAxisLabel"
+[showYAxisLabel]="showYAxisLabel"
+[xAxis]="xAxis"
+[yAxis]="yAxis"
+[xAxisLabel]="xAxisLabel"
+[yAxisLabel]="yAxisLabel"
+[timeline]="timeline"
+[maxLabelLength]="20">
+</ngx-charts-pie-chart>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 70px;margin-left: 50px;">
+ 
+        
+        <ngx-charts-bar-vertical *ngIf="done2"
+[results]="categoriesList2"
+[legend]="legend"
+[legendTitle]="'Transactions: '" 
+[view]="[1100,600]"
+[labels]="true" 
+[doughnut]="true"
+[trimLabels]="true"
+[scheme]="colorScheme"
+[showXAxisLabel]="showXAxisLabel"
+[showYAxisLabel]="showYAxisLabel"
+[xAxis]="xAxis"
+[yAxis]="yAxis"
+[xAxisLabel]="xAxisLabel"
+[yAxisLabel]="yAxisLabel"
+[timeline]="timeline"
+[maxLabelLength]="20">
+</ngx-charts-bar-vertical>
+
+
+
+</div>
+
+
+    

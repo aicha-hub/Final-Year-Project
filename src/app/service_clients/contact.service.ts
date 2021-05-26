@@ -14,6 +14,12 @@ export class ContactService {
    public getContact() :Observable<any>
   {return this.http.get("http://localhost:9090/contact/GetAll")}
 
+  public getContactPM() :Observable<any>
+  {return this.http.get("http://localhost:9090/contact/nbre")}
+
+  public getContactS() :Observable<any>
+  {return this.http.get("http://localhost:9090/contact/GetAllStatus")}
+
   public getContactById(id:number)
   {return this.http.get("http://localhost:9090/contact/Get/"+id)}
 
