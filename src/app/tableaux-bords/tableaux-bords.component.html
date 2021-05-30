@@ -32,7 +32,9 @@
     [maxLabelLength]="20">
     </ngx-charts-pie-chart>
     </div>
-
+<b ><h1 style="margin-left:100px;color:rgb(79, 48, 107) ;">Analyse sur les transactions :</h1> </b>
+<br>
+<br>
 <div class="row" style="margin-top: 20px;">
      <div class="col-md-6">
         <ngx-charts-pie-chart *ngIf="done1"
@@ -53,7 +55,8 @@
         [timeline]="timeline"
         [maxLabelLength]="20">
         </ngx-charts-pie-chart>
-    </div>   
+    </div>  
+     
     <div class="col-md-6" >
         <ngx-charts-pie-chart *ngIf="done3"
 [results]="categoriesList3"
@@ -73,9 +76,10 @@
 [maxLabelLength]="20">
 </ngx-charts-pie-chart>
     </div>
+  
 </div>
 
-<div class="row" style="margin-top: 70px;margin-left: 50px;">
+<div class="row" style="margin-top: 20px;margin-left: 50px;">
  
         
         <ngx-charts-bar-vertical *ngIf="done2"

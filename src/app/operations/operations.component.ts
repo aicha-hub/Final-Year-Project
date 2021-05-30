@@ -36,22 +36,23 @@ export class OperationsComponent implements OnInit {
    
       operation : new FormControl('',Validators.required),
       nomEmetteur: new FormControl('', Validators.required),
-      cinEmetteur: new FormControl(0, [Validators.required, Validators.maxLength(8)]),
+     
       compteTransaction : new FormControl(0, Validators.required),
       nomDestinataire: new FormControl('', Validators.required),
-      cinDestinataire: new FormControl(0, [Validators.required, Validators.maxLength(8)]),
+     
       ribDestinataire : new FormControl('', Validators.required),
       montant: new FormControl(0, Validators.required),
       paysDestinataire : new FormControl('', Validators.required),
       date: new FormControl(''),
+      motif: new FormControl('', Validators.required),
       nomEmetteur1: new FormControl('', Validators.required),
-      cinEmetteur1: new FormControl(0, [Validators.required, Validators.maxLength(8)]),
+    
       //typeCompteEmetteur1:new FormControl('', Validators.required),
       compteTransaction1:new FormControl('', Validators.required),
       montant1: new FormControl(0, Validators.required),
       date1: new FormControl(''),
       nomEmetteur2: new FormControl('', Validators.required),
-      cinEmetteur2: new FormControl(0, [Validators.required, Validators.maxLength(8)]),
+     
       //typeCompteEmetteur2:new FormControl('', Validators.required),
       compteTransaction2:new FormControl('', Validators.required),
       montant2: new FormControl(0, Validators.required),

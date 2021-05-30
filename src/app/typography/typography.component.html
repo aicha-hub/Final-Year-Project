@@ -2,18 +2,18 @@
   <div class="container-fluid">
     <div class="card">
         <div class="card-header card-header-danger">
-            <h4 class="card-title">Personne Morale</h4>
-            <p class="card-category">Veuillez saisir tous les donnees</p>
+            <h4 class="card-title">Client Moral</h4>
+            <p class="card-category">Completer les données necessaires d'un client</p>
         </div>
         <div class="card-body">
             <div id="typography">
                 
                 <form #Form="ngForm"  [formGroup]="this.form">
                   
-                <label class="l1">DONNÉES DE BASE DU CLIENT PERSONNE MORALE*
+                <label class="l1">DONNÉES DE BASE DU CLIENT MORAL*
                 </label>
                 <mat-form-field class="example-full-width">
-                  <input  required  matInput [(ngModel)]="personne_morale.codeClient"  id="codeClient"  formControlName="codeClient" placeholder="Matricule Fiscale" type="number" >
+                  <input  required  matInput [(ngModel)]="personne_morale.codeClient"  id="codeClient"  formControlName="codeClient" placeholder="Num RNE" type="number" >
                   <mat-error>Champs obligatoire.</mat-error>
                 </mat-form-field>
 
