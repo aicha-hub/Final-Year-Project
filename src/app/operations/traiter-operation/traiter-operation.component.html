@@ -20,21 +20,22 @@
                                     <h2>LES RISQUES LIES A CETTE TRANSACTION</h2>
                                   </section> </b></label>-->
                                 <div *ngIf="risqueTransaction.personneE">
-                                    L'emetteur est mentionné dans la liste noire
+                                   - L'emetteur est mentionné dans la liste noire.
                                 </div>
                                 <div *ngIf="risqueTransaction.personneD">
-                                    Le destinataire est mentionné dans la liste noire
+                                   - Le destinataire est mentionné dans la liste noire.
                                 </div>
                                 <div *ngIf="risqueTransaction.paysSecteurSuspec">
+                                    -Le pays destinataire est dans la liste des pays du droques ou de guerre avec secteur suspect du client.
                                 </div>
                                 <div *ngIf="risqueTransaction.paysBlackList">
-                                    Le pays destinataire est mentionné dans la liste noire
+                                    Le pays destinataire est mentionné dans la liste noire.
                                 </div>
                                 <div *ngIf="risqueTransaction.montantMaximal">
-                                    Le montant dépasse 5000 dinars
+                                    -Le montant dépasse la limite d'une transaction normale.
                                 </div>
                                 <div *ngIf="risqueTransaction.compteInactif">
-                                    Ce compte est inactif depuis une année
+                                    - Ce compte est inactif depuis une année .
                                 </div>
                                </div>
                              <p></p>

@@ -24,7 +24,7 @@ export class TraiterOperationComponent implements OnInit {
   }
   confirmer ()
   { this.transaction1.statutTransaction="Douteuse Validée" ; 
-    let res=this.service1.updatePP(this.id,this.transaction1) ; 
+    let res=this.service1.traiterPP(this.id,this.transaction1) ; 
     res.subscribe((data)=>this.message=data);   
     let snackBarRef = this.snackBar.open('operation enregistrée!', 'avec succés', {
       duration: 3000

@@ -54,6 +54,10 @@ export class OperationService {
   {
     return this.http.put("http://localhost:9090/transaction/Update/"+id,t,{responseType:'text' as 'json'})
   }
+  public traiterPP(id:number, t:transaction)
+  {
+    return this.http.put("http://localhost:9090/transaction/Traiter/"+id,t,{responseType:'text' as 'json'})
+  }
 
   public getPP(id:number)
   {return this.http.get("http://localhost:9090/transaction/Get/"+id)}

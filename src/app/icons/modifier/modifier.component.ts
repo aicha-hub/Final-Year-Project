@@ -133,7 +133,7 @@ export class ModifierComponent implements OnInit {
   }
   updateNow ( codeBE : number,codeBE1 : number,codeBE2 : number,codeBE3 : number, codeRep:number )
   {
-    let resp2= this.service.updatePersonne(this.id,this.personne_morale);
+    let resp2= this.service.updatePM(this.id,this.personne_morale);
     resp2.subscribe((data)=>this.message=data); 
     let be = this.service2.updatePR(codeBE,this.beneficiaireEffectif);
     be.subscribe((data)=>this.message=data);
@@ -153,7 +153,7 @@ export class ModifierComponent implements OnInit {
   }
   updateNow1 ( codeBE : number, codeBE1 : number,codeBE2 : number, codeRep:number)
   {
-    let resp2= this.service.updatePersonne(this.id,this.personne_morale);
+    let resp2= this.service.updatePM(this.id,this.personne_morale);
     resp2.subscribe((data)=>this.message=data); 
     let be = this.service2.updatePR(codeBE,this.beneficiaireEffectif);
     be.subscribe((data)=>this.message=data);
@@ -175,7 +175,7 @@ export class ModifierComponent implements OnInit {
     be.subscribe((data)=>this.message=data);
     let be1 = this.service2.updatePR(codeBE1,this.beneficiaireEffectif2);
     be1.subscribe((data)=>this.message=data);
-    let resp2= this.service.updatePersonne(this.id,this.personne_morale);
+    let resp2= this.service.updatePM(this.id,this.personne_morale);
     resp2.subscribe((data)=>this.message=data);
     if (this.createRep=="true")
     {let rep1=this.service1.updateRL(codeRep,this.representant_legal);
@@ -187,7 +187,7 @@ export class ModifierComponent implements OnInit {
   }
   updateNow3 ( codeBE : number, codeRep:number)
   {
-    let resp2= this.service.updatePersonne(this.id,this.personne_morale);
+    let resp2= this.service.updatePM(this.id,this.personne_morale);
     resp2.subscribe((data)=>this.message=data); 
     let be = this.service2.updatePR(codeBE,this.beneficiaireEffectif);
     be.subscribe((data)=>this.message=data);

@@ -14,4 +14,5 @@ export class transaction{
     cinDestinataire:number;
     cinEmetteur:number;
     motif:String;
+    nomBanque:String;
 }
