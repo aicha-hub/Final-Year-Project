@@ -20,4 +20,5 @@ export class ModelePersonneMorale
     valeur:number;
     chiffreAffaires:String;
     blackListe:String;
+    nbreTransactionFrauduleuse:number;
 }

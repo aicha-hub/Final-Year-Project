@@ -139,7 +139,7 @@ export class UserProfileComponent implements OnInit {
     let resp= this.service.updatePP(this.personne_physique.codeClient,this.personne_physique);
     resp.subscribe((data)=>this.message=data);
     
-    let snackBarRef = this.snackBar.open('Client cree!', 'Bravo', {
+    let snackBarRef = this.snackBar.open('Client physique cree!', 'Bravo', {
       duration: 3000
     });
 

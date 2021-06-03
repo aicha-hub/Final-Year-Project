@@ -11,4 +11,5 @@ export class modelePersonnePhysique{
     valeur:number;
     intermediaire:String;
     nature:String;
+    nbreTransactionFrauduleuse:number;
 }

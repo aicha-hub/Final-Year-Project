@@ -61,7 +61,15 @@
             <td mat-cell *matCellDef="let contact"> {{contact.niveauRisque}} </td>
             
           </ng-container>
-
+         
+            <ng-container matColumnDef="addAction">
+              <th mat-header-cell *matHeaderCellDef> </th>
+         
+                <td mat-cell *matCellDef="let contact" style="color: indigo;"><button mat-button (click)="addPP(contact.codeClient)"><span class="material-icons">add</span></button>
+                
+                </ng-container> 
+         
+        
           <ng-container matColumnDef="deleteAction">
             <th mat-header-cell *matHeaderCellDef> </th>
               <td mat-cell *matCellDef="let contact" style="color: indigo;"><button mat-button (click)="deletePP(contact.codeClient)"><span class="material-icons">delete</span></button>

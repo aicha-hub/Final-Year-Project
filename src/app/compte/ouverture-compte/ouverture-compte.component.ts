@@ -56,7 +56,7 @@ export class OuvertureCompteComponent implements OnInit {
       
   }
     
-    
+  this.router.navigate(['listeClient']);  
   }
 
 

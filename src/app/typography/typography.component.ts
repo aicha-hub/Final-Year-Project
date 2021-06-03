@@ -97,7 +97,7 @@ export class TypographyComponent implements OnInit {
   }**/
 
   public CreateNow(code:number)
-  {  let snackBarRef = this.snackBar.open('Client cree!', 'Bravo', {
+  {  let snackBarRef = this.snackBar.open('Client moral cree!', 'Bravo', {
       duration: 3000
     });
     
@@ -109,7 +109,7 @@ export class TypographyComponent implements OnInit {
     resp2.subscribe((data)=>this.message=data);   
     
     
-    this.router.navigate(['listeClient']);
+    this.router.navigate(['clientsMorales']);
    
 
     }

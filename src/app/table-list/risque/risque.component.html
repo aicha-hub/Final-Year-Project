@@ -96,20 +96,17 @@
                                
                                 <p class="l2">  <b>Residence : </b>{{modelePersonnePhysique.residence}}</p>
                                
-                              </div>
-                              
-
-                             
-                            
-                                    
-                             
-                             
-                             
-                             
-                          
-                            
+                              </div>                       
                          </div>
-
+                         <div>
+                          <label class="l1" ><b> <section class="mat-typography">
+                              <h2>LES NOMBRES DES TRANSACTIONS FRAUDULEUSES : </h2>
+                            </section> </b></label> 
+                           <div *ngIf="modelePersonnePhysique.nbreTransactionFrauduleuse>0; else elseBlock32">  
+                              <p class="l2"> <b>transaction(s) : </b>{{modelePersonnePhysique.nbreTransactionFrauduleuse}}</p>
+                            </div>
+                            <ng-template #elseBlock32> <p>Aucune transaction douteuse</p></ng-template>
+                       </div>
 
   
    

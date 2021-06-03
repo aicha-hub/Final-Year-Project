@@ -17,7 +17,7 @@ export class ListeClientComponent implements OnInit {
   contact:any;
   code:Number;
   totalRecords:Number=100;
-  columnsToDisplay : string[] = ['codeClient','numTelephone','statutPersonne','paysResidence','niveauRisque','deleteAction'];
+  columnsToDisplay : string[] = ['codeClient','numTelephone','statutPersonne','paysResidence','niveauRisque','addAction','deleteAction'];
   private roles: string[];
   isLoggedIn = false;
   showAdminBoard = false;
@@ -96,4 +96,9 @@ export class ListeClientComponent implements OnInit {
         this.fetchPosts();
       },
       error => console.log(error));}
+
+     public addPP(id :number)
+  {
+    this.router.navigate(['/ouvertureCompte',id])
+  }
 }
