@@ -9,3 +9,10 @@ label {
     color: rgb(61, 59, 59);
     margin-bottom: 25px;
 }
+/* Makes the chart container expand to the full width of the parent container*/
+
+/* Some extra space is needed to offset the way the labels display */
+.legendTitle{
+    margin-left: 1000px;
+}
+

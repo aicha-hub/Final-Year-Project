@@ -15,6 +15,7 @@ export class TableauxBordsComponent implements OnInit {
   categoriesList3: any[] = [];
   categoriesList4: any[] = [];
   animations: boolean = true;
+  legendPosition:String='below';
   xAxis: boolean = true;
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;

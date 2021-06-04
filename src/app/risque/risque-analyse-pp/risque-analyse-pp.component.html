@@ -2,42 +2,137 @@
   <div class="container-fluid">
       <div class="row">
           <div class="col-md-12">
-              <button mat-raised-button color="warn" style="margin-left: 850px" (click)="clientsMorales()" >
-                  <span class="material-icons">
-                  east
-                  </span>Voir clients morales</button>
+             
 
               <div class="card">
                   <div class="card-header card-header-danger">
-                      <h4 class="card-title ">Vos clients </h4>
-                      <p class="card-category"> Clients Physiques </p>
+                      <h4 class="card-title ">Numéro de compte :  {{id}}</h4>
+                      <p class="card-category"> Analyse sur toutes les transaction faites par ce compte   </p>
                   </div>
 
              
                   <div class="card-body">
-<div>
 
-  <ngx-charts-bar-vertical *ngIf="done"
-  [results]="categoriesList"
-  [legend]="legend"
-  [legendTitle]="'Liste des transactions'" 
-  [view]="[900,500]"
-  [labels]="true" 
-  [doughnut]="true"
-  [trimLabels]="true"
-  [scheme]="colorScheme"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxis]="xAxis"
-  [yAxis]="yAxis"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel"
-  [timeline]="timeline"
-  [maxLabelLength]="20">
-  </ngx-charts-bar-vertical>
-  <br>
-</div>
-                 <br>  
+                    <div class="row">
+                      <div class="col-md-4">
+                          <div class="card card-chart">
+                              <div class="card-header card-header-success">
+                                  <div class="ct-chart" id="dailySalesChart"></div>
+                              </div>
+                              <div class="card-body">
+                                <h4 class="card-title">Natures des Transactions</h4>
+                                <ngx-charts-bar-vertical id="verti" *ngIf="done"
+                                [results]="categoriesList"
+                                [legend]="legend"
+                                [legendTitle]="''" 
+                                [view]="[330,350]"
+                                [labels]="true" 
+                                [doughnut]="true"
+                                [trimLabels]="true"
+                                [scheme]="colorScheme"
+                                [legendPosition]="legendPosition"
+                                [showXAxisLabel]="showXAxisLabel"
+                                [showYAxisLabel]="showYAxisLabel"
+                                [xAxis]="xAxis"
+                                [yAxis]="yAxis"
+                                [barPadding]="barPadding"
+                                [tooltipDisabled]="tooltipDisabled"
+                                [roundEdges]="roundEdges"
+                                [xAxisLabel]="xAxisLabel"
+                                [yAxisLabel]="yAxisLabel"
+                                [timeline]="timeline"
+                                [showGridLines]="showGridLines"
+                                [showDataLabel]="showDataLabel"
+                                [maxLabelLength]="true">
+                                </ngx-charts-bar-vertical>
+                              </div>
+                              <div class="card-footer">
+                                  <div class="stats">
+                                      <i class="material-icons">access_time</i> Mis à jour fait il y a une seconde.
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="card card-chart">
+                              <div class="card-header card-header-warning">
+                                  <div class="ct-chart" id="websiteViewsChart"></div>
+                              </div>
+                              <div class="card-body">
+                                  <h4 class="card-title">Risques des Transactions</h4>
+                                  <ngx-charts-pie-chart *ngIf="done1"
+                                  [results]="categoriesList1"
+                                  [legend]="legend"
+                                  [legendTitle]="''" 
+                                  [view]="[310,350]"
+                                  [labels]="true" 
+                                  [doughnut]="true"
+                                  [trimLabels]="true"
+                                  [scheme]="colorScheme"
+                                  [showXAxisLabel]="showXAxisLabel"
+                                  [showYAxisLabel]="showYAxisLabel"
+                                  [xAxis]="xAxis"
+                                  [yAxis]="yAxis"
+                                  [xAxisLabel]="xAxisLabel"
+                                  [yAxisLabel]="yAxisLabel"
+                                  [timeline]="timeline"
+                                  [legendPosition]="legendPosition1"
+                                  [maxLabelLength]="20">
+                                  </ngx-charts-pie-chart>
+                              </div>
+                              <div class="card-footer">
+                                  <div class="stats">
+                                      <i class="material-icons">access_time</i> Mis à jour fait il y a une seconde.
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="card card-chart">
+                              <div class="card-header card-header-danger">
+                                  <div class="ct-chart" id="completedTasksChart"></div>
+                              </div>
+                              <div class="card-body">
+                                  <h4 class="card-title" >Nombre Transaction mensuelle</h4>
+                                  <ngx-charts-line-chart *ngIf="done2"
+                                  [view]="[330,350]"
+                                        [scheme]="colorScheme"
+                                        [results]="multi"
+                                        [gradient]="gradient"
+                                        [legendTitle]="''" 
+                                        [legend]="legend"
+                                        [xAxis]="showXAxis"
+                                        [yAxis]="showYAxis"
+                                        [legend]="showLegend"
+                                        [showXAxisLabel]="showXAxisLabel"
+                                        [showYAxisLabel]="showYAxisLabel"
+                                        [xAxisLabel]="xAxisLabel1"
+                                        [legendPosition]="legendPosition1"
+                                        [yAxisLabel]="yAxisLabel"
+                                        [autoScale]="autoScale"
+                                        [timeline]="timeline"
+                                        (select)="onSelect($event)">
+                                      </ngx-charts-line-chart> 
+                              </div>
+                              <div class="card-footer">
+                                  <div class="stats">
+                                      <i class="material-icons">access_time</i> Mis à jour fait il y a une seconde.
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+   
+  
+
+      
+     
+
+  
+  
+
+
+                  
                
                       <div class="table-responsive">
                         <label class="l1" style="margin-top: 50px;">Transactions Validées</label>

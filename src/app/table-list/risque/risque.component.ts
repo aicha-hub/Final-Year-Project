@@ -37,13 +37,6 @@ export class RisqueComponent implements OnInit {
         this.v = data;
         this.router.navigate(['/risqueAnalysePP',this.v]);
       }, error => console.log(error));
-     
-
-
-
-    
-    
-   
   }
 
 }

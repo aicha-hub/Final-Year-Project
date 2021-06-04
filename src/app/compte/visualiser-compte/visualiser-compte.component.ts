@@ -4,6 +4,7 @@ import { compte } from '../compte';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-visualiser-compte',
@@ -13,11 +14,11 @@ import {MatTableDataSource} from '@angular/material/table';
 export class VisualiserCompteComponent implements OnInit {
   comptes: any;
   dataSource : MatTableDataSource<compte>;
-  columnsToDisplay : string[] = ['rib','numCompte','solde','nomAgence','dateOuverture'];
+  columnsToDisplay : string[] = ['rib','numCompte','solde','nomAgence','dateOuverture','addAction'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private service:CompteEpargneService) { }
+  constructor(private service:CompteEpargneService,private router: Router,) { }
 
   ngOnInit(): void {
     this.fetchPosts();
@@ -64,5 +65,8 @@ export class VisualiserCompteComponent implements OnInit {
         this.dataSource.paginator.firstPage();
       }
     }
-
+    public addPP(id :number)
+  {
+    this.router.navigate(['/risqueAnalysePP',id])
+  }
 }

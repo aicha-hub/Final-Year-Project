@@ -46,6 +46,11 @@ export class OperationService {
 
   public getTransactionClientRefuse(id:number)
   {return this.http.get("http://localhost:9090/transaction/GetAllR/"+id)}
+  public getAnalyse(id:number)
+  {return this.http.get("http://localhost:9090/transaction/GetAllAnalyse/"+id)}
+
+  public getAnalyseDate(id:number)
+  {return this.http.get("http://localhost:9090/transaction/GetAllAnalyseDate/"+id)}
 
   public deleteTransaction(id:number)
   {return this.http.delete("http://localhost:9090/transaction/Delete/"+id,{responseType:'text' as 'json'})
