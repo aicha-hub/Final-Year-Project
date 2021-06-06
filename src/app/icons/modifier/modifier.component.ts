@@ -133,7 +133,7 @@ export class ModifierComponent implements OnInit {
   }
   updateNow ( codeBE : number,codeBE1 : number,codeBE2 : number,codeBE3 : number, codeRep:number )
   {
-    let resp2= this.service.updatePM(this.id,this.personne_morale);
+    let resp2= this.service.updatePersonne(this.id,this.personne_morale);
     resp2.subscribe((data)=>this.message=data); 
     let be = this.service2.updatePR(codeBE,this.beneficiaireEffectif);
     be.subscribe((data)=>this.message=data);
@@ -143,7 +143,7 @@ export class ModifierComponent implements OnInit {
     be2.subscribe((data)=>this.message=data);
     let be3 = this.service2.updatePR(codeBE3,this.beneficiaireEffectif4);
     be3.subscribe((data)=>this.message=data);
-   if (this.createRep=="true")
+   if (this.createRep==true)
     {let rep1=this.service1.updateRL(codeRep,this.representant_legal);
     rep1.subscribe((data)=>this.message=data);}
     let snackBarRef = this.snackBar.open('Mise à jour faite avec succès!', 'Succès', {
@@ -153,7 +153,7 @@ export class ModifierComponent implements OnInit {
   }
   updateNow1 ( codeBE : number, codeBE1 : number,codeBE2 : number, codeRep:number)
   {
-    let resp2= this.service.updatePM(this.id,this.personne_morale);
+    let resp2= this.service.updatePersonne(this.id,this.personne_morale);
     resp2.subscribe((data)=>this.message=data); 
     let be = this.service2.updatePR(codeBE,this.beneficiaireEffectif);
     be.subscribe((data)=>this.message=data);
@@ -161,7 +161,7 @@ export class ModifierComponent implements OnInit {
     be1.subscribe((data)=>this.message=data);
     let be2 = this.service2.updatePR(codeBE2,this.beneficiaireEffectif3);
     be2.subscribe((data)=>this.message=data);
-    if (this.createRep=="true")
+    if (this.createRep==true)
     {let rep1=this.service1.updateRL(codeRep,this.representant_legal);
     rep1.subscribe((data)=>this.message=data);}
     let snackBarRef = this.snackBar.open('Mise à jour faite avec succès!', 'Succès', {
@@ -175,9 +175,9 @@ export class ModifierComponent implements OnInit {
     be.subscribe((data)=>this.message=data);
     let be1 = this.service2.updatePR(codeBE1,this.beneficiaireEffectif2);
     be1.subscribe((data)=>this.message=data);
-    let resp2= this.service.updatePM(this.id,this.personne_morale);
+    let resp2= this.service.updatePersonne(this.id,this.personne_morale);
     resp2.subscribe((data)=>this.message=data);
-    if (this.createRep=="true")
+    if (this.createRep==true)
     {let rep1=this.service1.updateRL(codeRep,this.representant_legal);
     rep1.subscribe((data)=>this.message=data);}
     let snackBarRef = this.snackBar.open('Mise à jour faite avec succès!', 'Succès', {
@@ -186,14 +186,19 @@ export class ModifierComponent implements OnInit {
     this.router.navigate(['/clientsMorales']) ;
   }
   updateNow3 ( codeBE : number, codeRep:number)
-  {
-    let resp2= this.service.updatePM(this.id,this.personne_morale);
+  { 
+  
+    let resp2= this.service.updatePersonne(this.id,this.personne_morale);
     resp2.subscribe((data)=>this.message=data); 
     let be = this.service2.updatePR(codeBE,this.beneficiaireEffectif);
     be.subscribe((data)=>this.message=data);
-    if (this.createRep=="true")
-    {let rep1=this.service1.updateRL(codeRep,this.representant_legal);
-    rep1.subscribe((data)=>this.message=data);}
+    if (this.createRep==true)
+    {
+    
+    let r1=this.service1.updateRL(codeRep,this.representant_legal);
+    r1.subscribe((data)=>this.message=data);
+    }
+    
     let snackBarRef = this.snackBar.open('Mise à jour faite avec succès!', 'Succès', {
       duration: 3000
     });

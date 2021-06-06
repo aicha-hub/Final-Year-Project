@@ -17,9 +17,28 @@ export class OperationService {
   {return this.http.get("http://localhost:9090/transaction/GetAll")}
 
 
+  public getNbre()
+  {return this.http.get("http://localhost:9090/transaction/GetAllTranMois")}
+
+  public getcmp()
+  {return this.http.get("http://localhost:9090/transaction/GetAllCompte")}
+
   public getType()
   {return this.http.get("http://localhost:9090/transaction/GetAllType")}
-
+  public getJanvier()
+  {return this.http.get("http://localhost:9090/transaction/GetAllJanvier")}
+  public getFeverier()
+  {return this.http.get("http://localhost:9090/transaction/GetAllfeverier")}
+  public getJuin()
+  {return this.http.get("http://localhost:9090/transaction/GetAllJuin")}
+  public getMars()
+  {return this.http.get("http://localhost:9090/transaction/GetAllMars")}
+  public getAvril()
+  {return this.http.get("http://localhost:9090/transaction/GetAllAvril")}
+  public getMai()
+  {return this.http.get("http://localhost:9090/transaction/GetAllMai")}
+  public getjuillet()
+  {return this.http.get("http://localhost:9090/transaction/GetAllJuillet")}
   public getDN()
   {return this.http.get("http://localhost:9090/transaction/GetAllDN")}
 

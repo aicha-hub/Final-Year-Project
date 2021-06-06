@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'app/securityServices/auth.service';
 import { user } from '../user';
 
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
   
   
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router:Router ) { }
 
   ngOnInit(): void {
   }
@@ -43,6 +44,9 @@ export class RegisterComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     );
+
+    this.router.navigate(['/utilisateur']);
+    
   }
 
 }

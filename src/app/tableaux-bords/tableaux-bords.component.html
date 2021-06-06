@@ -1,44 +1,88 @@
 
 
 
+<div class="row" style="margin-top: 100px;margin-left:5px;">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-success card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">account_balance</i>
+                </div>
+                <p class="card-category">Etat de la caisse :</p>
+                <h3 class="card-title">{{nbre2}}</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">date_range</i> Mis à jour fait il y a une seconde.
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="row" style="margin-top: 20px;margin-left: 50px;" >
-     
-    <ngx-charts-advanced-pie-chart *ngIf="done4"
-    [results]="categoriesList4"
-    [view]="[500,500]"
-    [scheme]="colorScheme"
-    [gradient]="gradient"
-    (select)="onSelect($event)"
-    (activate)="onActivate($event)"
-    (deactivate)="onDeactivate($event)">
-    </ngx-charts-advanced-pie-chart> 
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-warning card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">groups</i>
+                </div>
+                <p class="card-category">Nombre des clients :</p>
+                <h3 class="card-title">{{nbre}}
+                    <small></small>
+                </h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">local_offer</i> Les nombres des clients actuels.
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-danger card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons"><span class="material-icons-outlined">
+                        account_balance_wallet
+                        </span></i>
+                </div>
+                <p class="card-category">Nombre  des comptes :</p>
+                <h3 class="card-title">{{nbre3}}</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">local_offer</i>Les nombres des comptes actuels.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-info card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons"><span class="material-icons-outlined">
+                        trending_up
+                        </span></i>
+                </div>
+                <p class="card-category">Les transactions :</p>
+                <h3 class="card-title">{{nbre11}}</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">update</i>Nombre des transactions mensuelles
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 
-<div style="margin-top: 5px;margin-bottom:400px;">
-    <ngx-charts-pie-chart *ngIf="done"
-    [results]="categoriesList"
-    [legend]="legend"
-    [legendTitle]="'Les clients classés par risque: '" 
-    [view]="[1200,500]"
-    [labels]="true" 
-    [doughnut]="true"
-    [trimLabels]="true"
-    [scheme]="colorScheme"
-    [showXAxisLabel]="showXAxisLabel"
-    [showYAxisLabel]="showYAxisLabel"
-    [xAxis]="xAxis"
-    [yAxis]="yAxis"
-    [xAxisLabel]="xAxisLabel"
-    [yAxisLabel]="yAxisLabel"
-    [timeline]="timeline"
-    [maxLabelLength]="20">
-    </ngx-charts-pie-chart>
-    </div>
-<b ><h1 style="margin-left:100px;color:rgb(79, 48, 107) ;">Analyse sur les transactions :</h1> </b>
-<br>
-<br>
+
+    
+
 
 
 
@@ -53,13 +97,13 @@
                   <div class="ct-chart" id="dailySalesChart"></div>
               </div>
               <div class="card-body">
-                <h4 class="card-title">Natures des Transactions</h4>
-                <ngx-charts-pie-chart *ngIf="done1"
-                [results]="categoriesList1"
+                <h4 class="card-title"> <b>Les types des comptes:</b>  </h4>
+                <ngx-charts-pie-chart *ngIf="done99"
+                [results]="categoriesList7"
                 [legend]="legend"
-                [legendTitle]="'Transactions : '" 
-                [view]="[350,380]"
+                [legendTitle]="''" 
                 [legendPosition]="legendPosition"
+                [view]="[380,380]"
                 [labels]="true" 
                 [doughnut]="true"
                 [trimLabels]="true"
@@ -73,6 +117,8 @@
                 [timeline]="timeline"
                 [maxLabelLength]="20">
                 </ngx-charts-pie-chart>
+               
+                
               </div>
               <div class="card-footer">
                   <div class="stats">
@@ -87,18 +133,19 @@
                   <div class="ct-chart" id="websiteViewsChart"></div>
               </div>
               <div class="card-body">
-                  <h4 class="card-title">Risques des Transactions</h4>
+                  <h4 class="card-title"> <b> Risques des Transactions :</b></h4>
                
         <ngx-charts-bar-vertical *ngIf="done2"
         [results]="categoriesList2"
         [legend]="legend"
-        [legendTitle]="'Transactions: '" 
+        [legendTitle]="' '" 
         [legendPosition]="legendPosition"
-        [view]="[350,380]"
+        [view]="[340,360]"
         [labels]="true" 
         [doughnut]="true"
         [trimLabels]="true"
         [scheme]="colorScheme"
+        [barPadding]="barPadding"
         [showXAxisLabel]="showXAxisLabel"
         [showYAxisLabel]="showYAxisLabel"
         [xAxis]="xAxis"
@@ -122,16 +169,117 @@
                   <div class="ct-chart" id="completedTasksChart"></div>
               </div>
               <div class="card-body">
-                  <h4 class="card-title" >Nombre Transaction mensuelle</h4>
-                  <ngx-charts-pie-chart *ngIf="done3"
-                  [results]="categoriesList3"
+                <h4 class="card-title"> <b>Statut Fatca des Clients : </b> </h4>
+                <ngx-charts-pie-chart *ngIf="done44"
+                [results]="categoriesList6"
+                [legend]="legend"
+                [legendTitle]="''" 
+                [legendPosition]="legendPosition"
+                [view]="[380,380]"
+                [labels]="true" 
+                [doughnut]="true"
+                [trimLabels]="true"
+                [scheme]="colorScheme"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [xAxis]="xAxis"
+                [yAxis]="yAxis"
+                [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel"
+                [timeline]="timeline"
+                [maxLabelLength]="20">
+                </ngx-charts-pie-chart>
+              </div>
+              <div class="card-footer">
+                  <div class="stats">
+                      <i class="material-icons">access_time</i> Mis à jour fait il y a une seconde.
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div> 
+</div>
+<br>
+<div class="row">
+    <div class="col-md-8">
+        <h2> <b style="margin-left:40px;color: rgb(67, 27, 105);">Analyse Detaillée sur les transactions des client par mois :</b> </h2>
+          <ngx-charts-bar-vertical-2d  *ngIf="done5&&done6&&done7&&done8&&done9&&done10&&done11"
+          [results]="multi"
+           [view]="[800,500]"
+            [scheme]="colorScheme" 
+            [schemeType]="schemeType" 
+            [gradient]="gradient" 
+            [xAxis]="xAxis"
+            [gradient]="gradient"
+             [yAxis]="yAxis"
+              [legend]="legend"
+               [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+               [yAxisLabel]="yAxisLabel"
+                [legendTitle]="legendTitleMulti" 
+                [legendPosition]="legendPosition"
+                 [animations]="animations"
+                  [showGridLines]="showGridLines"
+                   [barPadding]="barPadding"
+                   [autoScale]="autoScale"
+                   [timeline]="timeline"
+                   (select)="onSelect($event)"
+                    [tooltipDisabled]="tooltipDisabled"></ngx-charts-bar-vertical-2d>
+  </div>
+  <div class="col-md-4" >
+    <h2> <b style="margin-left:40px;color: rgb(67, 27, 105);">Les clients par Type :</b> </h2>
+      <ngx-charts-pie-chart *ngIf="done4"
+      [results]="categoriesList4"
+      [view]="[350,500]"
+      [legend]="legend"
+  
+      [legendTitle]="''" 
+      [legendPosition]="legendPosition"
+      
+      [labels]="true" 
+      [doughnut]="true"
+      [trimLabels]="true"
+      [scheme]="colorScheme"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [timeline]="timeline"
+      [maxLabelLength]="20">
+      </ngx-charts-pie-chart> 
+</div>
+
+</div>
+
+
+
+
+
+<div class="card-body">
+
+    <div class="row">
+      <div class="col-md-6">
+          <div class="card card-chart">
+              <div class="card-header card-header-success">
+                  <div class="ct-chart" id="dailySalesChart"></div>
+              </div>
+              <div class="card-body">
+          
+                
+                  <h4 class="card-title"> <b>Les clients classés par risque:</b>  </h4>
+                  <ngx-charts-pie-chart *ngIf="done"
+                  [results]="categoriesList"
                   [legend]="legend"
-                  [legendTitle]="'Transactions : '" 
-                  [view]="[350,380]"
+                  [legendTitle]="''" 
                   [legendPosition]="legendPosition"
+                  [view]="[500,400]"
                   [labels]="true" 
                   [doughnut]="true"
                   [trimLabels]="true"
+                  [scheme]="colorScheme"
                   [showXAxisLabel]="showXAxisLabel"
                   [showYAxisLabel]="showYAxisLabel"
                   [xAxis]="xAxis"
@@ -149,4 +297,47 @@
               </div>
           </div>
       </div>
+      <div class="col-md-6">
+          <div class="card card-chart">
+              <div class="card-header card-header-warning">
+                  <div class="ct-chart" id="websiteViewsChart"></div>
+              </div>
+              <div class="card-body">
+                  <h4 class="card-title"> <b>Nature des transactions :</b> </h4>
+               
+                 
+                  <ngx-charts-bar-vertical *ngIf="done1"
+                  [results]="categoriesList1"
+                  [legend]="legend"
+          
+                  [view]="[500,380]"
+                  [legendPosition]="legendPosition"
+                  [labels]="true" 
+                  [doughnut]="true"
+                  [trimLabels]="true"
+                  [scheme]="colorScheme"
+                  [showXAxisLabel]="showXAxisLabel"
+                  [showYAxisLabel]="showYAxisLabel"
+                  [xAxis]="xAxis"
+                  [yAxis]="yAxis"
+                  [xAxisLabel]="xAxisLabel"
+                  [yAxisLabel]="yAxisLabel"
+                  [timeline]="timeline"
+                  [maxLabelLength]="20">
+                  </ngx-charts-bar-vertical>
+              </div>
+              <div class="card-footer">
+                  <div class="stats">
+                      <i class="material-icons">access_time</i> Mis à jour fait il y a une seconde.
+                  </div>
+              </div>
+          </div>
+      </div>
+     
   </div> 
+  
+
+
+
+
+  

@@ -10,7 +10,14 @@ export class ContactService {
   constructor(private http:HttpClient) {
     
    }
-
+   public getCaisse() :Observable<any>
+   {return this.http.get("http://localhost:9090/contact/GetCaisse")}
+   public getFatca() :Observable<any>
+   {return this.http.get("http://localhost:9090/contact/GetAllFatca")}
+   public getTotalCMP() :Observable<any>
+   {return this.http.get("http://localhost:9090/contact/GetAllCompte")}
+   public getTotal() :Observable<any>
+   {return this.http.get("http://localhost:9090/contact/GetAlltotal")}
    public getContact() :Observable<any>
   {return this.http.get("http://localhost:9090/contact/GetAll")}
 

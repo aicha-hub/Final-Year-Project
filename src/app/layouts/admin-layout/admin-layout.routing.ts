@@ -50,6 +50,8 @@ import { ListeClientComponent } from 'app/liste-client/liste-client.component';
 import { ListeClientMoralComponent } from 'app/liste-client/liste-client-moral/liste-client-moral.component';
 import { ModifierComponent } from 'app/icons/modifier/modifier.component';
 import { TableauxBordsComponent } from 'app/tableaux-bords/tableaux-bords.component';
+import { UtilisateursComponent } from 'app/utilisateurs/utilisateurs.component';
+import { MotDePasseComponent } from 'app/utilisateurs/mot-de-passe/mot-de-passe.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -142,7 +144,9 @@ export const AdminLayoutRoutes: Routes = [
     {path:'visualiserCompte',component:VisualiserCompteComponent},
     {path:'listeClient',component:ListeClientComponent},
     {path:'modifier/:id',component:ModifierComponent},
-    {path:'tableauxBords',component:TableauxBordsComponent}
+    {path:'tableauxBords',component:TableauxBordsComponent},
+    {path:'utilisateur',component:UtilisateursComponent},
+    {path:'espaceUtilisateur',component:MotDePasseComponent}
 
     
 ];

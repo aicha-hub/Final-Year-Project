@@ -105,7 +105,7 @@ export class RisqueAnalysePPComponent implements OnInit {
       name: 'Transaction effectueé par mois',
       series: [
         
-      ]
+      ],
     },
    
   

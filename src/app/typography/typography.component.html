@@ -12,10 +12,22 @@
                   
                 <label class="l1">DONNÉES DE BASE DU CLIENT MORAL*
                 </label>
-                <mat-form-field class="example-full-width">
-                  <input  required  matInput [(ngModel)]="personne_morale.codeClient"  id="codeClient"  formControlName="codeClient" placeholder="Num RNE" type="number" >
-                  <mat-error>Champs obligatoire.</mat-error>
-                </mat-form-field>
+                <div class="row">
+                  <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input  required  matInput [(ngModel)]="personne_morale.codeClient"  id="codeClient"  formControlName="codeClient" placeholder="Num RNE" type="number" >
+                    <mat-error>Champs obligatoire.</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input  required  matInput [(ngModel)]="personne_morale.matriculeFiscale"  id="matricule"  formControlName="matricule" placeholder="Matricule Fiscale" type="text" >
+                    <mat-error>Champs obligatoire.</mat-error>
+                  </mat-form-field>
+                </div>
+
+                </div>
+                
 
                 <div class="row">
                     <div class="col-md-6">

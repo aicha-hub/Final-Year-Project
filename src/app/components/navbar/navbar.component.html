@@ -26,7 +26,8 @@
             </span>Chef Agence</a>
         </li>
         <li class="nav-item">
-          <a href="/profile" class="nav-link" routerLink="profile"><span class="material-icons">
+          
+          <a  class="nav-link"  (click)="changer(username)"><span class="material-icons">
             
               account_circle
               
@@ -42,17 +43,18 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+        
         <li  class="nav-item">
           
-          <a *ngIf="showChefBoard || showAdminBoard" href="http://localhost:4200/#/ajouterUtilisateur" class="nav-link" ><span class="material-icons">
+          <a *ngIf="showChefBoard || showAdminBoard" href="http://localhost:4200/#/utilisateur" class="nav-link" ><span class="material-icons">
             add
-            </span>Ajouter utilisateur</a>
+            </span>Gérer utilisateurs</a>
           
         </li>
         
         <li  class="nav-item">
           
-          <a *ngIf="showChefBoard || showAdminBoard || showConseillerBoard " href="http://localhost:4200/#/modeleCotationDeRisque" class="nav-link" ><span *ngIf="showChefBoard || showAdminBoard" class="material-icons">
+          <a *ngIf="showChefBoard || showAdminBoard || showResponsableBoard " href="http://localhost:4200/#/modeleCotationDeRisque" class="nav-link" ><span *ngIf="showChefBoard || showAdminBoard" class="material-icons">
             edit
             </span>modele cotation</a>
           

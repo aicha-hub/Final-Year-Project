@@ -24,7 +24,7 @@ export const ROUTES: RouteInfo[] = [
 export const ROUTESChef: RouteInfo[] = [
 
   { path: '/tableauxBords', title: 'Tableau de bord',  icon: 'dashboard', class: '' },
-  { path: '/table-list', title: 'Liste clients ',  icon:'list', class: '' },
+  { path: '/listeClient', title: 'Liste clients ',  icon:'list', class: '' },
   { path: '/ajouter', title: 'Ajouter client',  icon:'person_add', class: '' },
   {path:'/risqueClientPhysique', title:'Liste Surveillance',icon:'description',class:''},
   {path:'/fatca', title:'Fatca',icon:'content_paste',class:''},
@@ -39,7 +39,7 @@ export const ROUTESChef: RouteInfo[] = [
 
 export const ROUTESConseiller: RouteInfo[] = [
   { path: '/tableauxBords', title: 'Dashboard',  icon: 'dashboard', class: '' },
-  { path: '/table-list', title: 'Liste clients ',  icon:'list', class: '' },
+  { path: '/listeClient', title: 'Liste clients ',  icon:'list', class: '' },
   { path: '/ajouter', title: 'Ajouter client',  icon:'person_add', class: '' },
   {path:'/fatca', title:'Fatca',icon:'content_paste',class:''},
   { path: '/compte', title: 'Demande compte',  icon:'credit_score', class: '' },
@@ -51,7 +51,7 @@ export const ROUTESConseiller: RouteInfo[] = [
 
 export const ROUTESResponsable: RouteInfo[] = [
   { path: '/tableauxBords', title: 'Dashboard',  icon: 'dashboard', class: '' },
-  {path: '/table-list', title: 'Liste clients ',  icon:'list', class: '' },
+  {path: '/listeClient', title: 'Liste clients ',  icon:'list', class: '' },
   {path:'/risqueClientPhysique', title:'Liste Surveillance',icon:'description',class:''},
   {path:'/fatca', title:'Fatca',icon:'content_paste',class:''},
   { path: '/compte', title: 'Demande compte',  icon:'credit_score', class: '' },
@@ -83,7 +83,7 @@ export class SidebarComponent implements OnInit {
       this.roles = user.roles;
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.showResponsableBoard = this.roles.includes('ROLE_RESPONSABLE');
-    this.showConseillerBoard = this.roles.includes('CONSEILLER_CLIENT');
+    this.showConseillerBoard = this.roles.includes('CONSEILLER_CLIENTS');
     this.showChefBoard = this.roles.includes('CHEF_AGENCE');
     this.username = user.username;
     }

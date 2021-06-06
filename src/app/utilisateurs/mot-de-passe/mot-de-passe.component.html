@@ -1,0 +1,58 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header card-header-danger">
+                <h3 class="card-title">Espace utilisateur</h3>
+                
+            </div>
+            <div class="card-body">
+              <div class="container" *ngIf="user; else loggedOut">
+                  <br>
+                  
+                  <p><strong>Nom d'utilisateur : </strong>
+                      {{ user.username }}</p>
+                  
+                 
+                  <p>
+                    <strong>Email:</strong>
+                    {{ user.email }}
+                  </p>
+                  
+                  
+                  <strong>Roles:</strong> {{user.roles[0].name}}
+                    
+                    <br> <br>
+                  <button *ngIf="doChange==false" mat-stroked-button color="warn" (click)="changer()" ><span class="material-icons">edit</span> Changer mot de passe</button>
+                  <div *ngIf="doChange==true">
+                      <br>
+                      <h4><strong>Entrez le nouveau mot de passe :</strong> </h4>
+                      <div class="row">
+                      
+                      <div class="col-md-6">
+                          <mat-form-field class="example-full-width">
+                              <input  matInput [(ngModel)]="user.password"  #mdp name="motDePasse" id="motDePasse"  placeholder="Nouveau mot de passe" type="password" >
+                            </mat-form-field>
+                      <br>   
+                  </div>
+                      </div>
+                      <div class="row">
+                      <div class="col-md-6">
+                          <mat-form-field class="example-full-width">
+                              <input  matInput   name="motDePasse1" id="motDePasse1" #mdp1  placeholder="Confirmer mot de passe" type="password" >
+                            </mat-form-field>                    <br>
+                  </div>
+                      </div>
+                      <button  mat-stroked-button color="warn" (click)="changerMotDePasse(mdp.value,mdp1.value,user.username,user)" ><span class="material-icons">edit</span> Enregitrer</button>
+               
+                </div>
+                </div>
+                
+                <ng-template #loggedOut>
+                  Please login.
+                </ng-template>
+                    
+            </div>
+        </div>
+    </div>
+  </div>
+  

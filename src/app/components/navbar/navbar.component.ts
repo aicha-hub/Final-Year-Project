@@ -4,6 +4,10 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'app/securityServices/token-storage.service';
 import { ROUTES } from '../sidebar/sidebar.component';
+import { UtilisateursComponent } from 'app/utilisateurs/utilisateurs.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MotDePasseComponent } from 'app/utilisateurs/mot-de-passe/mot-de-passe.component';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -22,7 +26,7 @@ export class NavbarComponent implements OnInit {
     showConseillerBoard=false;
     showResponsableBoard = false;
     username: string;
-    constructor(location: Location,  private element: ElementRef, private router: Router,private tokenStorageService: TokenStorageService) {
+    constructor(location: Location,  private element: ElementRef, private router: Router,private tokenStorageService: TokenStorageService,private snackBar: MatSnackBar,private dialog: MatDialog ) {
       this.location = location;
           this.sidebarVisible = false;
     }
@@ -44,7 +48,7 @@ export class NavbarComponent implements OnInit {
     this.roles = user.roles;
     this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
     this.showResponsableBoard = this.roles.includes('ROLE_RESPONSABLE');
-    this.showConseillerBoard = this.roles.includes('CONSEILLER_CLIENT');
+    this.showConseillerBoard = this.roles.includes('CONSEILLER_CLIENTS');
     this.showChefBoard = this.roles.includes('CHEF_AGENCE');
     this.username = user.username;
   }
@@ -127,4 +131,16 @@ export class NavbarComponent implements OnInit {
         this.tokenStorageService.signOut();
         window.location.reload();
       }
+
+      changer(test:string)
+      {
+          const dialogConfig = new MatDialogConfig();
+          dialogConfig.disableClose =false;
+          dialogConfig.autoFocus = true;   
+          dialogConfig.data = {test};
+          dialogConfig.width = "60%";
+          this.dialog.open(MotDePasseComponent,dialogConfig);
+          
+      }
+   
 }

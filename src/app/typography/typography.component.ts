@@ -52,6 +52,7 @@ export class TypographyComponent implements OnInit {
    this.form= new FormGroup({
    
     codeClient : new FormControl(0,Validators.required),
+    matricule : new FormControl('',Validators.required),
     denominationSociale: new FormControl('', Validators.required),
     formeJuridique: new FormControl('', Validators.required),
     objetSocial : new FormControl('', Validators.required),

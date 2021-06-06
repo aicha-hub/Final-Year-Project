@@ -79,6 +79,8 @@ import { ListeClientMoralComponent } from './liste-client/liste-client-moral/lis
 import { ModifierComponent } from './icons/modifier/modifier.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { TableauxBordsComponent } from './tableaux-bords/tableaux-bords.component';
+import { UtilisateursComponent } from './utilisateurs/utilisateurs.component';
+import { MotDePasseComponent } from './utilisateurs/mot-de-passe/mot-de-passe.component';
 
 
 
@@ -213,6 +215,8 @@ import { TableauxBordsComponent } from './tableaux-bords/tableaux-bords.componen
                  ListeClientMoralComponent,
                  ModifierComponent,
                  TableauxBordsComponent,
+                 UtilisateursComponent,
+                 MotDePasseComponent,
             
               
    

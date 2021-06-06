@@ -10,7 +10,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
+                <button *ngIf="showChefBoard || showAdminBoard" mat-stroked-button color="#566D7E"  style="margin-left: 950px;" (click)="niveauRisque(modele)"><span class="material-icons">edit</span>Modifier niveau risque</button>
+                    <button *ngIf="showResponsableBoard " mat-stroked-button color="#566D7E"  style="margin-left: 950px;" (click)="niveauRisque(modele)">Consulter niveau risque</button>
+
                 <div class="card">
+                    
                     <div class="card-header card-header-danger">
                         <h4 class="card-title ">Modéle de cotation de risque</h4>
                         
@@ -20,9 +24,7 @@
                        -->
                     
                     <div class="card-body">
-                        <button *ngIf="showChefBoard || showAdminBoard" mat-stroked-button color="#566D7E"  style="margin-left: 750px;" (click)="niveauRisque(modele)"><span class="material-icons">edit</span>Modifier niveau risque</button>
-                        <button *ngIf="showResponsableBoard " mat-stroked-button color="#566D7E"  style="margin-left: 750px;" (click)="niveauRisque(modele)"><span class="material-icons">edit</span>Modifier niveau risque</button>
-
+                        
                         <div class="card-title">
                             <p></p>
                             <h2>Risque lié au critére géographique et au domaine d'activité</h2>

@@ -29,7 +29,7 @@ export class ModeleComponent implements OnInit {
       this.roles = user.roles;
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.showResponsableBoard = this.roles.includes('ROLE_RESPONSABLE');
-     this.showConseillerBoard = this.roles.includes('CONSEILLER_CLIENT');
+     this.showConseillerBoard = this.roles.includes('CONSEILLER_CLIENTS');
       this.showChefBoard = this.roles.includes('CHEF_AGENCE');
       
     }

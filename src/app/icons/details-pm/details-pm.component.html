@@ -442,8 +442,10 @@
                             </div>
 
                             <div class="col-md-6">
-                              <div *ngIf="personne_morale.paysOrigineFonds">  
-                                <p class="l2"> Pays de provenance</p> {{personne_morale.paysOrigineFonds}}
+                              <div *ngIf="personne_morale.paysOrigineFonds"> 
+                                <mat-form-field class="example-full-width">
+                                  <input  required matInput [(ngModel)]="personne_morale.paysOrigineFonds" name="paysOrigineFonds" id="paysOrigineFonds" placeholder="Origine des fonds" type="text" disabled>
+                                </mat-form-field>  
                               </div>
                             </div>
                           </div>
