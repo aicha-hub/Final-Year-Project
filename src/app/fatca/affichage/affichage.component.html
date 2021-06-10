@@ -13,10 +13,21 @@
                         <label class="l1">Clients moraux</label>
                         <div style="margin-top: 40px;margin-right: 10px;">
 
+                          <div class="row">
+   
+                            <div class="col-md-4" style="margin-left: 700px;">
                             <mat-form-field >
+                             
                               <mat-label>Chercher</mat-label>
                               <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Matricule Fiscale" #input>
                             </mat-form-field>
+                          </div>
+                          <div class="col-md-1" style="width:60%;margin-top:15px;margin-right: -10px;">
+                            <span class="material-icons" >search</span>
+                            </div>
+                        </div>  
+
+                          
                             
                             <div class="mat-elevation-z8">
                               <table mat-table [dataSource]="dataSource" matSort>
@@ -77,10 +88,21 @@
                         <label class="l1">Clients physiques</label>
                         <div style="margin-top: 40px;margin-right: 10px;">
 
+                          <div class="row">
+   
+                            <div class="col-md-4" style="margin-left: 700px;">
                             <mat-form-field >
+                             
                               <mat-label>Chercher</mat-label>
                               <input matInput (keyup)="applyFilterone($event)" placeholder="Ex. Num CIN" #input1>
                             </mat-form-field>
+                          </div>
+                          <div class="col-md-1" style="width:60%;margin-top:15px;margin-right: -10px;">
+                            <span class="material-icons" >search</span>
+                            </div>
+                        </div> 
+
+                           
                             
                             <div class="mat-elevation-z8">
                               <table mat-table [dataSource]="dataSource1" matSort>

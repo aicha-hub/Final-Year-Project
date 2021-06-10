@@ -86,7 +86,7 @@ export class AffichageComponent implements OnInit {
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;   
     dialogConfig.width = "60%";
-    dialogConfig.height = "83%";
+    dialogConfig.height = "73%";
     dialogConfig.data = {personne_morale};
     this.dialoge.open(DetailsFatcaComponent,dialogConfig);
   }
@@ -107,7 +107,7 @@ export class AffichageComponent implements OnInit {
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;   
     dialogConfig.width = "60%";
-    dialogConfig.height = "80%";
+    dialogConfig.height = "73%";
     dialogConfig.data = {personne_physique};
     this.dialog.open(DetailsFatcaPPComponent,dialogConfig);
    

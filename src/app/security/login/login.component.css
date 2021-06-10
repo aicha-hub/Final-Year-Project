@@ -1,35 +1,67 @@
-label {
-    display: block;
-    margin-top: 10px;
-  }
+body {
+  background: url("C:\Users\USER-PC\Desktop\finalversion\src\assets\img\login.jpg") left ; /* First add background image */
+  background-size:cover; /* Set the size of the background */
+  background-repeat: no-repeat; /* Set the background to not repeat display */
+  height: 753px;
+
+}
+
+
   
-  .card-container.card {
-    max-width: 600px !important;
-    padding: 50px 50px;
-    margin-left: 200PX;
-    margin-top: 150px;;
-    
-  }
+.card-container.card {
+  max-width: 680px !important;
+  padding: 50px 50px;
+  margin-left: 430PX;
+  
+  
+}
   
   .card {
     background-color: #f7f7f7;
     padding: 20px 25px 30px;
     margin: 0 auto 25px;
-    margin-top: 50px;
+   height: 753px;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     border-radius: 2px;
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    background: #00000080;
+    
   }
-  
+
+ 
+  label {
+    display: block;
+    margin-top: 10px;
+  }
   .profile-img-card {
     width: 96px;
     height: 96px;
-    margin: 0 auto 10px;
+    margin: 0 auto 110px;
     display: block;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
   }
+
+  
+  button {border: 0;
+    font-size: 15px;
+    width: 200px;
+    height: 40px;
+    border-color:white;
+    font-weight: 700;
+    color: white;
+    background: #00000080;
+    margin-top:40px;
+    border-radius: 15px;
+   margin-left: 205px;
+   }
+
+    span{
+      margin-bottom:12px;
+      height:10px;
+      color: aliceblue;
+    }

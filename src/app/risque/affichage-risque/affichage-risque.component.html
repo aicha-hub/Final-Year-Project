@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <button mat-raised-button color="" style="margin-left: 1150px" (click)="clientsMorales()" >
+                <button mat-raised-button color="" style="margin-left: 950px" (click)="clientsMorales()" >
                     <span class="material-icons">
                     east
                     </span>Voir clients moraux</button>
@@ -15,10 +15,21 @@
                         <label class="l1">Risque elevé</label>
                         <div style="margin-top: 40px;margin-right: 10px;">
 
+                          <div class="row">
+   
+                            <div class="col-md-4" style="margin-left: 700px;">
                             <mat-form-field >
-                              <mat-label>Filter</mat-label>
+                             
+                              <mat-label>Chercher</mat-label>
                               <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
                             </mat-form-field>
+                          </div>
+                          <div class="col-md-1" style="width:60%;margin-top:15px;margin-right: -10px;">
+                            <span class="material-icons" >search</span>
+                            </div>
+                        </div> 
+
+                           
                             
                             <div class="mat-elevation-z8">
                               <table mat-table [dataSource]="dataSource" matSort>

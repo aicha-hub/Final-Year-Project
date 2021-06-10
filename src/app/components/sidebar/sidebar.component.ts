@@ -38,7 +38,7 @@ export const ROUTESChef: RouteInfo[] = [
 ];
 
 export const ROUTESConseiller: RouteInfo[] = [
-  { path: '/tableauxBords', title: 'Dashboard',  icon: 'dashboard', class: '' },
+  
   { path: '/listeClient', title: 'Liste clients ',  icon:'list', class: '' },
   { path: '/ajouter', title: 'Ajouter client',  icon:'person_add', class: '' },
   {path:'/fatca', title:'Fatca',icon:'content_paste',class:''},

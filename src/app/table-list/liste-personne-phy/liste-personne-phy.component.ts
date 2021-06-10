@@ -90,11 +90,11 @@ export class ListePersonnePhyComponent implements OnInit {
 
   AjoutclientMorale()
    {
-     this.router.navigate(['/typography'])
+     this.router.navigate(['/clientMoral'])
    }
      
    AjoutclientPhysique(){
-    this.router.navigate(['/user-profile'])
+    this.router.navigate(['/clientPhysique'])
   }
 
   public findId(){

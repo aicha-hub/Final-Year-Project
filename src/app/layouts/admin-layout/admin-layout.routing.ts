@@ -98,9 +98,9 @@ export const AdminLayoutRoutes: Routes = [
     //     }]
     // }
     { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
+    { path: 'clientPhysique',   component: UserProfileComponent },
     { path: 'table-list',     component: TableListComponent },
-    { path: 'typography',     component: TypographyComponent },
+    { path: 'clientMoral',     component: TypographyComponent },
     { path: 'clientsMorales',          component:ListeClientMoralComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
@@ -126,7 +126,7 @@ export const AdminLayoutRoutes: Routes = [
     {path:'detailsFatcaPersonnePhysique/:id', component:DetailsFatcaPPComponent},
     {path:'detailsDouteuseTransaction/:id', component:TransactionsDouteusesDetailsComponent},
     { path: 'home', component: HomeComponent },
-    { path: 'login', component: LoginComponent},
+    
     { path: 'ajouterUtilisateur', component: RegisterComponent },
     { path: 'profile', component: ProfileComponent },
     { path: 'user', component: BoardUserComponent },

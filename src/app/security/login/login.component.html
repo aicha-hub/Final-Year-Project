@@ -1,3 +1,12 @@
+<html>
+  <style>
+  
+    
+   
+    </style>
+
+<body >
+  
 <div class="col-md-12" >
     <div class="card card-container">
       <img
@@ -13,15 +22,24 @@
         novalidate
       >
         <div class="form-group">
-          <label for="username">Username</label>
-          <input
-            type="text"
-            class="form-control"
+          <div class="row">
+          
+            <div class="col-md-10"  >
+              
+              <label for="username"><span class="material-icons" style="margin-top:20px; color: aliceblue;width:40px;">
+                perm_identity</span>Nom d'utilisateur</label>
+          <mat-form-field class="example-full-width" style="color:white;" >
+           
+            
+            <input  matInput  type="text"
+          
             name="username"
             [(ngModel)]="form.username"
             required
-            #username="ngModel"
-          />
+            #username="ngModel" >
+          </mat-form-field>
+        </div>
+          </div>
           <div
             class="alert alert-danger"
             role="alert"
@@ -31,16 +49,29 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            class="form-control"
+        
+          
+          <div class="row">
+            
+          <div class="col-md-10">
+            <label for="password"><span class="material-icons" style="width:40px" >
+            
+              vpn_key
+              
+            </span> Mot de passe</label>
+          <mat-form-field class="example-full-width">
+            
+            <input  matInput  type="password"
+            style="color: aliceblue;"
             name="password"
             [(ngModel)]="form.password"
             required
             minlength="6"
-            #password="ngModel"
-          />
+            #password="ngModel">
+          </mat-form-field>
+        </div>
+        
+        </div>
           <div
             class="alert alert-danger"
             role="alert"
@@ -53,8 +84,10 @@
           </div>
         </div>
         <div class="form-group">
-          <button class="btn btn-primary btn-block">
-            Login
+
+          <button ><span class="material-icons" style="width:50px">
+lock
+</span>Se connecter
           </button>
         </div>
         <div class="form-group">
@@ -73,3 +106,5 @@
       </div>
     </div>
   </div>
+</body>
+  </html>
