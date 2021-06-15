@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { liste_nat } from 'app/client/list_nat';
@@ -17,7 +18,7 @@ import { PersonnePhysiqueService } from 'app/service_clients/personne-physique.s
 export class NationaliteComponent implements OnInit {
 
  liste_nationnalite=liste_nat;
-  
+ form: FormGroup ;
   id1=20;
   nationalite:nationalite=new nationalite();
   message:any;
@@ -33,7 +34,7 @@ export class NationaliteComponent implements OnInit {
   ngOnInit(): void {                                                                                                    
     this.id=this.data1.Code_clt;
     this.pers_nat.pers1=this.id;
-   
+    this.form= new FormGroup({  paysNaissance: new FormControl('', Validators.required)});
     
   }
 

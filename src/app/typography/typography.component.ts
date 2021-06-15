@@ -14,6 +14,7 @@ import { justificatif } from 'app/fatca/justificatif';
 
 import { PersonneMoraleServiceService } from 'app/service_clients/personne-morale-service.service';
 import { RepresentantLegalService } from 'app/service_clients/representant-legal.service';
+import { ToastrService } from 'ngx-toastr';
 import { BeneficiairesEffectifsComponent } from './beneficiaires-effectifs/beneficiaires-effectifs.component';
 import { PepPMComponent } from './pep-pm/pep-pm.component';
 
@@ -42,7 +43,7 @@ export class TypographyComponent implements OnInit {
   
 
   
-  constructor(private service:PersonneMoraleServiceService,private snackBar: MatSnackBar, private service1:RepresentantLegalService
+  constructor(private toastr:ToastrService,private service:PersonneMoraleServiceService,private snackBar: MatSnackBar, private service1:RepresentantLegalService
   ,private dialog:MatDialog,private router: Router,) { }
 
   
@@ -156,8 +157,13 @@ export class TypographyComponent implements OnInit {
    
      
 
-    onClick(p:personne_morale,code1:number,Form:NgForm) {
+    onClick(p:personne_morale,code1:number,Form:NgForm, cinNum:number) {
       this.Add(Form);
+      if(cinNum!=8)
+      {
+       this.toastr.warning("Le numéro de la carte d'identité nationale doit étre composé de 8 chiffres");
+      }
+      else {
       
       //Creation des representants legals
     this.representant_legal.numCin=code1;
@@ -177,7 +183,7 @@ export class TypographyComponent implements OnInit {
       dialogConfig.autoFocus = true;
       dialogConfig.data = {p};
       dialogConfig.width = "50%";
-      this.dialog.open(BeneficiairesEffectifsComponent,dialogConfig);
+      this.dialog.open(BeneficiairesEffectifsComponent,dialogConfig);}
     } 
     
     onClick1(codeClient:number)

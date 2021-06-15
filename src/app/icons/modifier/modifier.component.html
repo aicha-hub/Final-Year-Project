@@ -67,24 +67,24 @@
                                 <mat-form-field class="example-full-width">
         
                                   <mat-label>Pays residence</mat-label>
-                                <input [(ngModel)]="personne_morale.paysResidence" id="paysResidence" name="paysResidence" matInput placeholder="Pays residence" type="text" >
+                                <input [(ngModel)]="personne_morale.paysResidence" #paysResidence id="paysResidence" name="paysResidence" matInput placeholder="Pays residence" type="text" >
                                 </mat-form-field>
                               </div> 
                             </div>
                             <div class="col-md-6">
                               <mat-form-field class="example-full-width">
-                              <input required [(ngModel)]="personne_morale.adresse" id="adresse" name="adresse" matInput placeholder="Adresse" type="text" >
+                              <input required [(ngModel)]="personne_morale.adresse" #adresse id="adresse" name="adresse" matInput placeholder="Adresse" type="text" >
                               </mat-form-field>
                             </div> 
                             <div class="row">
                             <div class="col-md-6">
                               <mat-form-field class="example-full-width">
-                                <input required [(ngModel)]="personne_morale.email" id="email" name="email"matInput placeholder="Email" type="email" >
+                                <input required [(ngModel)]="personne_morale.email" id="email" #email name="email"matInput placeholder="Email" type="email" >
                               </mat-form-field>
                             </div>
                             <div class="col-md-6">
                               <mat-form-field class="example-full-width">
-                              <input required [(ngModel)]="personne_morale.numTelephone" id="numTelephone" name="numTelephone" matInput placeholder="Telephone de contact" type="number" >
+                              <input required [(ngModel)]="personne_morale.numTelephone" id="numTelephone"  #numero name="numTelephone" matInput placeholder="Telephone de contact" type="number" >
                               </mat-form-field>
                             </div> 
                             </div>
@@ -642,19 +642,19 @@
                                 </ng-template>
 
                                 <div *ngIf="beneficiaireEffectif && beneficiaireEffectif2 && beneficiaireEffectif3 && beneficiaireEffectif4" >
-                                <button mat-stroked-button color="warn" (click)="updateNow(beneficiaireEffectif.codeClient,beneficiaireEffectif2.codeClient, beneficiaireEffectif3.codeClient , beneficiaireEffectif4.codeClient, representant_legal.codeClient)" ><span class="material-icons">article</span> Confirmer</button>
+                                <button mat-stroked-button color="warn" (click)="updateNow(beneficiaireEffectif.codeClient,beneficiaireEffectif2.codeClient, beneficiaireEffectif3.codeClient , beneficiaireEffectif4.codeClient, representant_legal.codeClient, paysResidence.value , adresse.value , email.value , numero.value)" ><span class="material-icons">article</span> Confirmer</button>
                                 </div>
 
                                 <div *ngIf="beneficiaireEffectif && beneficiaireEffectif2 && beneficiaireEffectif3 && !beneficiaireEffectif4" >
-                                  <button mat-stroked-button color="warn" (click)="updateNow1(beneficiaireEffectif.codeClient,beneficiaireEffectif2.codeClient, beneficiaireEffectif3.codeClient,representant_legal.codeClient )" ><span class="material-icons">article</span> Confirmer</button>
+                                  <button mat-stroked-button color="warn" (click)="updateNow1(beneficiaireEffectif.codeClient,beneficiaireEffectif2.codeClient, beneficiaireEffectif3.codeClient,representant_legal.codeClient, paysResidence.value , adresse.value , email.value , numero.value )" ><span class="material-icons">article</span> Confirmer</button>
                                 </div>
 
                                 <div *ngIf="beneficiaireEffectif && beneficiaireEffectif2 && !beneficiaireEffectif3 && !beneficiaireEffectif4  " >
-                                  <button mat-stroked-button color="warn" (click)="updateNow2(beneficiaireEffectif.codeClient,beneficiaireEffectif2.codeClient , representant_legal.codeClient)" ><span class="material-icons">article</span> Confirmer</button>
+                                  <button mat-stroked-button color="warn" (click)="updateNow2(beneficiaireEffectif.codeClient,beneficiaireEffectif2.codeClient , representant_legal.codeClient, paysResidence.value , adresse.value , email.value , numero.value)" ><span class="material-icons">article</span> Confirmer</button>
                                 </div>
 
                                 <div *ngIf="beneficiaireEffectif && !beneficiaireEffectif2 && !beneficiaireEffectif3 && !beneficiaireEffectif4" >
-                                  <button mat-stroked-button color="warn" (click)="updateNow3(beneficiaireEffectif.codeClient, representant_legal.codeClient)" ><span class="material-icons">article</span> Confirmer</button>
+                                  <button mat-stroked-button color="warn" (click)="updateNow3(beneficiaireEffectif.codeClient, representant_legal.codeClient , paysResidence.value , adresse.value , email.value , numero.value)" ><span class="material-icons">article</span> Confirmer</button>
                                 </div>
 
 

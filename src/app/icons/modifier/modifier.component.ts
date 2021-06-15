@@ -8,6 +8,7 @@ import { representant_legal } from 'app/client/representant_legal';
 import { BeneficiaireEffectifServiceService } from 'app/service_clients/beneficiaire-effectif-service.service';
 import { PersonneMoraleServiceService } from 'app/service_clients/personne-morale-service.service';
 import { RepresentantLegalService } from 'app/service_clients/representant-legal.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-modifier',
   templateUrl: './modifier.component.html',
@@ -31,7 +32,7 @@ export class ModifierComponent implements OnInit {
   beneficiaire_effectif:beneficaire_effectif=new beneficaire_effectif();
   representant_legal1: representant_legal= new representant_legal();
   message : any; 
-  constructor(private service2:BeneficiaireEffectifServiceService ,private service1: RepresentantLegalService ,private service:PersonneMoraleServiceService,private router: Router,private route: ActivatedRoute,private snackBar: MatSnackBar) { }
+  constructor(private toastr: ToastrService,private service2:BeneficiaireEffectifServiceService ,private service1: RepresentantLegalService ,private service:PersonneMoraleServiceService,private router: Router,private route: ActivatedRoute,private snackBar: MatSnackBar) { }
   ngOnInit() {
     this.delete=true;
     this.delete1=true;
@@ -131,8 +132,25 @@ export class ModifierComponent implements OnInit {
       duration: 3000
     });
   }
-  updateNow ( codeBE : number,codeBE1 : number,codeBE2 : number,codeBE3 : number, codeRep:number )
-  {
+  updateNow ( codeBE : number,codeBE1 : number,codeBE2 : number,codeBE3 : number, codeRep:number, paysResidence : String , adresse : String , email : String , numero: Number )
+  { if(paysResidence=="")
+    {
+      this.toastr.warning("Veuillez saisir le pays de résidence");
+    }
+    else if (adresse=="")
+    {
+      this.toastr.warning("Veuillez saisir l'adresse");
+    }
+    else if ( email=="")
+    {
+      this.toastr.warning("Veuillez saisir l'email de l'entité morale");
+    }
+    else if (numero==0)
+    {
+      this.toastr.warning("Veuillez entrer le numéro de télephone");
+    }
+    else {
+       
     let resp2= this.service.updatePersonne(this.id,this.personne_morale);
     resp2.subscribe((data)=>this.message=data); 
     let be = this.service2.updatePR(codeBE,this.beneficiaireEffectif);
@@ -150,9 +168,27 @@ export class ModifierComponent implements OnInit {
       duration: 3000
     });
     this.router.navigate(['/clientsMorales']) ;
+    }
+   
   }
-  updateNow1 ( codeBE : number, codeBE1 : number,codeBE2 : number, codeRep:number)
-  {
+  updateNow1 ( codeBE : number, codeBE1 : number,codeBE2 : number, codeRep:number, paysResidence : String , adresse : String , email : String , numero: Number )
+  { if(paysResidence=="")
+    {
+      this.toastr.warning("Veuillez saisir le pays de résidence");
+    }
+    else if (adresse=="")
+    {
+      this.toastr.warning("Veuillez saisir l'adresse");
+    }
+    else if ( email=="")
+    {
+      this.toastr.warning("Veuillez saisir l'email de l'entité morale");
+    }
+    else if (numero==0)
+    {
+      this.toastr.warning("Veuillez entrer le numéro de télephone");
+    }
+    else {
     let resp2= this.service.updatePersonne(this.id,this.personne_morale);
     resp2.subscribe((data)=>this.message=data); 
     let be = this.service2.updatePR(codeBE,this.beneficiaireEffectif);
@@ -167,10 +203,26 @@ export class ModifierComponent implements OnInit {
     let snackBarRef = this.snackBar.open('Mise à jour faite avec succès!', 'Succès', {
       duration: 3000
     });
-    this.router.navigate(['/clientsMorales']) ;
+    this.router.navigate(['/clientsMorales']) ;}
   }
-  updateNow2 ( codeBE : number ,codeBE1 : number, codeRep:number)
-  {
+  updateNow2 ( codeBE : number ,codeBE1 : number, codeRep:number, paysResidence : String , adresse : String , email : String , numero: Number )
+  { if(paysResidence=="")
+    {
+      this.toastr.warning("Veuillez saisir le pays de résidence");
+    }
+    else if (adresse=="")
+    {
+      this.toastr.warning("Veuillez saisir l'adresse");
+    }
+    else if ( email=="")
+    {
+      this.toastr.warning("Veuillez saisir l'email de l'entité morale");
+    }
+    else if (numero==0)
+    {
+      this.toastr.warning("Veuillez entrer le numéro de télephone");
+    }
+    else {
     let be = this.service2.updatePR(codeBE,this.beneficiaireEffectif);
     be.subscribe((data)=>this.message=data);
     let be1 = this.service2.updatePR(codeBE1,this.beneficiaireEffectif2);
@@ -183,11 +235,26 @@ export class ModifierComponent implements OnInit {
     let snackBarRef = this.snackBar.open('Mise à jour faite avec succès!', 'Succès', {
       duration: 3000
     });
-    this.router.navigate(['/clientsMorales']) ;
+    this.router.navigate(['/clientsMorales']) ;}
   }
-  updateNow3 ( codeBE : number, codeRep:number)
-  { 
-  
+  updateNow3 ( codeBE : number, codeRep:number,paysResidence : String , adresse : String , email : String , numero: Number )
+  { if(paysResidence=="")
+    {
+      this.toastr.warning("Veuillez saisir le pays de résidence");
+    }
+    else if (adresse=="")
+    {
+      this.toastr.warning("Veuillez saisir l'adresse");
+    }
+    else if ( email=="")
+    {
+      this.toastr.warning("Veuillez saisir l'email de l'entité morale");
+    }
+    else if (numero==0)
+    {
+      this.toastr.warning("Veuillez entrer le numéro de télephone");
+    }
+    else {
     let resp2= this.service.updatePersonne(this.id,this.personne_morale);
     resp2.subscribe((data)=>this.message=data); 
     let be = this.service2.updatePR(codeBE,this.beneficiaireEffectif);
@@ -202,6 +269,6 @@ export class ModifierComponent implements OnInit {
     let snackBarRef = this.snackBar.open('Mise à jour faite avec succès!', 'Succès', {
       duration: 3000
     });
-    this.router.navigate(['/clientsMorales']) ;
+    this.router.navigate(['/clientsMorales']) ;}
   }
 }

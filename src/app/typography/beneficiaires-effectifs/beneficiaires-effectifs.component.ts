@@ -9,6 +9,7 @@ import { personne_morale } from 'app/client/personne_morale';
 import { BeneficiaireEffectifServiceService } from 'app/service_clients/beneficiaire-effectif-service.service';
 
 import { PersonneMoraleServiceService } from 'app/service_clients/personne-morale-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-beneficiaires-effectifs',
@@ -24,7 +25,7 @@ export class BeneficiairesEffectifsComponent implements OnInit {
   pers:personne_morale;
   liste_nationnalite=liste_nat;
   form1 : FormGroup;
-  constructor(@Inject(MAT_DIALOG_DATA) public data1,private service1:PersonneMoraleServiceService, private service:BeneficiaireEffectifServiceService,private snackBar: MatSnackBar, private dialogRef: MatDialogRef<BeneficiairesEffectifsComponent>,private service2:PersonneMoraleServiceService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data1,private toastr:ToastrService,private service1:PersonneMoraleServiceService, private service:BeneficiaireEffectifServiceService,private snackBar: MatSnackBar, private dialogRef: MatDialogRef<BeneficiairesEffectifsComponent>,private service2:PersonneMoraleServiceService) { }
   
 
 
@@ -46,14 +47,50 @@ export class BeneficiairesEffectifsComponent implements OnInit {
 
   }
 
-  OnCreate (Code_clt:number)
-  {let snackBarRef = this.snackBar.open('Les beneficiaires effectifs sont ajoutés!', 'Bravo', {
-    duration: 3000 
-  });
-     this.beneficiaire_effectif.numCin=Code_clt;
-     this.pers=this.data1.p;
-     let resp= this.service.CreatePR(this.beneficiaire_effectif);
-     resp.subscribe((data)=>this.message=data);
+  OnCreate (Code_clt:number, nom :string, prenom: string, pourcentage:number, cin:number, passport:string,paysResidence:string,cinNum : number, numPassport:number)
+  {  
+    if((nom=="")&&(prenom=="")&&(paysResidence=="")&&(pourcentage==0)&&(cin==0)&&(passport==""))
+    {
+     this.toastr.warning("Veuillez remplir tous les champs");
+     console.log(paysResidence)
+    }
+     else if(nom=="")
+     {
+      this.toastr.warning("Veuillez saisir le nom ");
+     }
+     else if(prenom=="")
+     {
+      this.toastr.warning("Veuillez saisir le prénom");
+     }
+     else if(paysResidence=="")
+     {
+      this.toastr.warning("Veuillez saisir le pays de résidence");
+     }
+     else if(pourcentage==0)
+     {
+      this.toastr.warning("Veuillez saisir le pourcentage");
+     }
+     else if(cinNum!=8)
+     {
+      this.toastr.warning("Le numéro de la carte d'identité nationale doit étre composé de 8 chiffres");
+     }
+     else if((numPassport!=9)&&(cin==0))
+     {
+      this.toastr.warning("Le numéro du passeport ne doit pas dépasser 9 caractères");
+     }
+     else if((cin==0)&&(passport==""))
+     {
+      this.toastr.warning("Veuillez saisir le numéro de carte d'identité ou le numéro de passport");
+     }
+     else {
+      let snackBarRef = this.snackBar.open('Les beneficiaires effectifs sont ajoutés!', 'Bravo', {
+        duration: 3000 
+      });
+         this.beneficiaire_effectif.numCin=Code_clt;
+         this.pers=this.data1.p;
+         let resp= this.service.CreatePR(this.beneficiaire_effectif);
+         resp.subscribe((data)=>this.message=data);
+     }
      //let resp2= this.service2.CreatePM(this.p);
      //resp.subscribe((data)=>this.message=data);
  }

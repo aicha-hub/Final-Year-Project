@@ -5,7 +5,7 @@
           <div class="col-md-12">
               <div class="card">
                   <div class="card-header card-header-danger">
-                      <h4 class="card-title"> Fiche KYC du client :</h4>
+                      <h4 class="card-title"> Mettre à jour la Fiche KYC du client :  {{id}}</h4>
                   </div>
                   <div class="card-body">
                       <form>
@@ -97,13 +97,16 @@
       </div>
       <div class="col-md-4">
         <mat-form-field class="example-full-width">
-          <input matInput [(ngModel)]="personne_physique.numPassport" name="num_passport" id="num_passport" placeholder="Numero du passport" type="text"  disabled>
+          <input matInput [(ngModel)]="personne_physique.numPassport"   name="num_passport" id="num_passport" maxlength="9" minlength="9" placeholder="Numero du passport" type="text" >
+  
         </mat-form-field>
+     
       </div> 
       <div class="col-md-4">
         <mat-form-field class="example-full-width">
-          <input matInput [(ngModel)]="personne_physique.carteSejour" name="carte_sejour" id="carte_sejour" placeholder="Num carte sejour :" type="text"  disabled>
+          <input matInput [(ngModel)]="personne_physique.carteSejour" name="carte_sejour" id="carte_sejour" maxlength="9" minlength="9" placeholder="Num carte sejour :" type="text" >
         </mat-form-field>
+
       </div>
       </div>
   
@@ -131,7 +134,49 @@
   <p class="l2"> Disposition d'un code TIN : Oui </p>
  </div>
           
+      
+ <label  class="l1">CONTACT :</label>                        
+ <div class="row">
+     
+     <div class="col-md-5">
+      <mat-form-field class="example-full-width">
+        <input matInput [(ngModel)]="personne_physique.adresse" name="adresse"  id="adresse"  matInput placeholder="Adresse"   type="text" >
+      </mat-form-field>  
+    </div>
+    <div class="col-md-2">
+      <mat-form-field class="example-full-width">
+        <input matInput [(ngModel)]="personne_physique.indiTelephonique" id="indiTelephonique" name="indiTelephonique" matInput placeholder="Indicatif Tel : +216 " type="number">
+      </mat-form-field>  
+    </div>
+    
+    <div class="col-md-5">
+      <mat-form-field class="example-full-width">
+        <input matInput [(ngModel)]="personne_physique.numTelephone"  minlength="8" maxlength="8" name="numTelephone"  id="numTelephone" placeholder="Telephone de contact" type="text" >
+      
+      </mat-form-field>  
+    </div>
+                
+ </div>
 
+         <div class="row">
+           <div class="col-md-8">
+             <mat-form-field class="example-full-width">
+               <input matInput [(ngModel)]="personne_physique.email" id="email" name="email" matInput placeholder="Email" type="email"  >
+             
+             </mat-form-field>
+           </div>
+           <div class="col-md-4">
+            <mat-form-field class="example-full-width">
+            <mat-label>Pays residence</mat-label>
+            <select matNativeControl [(ngModel)]="personne_physique.paysResidence" name="paysResidence" id="paysResidence" >
+          
+            <option *ngFor="let liste_nationnalite of liste_nationnalite" [value]="liste_nationnalite.nationalite"  matInput >
+              {{liste_nationnalite.nationalite}}
+            </option>
+          </select>
+           </mat-form-field>
+         </div>
+       </div>
 
 
 
@@ -201,7 +246,7 @@
           
       <div class="col-md-6">
         <mat-form-field class="example-full-width">
-          <input matInput [(ngModel)]="personne_physique.numAff" name="numAff" id="numAff" placeholder="Numero d'Affiliation :" type="text" >
+          <input matInput [(ngModel)]="personne_physique.numAff" name="numAff" id="numAff" placeholder="Numero d'Affiliation :" type="number" >
         </mat-form-field>
       </div>
       </div>
@@ -211,7 +256,7 @@
         <div class="col-md-3">  
     <mat-form-field class="example-full-width">
       <mat-label>Nature</mat-label>
-      <input matInput [(ngModel)]="personne_physique.listRevenu[0].nature"  name="nature" id="nature" type="text"  required >
+      <input matInput [(ngModel)]="personne_physique.listRevenu[0].nature && delete"  name="nature" id="nature" type="text"  required >
     </mat-form-field>
     </div>
     <div class="col-md-3"> 
@@ -232,7 +277,7 @@
      </mat-form-field>
      </div>
   <div class="col-md-1"> 
-    <button mat-raised-button  mat-stroked-button color="warn"  (click)="supprimer()">
+    <button mat-raised-button  mat-stroked-button color="warn"  (click)="supprimer(personne_physique.listRevenu[0].codeRevenu)">
       <span class="material-icons">
        delete
         </span> 
@@ -241,7 +286,7 @@
 
 </div>
 
-<div class="row" *ngIf="!personne_physique.listRevenu[1]==''">
+<div class="row" *ngIf="!personne_physique.listRevenu[1]==''&& delete1">
   <div class="col-md-3">  
 <mat-form-field class="example-full-width">
 <mat-label>Nature</mat-label>
@@ -267,7 +312,7 @@
  </mat-form-field>
  </div>
  <div class="col-md-1"> 
-  <button mat-raised-button  mat-stroked-button color="warn"  (click)="supprimer1()">
+  <button mat-raised-button  mat-stroked-button color="warn"  (click)="supprimer1(personne_physique.listRevenu[1].codeRevenu)">
     <span class="material-icons">
      delete
       </span> 
@@ -275,7 +320,7 @@
 </div>
 </div>
 
-<div class="row" *ngIf="!personne_physique.listRevenu[2]==''">
+<div class="row" *ngIf="!personne_physique.listRevenu[2]==''&& delete2">
 <div class="col-md-3">  
 <mat-form-field class="example-full-width">
 <mat-label>Nature</mat-label>
@@ -301,7 +346,7 @@
 </mat-form-field>
 </div>
 <div class="col-md-1"> 
-<button mat-raised-button  mat-stroked-button color="warn"  (click)="supprimer2()">
+<button mat-raised-button  mat-stroked-button color="warn"  (click)="supprimer2(personne_physique.listRevenu[2].codeRevenu)">
   <span class="material-icons">
    delete
     </span> 
@@ -310,7 +355,7 @@
 </div>
    
     
-<div class="row" *ngIf="!personne_physique.listRevenu[3]==''">
+<div class="row" *ngIf="!personne_physique.listRevenu[3]==''&& delete3">
 <div class="col-md-3">  
 <mat-form-field class="example-full-width">
 <mat-label>Nature</mat-label>
@@ -336,7 +381,7 @@
 </mat-form-field>
 </div>
 <div class="col-md-1"> 
-  <button mat-raised-button  mat-stroked-button color="warn"  (click)="supprimer3()">
+  <button mat-raised-button  mat-stroked-button color="warn"  (click)="supprimer3(personne_physique.listRevenu[3].codeRevenu)">
     <span class="material-icons">
      delete
       </span> 
@@ -344,7 +389,7 @@
 </div>
 </div>
 
-<div class="row" *ngIf="!personne_physique.listRevenu[4]==''">
+<div class="row" *ngIf="!personne_physique.listRevenu[4]==''&& delete4">
 <div class="col-md-3">  
 <mat-form-field class="example-full-width">
 <mat-label>Nature</mat-label>
@@ -369,8 +414,9 @@
  <input matInput #devise maxlength="10" [(ngModel)]="personne_physique.listRevenu[4].devise"  name="devise4" id="devise4" type="text" placeholder="Ex.dinars" value="Dinars" required >
 </mat-form-field>
 </div>
-<div class="col-md-1"> 
-  <button mat-raised-button  mat-stroked-button color="warn"  (click)="supprimer4()">
+
+<div class="col-md-1"  > 
+  <button mat-raised-button  mat-stroked-button color="warn"  (click)="supprimer4(personne_physique.listRevenu[4].codeRevenu)">
     <span class="material-icons">
      delete
       </span> 
@@ -388,15 +434,25 @@
 <p></p>
      
 <label  class="l1">PERSONNE POLITIQUEMENT EXPOSEE:</label>
-<p>1-Exercez-vous ou avez-vous exercé une fonction politique, juridictionnelle ou administrative importante ?</p>
-<h5>  <input  type="radio"  id="huey20" name="huey20"  [(ngModel)]="personne_physique.statutPep" (click)="onClick1(personne_physique.codeClient)" value="true"
+
+
+<div *ngIf="personne_physique.statutPep;">  
+<b>  <p class="l2"> -Cette personne est politiquement exposé.</p></b>
+
+</div>
+<p>1- Voulez-vous modifié le statut PEP de cette personne physique ?</p>
+<h5>  <input  type="radio"  id="huey20" name="huey20"  [(ngModel)]="personne_physique.statutPep"  value="true"
   checked>
 <label for="huey20" style="margin-right:50px;">Oui </label>            
 <input type="radio" id="huey21"  name="huey21" [(ngModel)]="personne_physique.statutPep"   value="false">
 <label for="huey21">Non</label>
  </h5> 
-<p>2-Une personne de votre famille exerce-t-elle ou a-t-elle exercé une fonction politique, juridictionnelle ou administrative
-  importante ?
+<p></p>
+<div *ngIf="personne_physique.parentePep;">  
+<b><p class="l2"> -Cette personne a une relation avec une personne politiquement exposé.</p></b>
+  
+</div>
+<p>2- Voulez-vous modifié le statut de parenté PEP ?
    </p>
    <h5>  <input  type="radio"  id="dewey12" name="dewey12"  [(ngModel)]="personne_physique.parentePep"  value="true"
     checked>
@@ -411,7 +467,7 @@
   </div>
   
 </div>
-<td class="text-center"><button class="btn btn-primary btn-xs" (click)="details(personne_physique.codeClient)" ><span class="material-icons">article</span> Modifier</button></td>
+<td class="text-center"><button class="btn btn-primary btn-xs"  style="background-color: rgb(33, 33, 184);margin-left: 1020px;width: 150px;padding: 10px;" (click)="details(personne_physique.codeClient)" ><span class="material-icons">article</span> Modifier</button></td>
                       </form>
                   </div> </div> </div></div></div></div>
 

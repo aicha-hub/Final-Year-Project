@@ -84,7 +84,7 @@ export class UserProfileComponent implements OnInit {
       matricule_fiscal: new FormControl(''),
       code_douane:new FormControl(''),
       huey7: new FormControl('', Validators.required),
-      num_aff: new FormControl('', Validators.required),
+      num_aff: new FormControl(0),
       huey20: new FormControl('', Validators.required),
       dewey10: new FormControl('', Validators.required),
      

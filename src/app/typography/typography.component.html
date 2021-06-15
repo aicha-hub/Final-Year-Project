@@ -154,7 +154,6 @@
                           <mat-error *ngIf="this.form.controls['codeClientRep'].errors?.required">Champs obligatoire.</mat-error>
 
                         </mat-form-field>
-                        <mat-error *ngIf="codeClientRep.value?.length!=8">Le numéro de la carte d'identité nationale est composé de 8 chiffres</mat-error>
                       </div> 
                       <div class="col-md-6">
                        <mat-form-field class="example-full-width">
@@ -224,7 +223,7 @@
                      
                       <label class="l1">DÉCLARATION DE BÉNÉFICIAIRE EFFECTIF OU TITULAIRE RÉEL *  </label>
                       <div class="col-md-6">
-                      <button mat-stroked-button color="warn" (click)="onClick(personne_morale,representant_legal.codeClient,Form)" >
+                      <button mat-stroked-button color="warn" (click)="onClick(personne_morale,representant_legal.codeClient,Form,codeClientRep.value?.length)" >
                         <span class="material-icons">
                           playlist_add
                           </span>  Ajouter les bénéficiaires effectifs

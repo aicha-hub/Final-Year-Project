@@ -156,7 +156,7 @@ export class CompteComponent implements OnInit {
    }
   
   
-
+   
  
   traiterClientMoral(id :number)
   {
@@ -166,5 +166,12 @@ export class CompteComponent implements OnInit {
   {
      this.router.navigate(['/traiterCompteClientPhysique',id])
   }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 }

@@ -1,54 +1,43 @@
-<form class="example-form"> 
-    <table class="example-full-width" cellspacing="0"><tr>   
-      <td><mat-form-field class="example-full-width">
-        <mat-label>Code client :</mat-label>    
-        <input matInput [(ngModel)]="pep.contact"   name="contact" id="contact" type="number" disabled required>
-      </mat-form-field></td>    
-      
-  
-     
-    </tr>
-       <tr>
-        <td> <mat-form-field class="example-full-width">
-            <mat-label>date_debut</mat-label>
-            <input matInput [(ngModel)]="pep.date_debut"   name="date_debut" id="date_debut" type="date" required>
-          </mat-form-field></td>
-          <td> <mat-form-field class="example-full-width">
-            <mat-label>date_fin</mat-label>
-            <input matInput [(ngModel)]="pep.date_fin"   name="date_fin" id="date_fin" type="date" required>
-          </mat-form-field></td>       
-          </tr>
-           <tr>
-            <td>   <mat-form-field appearance="fill">
-              <mat-label>Fonction PEP</mat-label>
-              <mat-select [(ngModel)]="pep.fonction_pep"   name="fonction_pep" id="fonction_pep" type="text">
-                <mat-option>None</mat-option>
-                <mat-option *ngFor="let pays of pays" [value]="pays.name" >
-                  {{pays.name}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>  </td>
-            <td>
-            <mat-form-field appearance="fill">
-              <mat-label>State</mat-label>
-              <mat-select [(ngModel)]="pep.pays_pep"   name="pays_pep" id="pays_pep" type="text">
-                <mat-option>None</mat-option>
-                <mat-option  *ngFor="let pays of pays" [value]="pays.name" >
-                  {{pays.name}}
-                </mat-option>>
-              </mat-select>
-            </mat-form-field>
-          </td>
-           </tr>
-  
-  </table>
-    <div class="row" style="margin-top: 25px;">                
-      <div class="col-md-6">
-    <button mat-raised-button color="primary" style="margin-left:230%;" (click)="OnCreatePEP()">Ajouter</button>
-      </div>
-      <div class="col-md-6">
-    <button mat-raised-button color="warn" style="margin-left:160%;"   (click)="Close()">Fermer </button>
-   </div></div>
-  </form>
-  
+<form class="example-form" form #myForm="ngForm"> 
+  <table class="example-full-width" cellspacing="0"><tr>   
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Code client :</mat-label>      
+      <input matInput [(ngModel)]="revenu.persPhy"   name="pers" id="pers" type="number" disabled required>
+    </mat-form-field></td>    
+    
+  </tr>   
+</table>
+  <p></p>
+  <p><mat-label> 
+     REVENUS : </mat-label></p>
+  <table class="example-full-width" cellspacing="0"><tr>     
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Origine</mat-label>
+      <input matInput [(ngModel)]="revenu.nature"  name="nature" id="nature" type="text"  required>
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Periodicite</mat-label>
+      <input matInput [(ngModel)]="revenu.periodicite"  name="periodicite" id="periodicite" type="text" placeholder="Ex Mensuel" required>
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <mat-label >Montant</mat-label>
+      <input matInput [(ngModel)]="revenu.montant"  name="montant" id="montant"  type="number" class="example-full-width" required>
+      <span matSuffix>.00</span>
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Devise</mat-label>
+      <input matInput #devise maxlength="10" [(ngModel)]="revenu.devise"  name="devise" id="devise" type="text" placeholder="Ex.dinars" value="Dinars" required>
+      <mat-hint align="end">{{devise.value.length}} / 10</mat-hint>
+    </mat-form-field></td>
+  </tr></table>
+  <div class="row" style="margin-top: 25px;">                
+    <div class="col-md-6">
+  <button mat-raised-button color="primary" style="margin-left:230%;" (click)="OnCreate()">Ajouter</button>
+    </div>
+    <div class="col-md-6">
+  <button mat-raised-button color="warn" style="margin-left:160%;"   (click)="Close()">Fermer </button>
+ </div></div>
+</form>
+
+
   
