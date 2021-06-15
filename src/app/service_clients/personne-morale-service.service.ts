@@ -59,6 +59,12 @@ export class PersonneMoraleServiceService {
   public getDossiersRisqueFaible()
 {return this.http.get("http://localhost:9090/personneMorale/DossiersRisqueFaible")}
 
+public exists (id:number) :any 
+{
+  return this.http.get("http://localhost:9090/personneMorale/Exists/"+id)
+ 
+}
+
 
 public getDossiersRisqueMEMF()
 {return this.http.get("http://localhost:9090/personneMorale/DossiersRisqueMoyennementFaibleouMoyennementEleve")}

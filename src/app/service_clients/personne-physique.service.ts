@@ -18,6 +18,12 @@ export class PersonnePhysiqueService {
   public getPPS()
   {return this.http.get("http://localhost:9090/personnePhysique/GetAll")}
 
+  public exists (id:number) :any 
+{
+  return this.http.get("http://localhost:9090/personnePhysique/Exists/"+id)
+ 
+}
+
   public getPPFatca()
   {return this.http.get("http://localhost:9090/personnePhysique/Fatca")}
 

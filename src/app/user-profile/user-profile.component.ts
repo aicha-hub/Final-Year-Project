@@ -18,6 +18,7 @@ import { listeProfession } from 'app/client/listeProfession';
 import { justificatif } from 'app/fatca/justificatif';
 import { formatDate } from '@angular/common';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-profile',
@@ -25,7 +26,7 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
- 
+ unique:boolean;
   message:any;
    message1:any;
    personne_physique:personne_physique=new personne_physique();
@@ -42,10 +43,10 @@ export class UserProfileComponent implements OnInit {
   progress : Number ;
   currentFile : File ; 
   justificatif : justificatif; 
+  verif:boolean;
   
   
-  
-  constructor(private service:PersonnePhysiqueService, private router: Router ,private snackBar: MatSnackBar,private dialog: MatDialog) { }
+  constructor(private service:PersonnePhysiqueService,private toastr : ToastrService, private router: Router ,private snackBar: MatSnackBar,private dialog: MatDialog) { }
 
 
   
@@ -104,7 +105,7 @@ export class UserProfileComponent implements OnInit {
 
       if (file) {
         this.currentFile = file;
-        this.justificatif=new justificatif("","29/04/2021",this.currentFile.type,this.currentFile);
+        this.justificatif=new justificatif("","19/06/2021",this.currentFile.type,this.currentFile);
         this.service.AddDocument(this.justificatif,this.currentFile).subscribe(
           (event: any) => {
             if (event.type === HttpEventType.UploadProgress) {
@@ -130,20 +131,31 @@ export class UserProfileComponent implements OnInit {
     }
   }
  
-   
 
-  public CreateNow()
+
+  public CreateNow(numPassport:number,carteSejour:number,contact:number)
   {
-    
-      
-    let resp= this.service.updatePP(this.personne_physique.codeClient,this.personne_physique);
+    if(numPassport!=9)
+    {
+     this.toastr.error("Le numéro du passport doit étre composé de 9 caractéres");
+    }
+    if(carteSejour!=9)
+    {
+     this.toastr.error("La carte séjour doit étre composé de 9 caractéres");
+    }
+    if(contact!=8)
+    {
+     this.toastr.error("Le numéro de téléphone doit étre composé de 8 chiffres");
+    }
+    if((numPassport==9)&&(carteSejour==9)&&(contact==8))
+   { let resp= this.service.updatePP(this.personne_physique.codeClient,this.personne_physique);
     resp.subscribe((data)=>this.message=data);
     
     let snackBarRef = this.snackBar.open('Client physique cree!', 'Bravo', {
       duration: 3000
     });
 
-    this.router.navigate(['clientsPhysiques']);
+    this.router.navigate(['clientsPhysiques']);}
    
   }
      
@@ -168,7 +180,22 @@ export class UserProfileComponent implements OnInit {
        this.dialog.open(PepComponent,dialogConfig);
       } 
 
-      onClick2(Code_clt:number,P:personne_physique,Form:NgForm) {  
+      onClick2(Code_clt:number,P:personne_physique,Form:NgForm,codeClient:number) {  
+        
+      let test=this.service.exists(this.personne_physique.codeClient)
+      test.subscribe(((res: boolean) => {
+          this.unique=res;
+          if(this.unique==true)
+          {
+            this.toastr.error("Ce client existe déjà veuillez verifier le code CIN!");
+          }
+          else if(codeClient!=8)
+          {
+           this.toastr.error("Le numéro de la carte d'identité nationale doit étre composé de 8 chiffres");
+          }
+          else {
+       
+            
         this.Add(Form);
         this.personne_physique.numCin=Code_clt;
         let resp= this.service.CreatePP(this.personne_physique);
@@ -178,10 +205,12 @@ export class UserProfileComponent implements OnInit {
         dialogConfig.autoFocus = true;   
         dialogConfig.data = { Code_clt,P };
         dialogConfig.width = "60%";
-        this.dialog.open(NationaliteComponent,dialogConfig);
+        this.dialog.open(NationaliteComponent,dialogConfig)}
+      
+      } ));}
       
       
-      }
+      
 
       
      onClick3(Code_clt:number) {  

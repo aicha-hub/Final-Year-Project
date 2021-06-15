@@ -21,7 +21,7 @@
     <mat-form-field >
      
       <mat-label>Chercher</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ID CLIENT" #input>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Type versement" #input>
     </mat-form-field>
   </div>
   <div class="col-md-1" style="width:60%;margin-top:15px;margin-right: -10px;">
@@ -34,7 +34,7 @@
   
       <!-- ID Column -->
       <ng-container matColumnDef="codeTransaction">
-        <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header> Identifiant </th>
+        <th   style="color: indigo;" mat-header-cell *matHeaderCellDef mat-sort-header> Numéro du compte </th>
         <td mat-cell *matCellDef="let transaction"> {{transaction.codeTransaction}} </td>
       </ng-container>
   

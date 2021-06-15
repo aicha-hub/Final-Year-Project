@@ -38,7 +38,8 @@ export class TypographyComponent implements OnInit {
   progress : Number ;
   currentFile : File ; 
   justificatif : justificatif;
-  form: FormGroup 
+  form: FormGroup ; 
+  unique : boolean;
    
   
 
@@ -69,23 +70,23 @@ export class TypographyComponent implements OnInit {
     codeClientRep : new FormControl(0, [Validators.required,Validators.maxLength(8)]),
     Date_naiss : new FormControl('', Validators.required),
     paysResidence2 : new FormControl('', Validators.required),
-    FO1 : new FormControl(''),
+    FO1 : new FormControl('', Validators.required),
     us1 : new FormControl(''),
-    actionnaire1 : new FormControl(''),
-    codeTin1 : new FormControl(''),
-    GIIN1 : new FormControl(''),
+    actionnaire1 : new FormControl('', Validators.required),
+    codeTin1 : new FormControl('', Validators.required),
+    GIIN1 : new FormControl('', Validators.required),
     justificatif : new FormControl(),
     file : new FormControl(),
-    PPE1 : new FormControl(),
-    offshore1 : new FormControl(),
-    natureOperation1 : new FormControl() ,
-    origineFonds1 : new FormControl() ,
+    PPE1 : new FormControl('', Validators.required),
+    offshore1 : new FormControl('', Validators.required),
+    natureOperation1 : new FormControl('', Validators.required) ,
+    origineFonds1 : new FormControl('', Validators.required) ,
     paysOF : new FormControl() ,
-    chiffreAffaire : new FormControl (0),
-    domaineActivite1 : new FormControl() ,
-    nature1 : new FormControl() ,
-    marcheBoursier1 : new FormControl() ,
-    participationPub1 :  new FormControl() ,
+    chiffreAffaire : new FormControl (0,Validators.required),
+    domaineActivite1 : new FormControl('', Validators.required) ,
+    nature1 : new FormControl('', Validators.required) ,
+    marcheBoursier1 : new FormControl('', Validators.required) ,
+    participationPub1 :  new FormControl('', Validators.required) ,
 
   });
     
@@ -158,32 +159,46 @@ export class TypographyComponent implements OnInit {
      
 
     onClick(p:personne_morale,code1:number,Form:NgForm, cinNum:number) {
-      this.Add(Form);
-      if(cinNum!=8)
-      {
-       this.toastr.warning("Le numéro de la carte d'identité nationale doit étre composé de 8 chiffres");
-      }
-      else {
       
-      //Creation des representants legals
-    this.representant_legal.numCin=code1;
-    let resp1 = this.service1.CreateRL(this.representant_legal);
-    resp1.subscribe((data)=>this.message2=data)
-
-    //Creation personne Morale
-    let resp= this.service.CreatePM(this.personne_morale);
-    resp.subscribe((data)=>this.message=data);
-
-     //Ajouter le representant
-   this.personne_morale.representants.push(this.representant_legal)
-
   
+      let test=this.service.exists(this.personne_morale.codeClient)
+      test.subscribe(((res: boolean) => {
+          this.unique=res;
+          if(this.unique==true)
+          {
+            this.toastr.warning("Ce client existe déjà veuillez verifier le code RNE!");
+          }
+          else if(cinNum!=8)
+          {
+           this.toastr.warning("Le numéro de la carte d'identité nationale doit étre composé de 8 chiffres");
+          }
+          else {
+            this.Add(Form);
+            //Creation des representants legals
+        this.representant_legal.numCin=code1;
+        let resp1 = this.service1.CreateRL(this.representant_legal);
+        resp1.subscribe((data)=>this.message2=data)
+    
+        //Creation personne Morale
+        let resp= this.service.CreatePM(this.personne_morale);
+        resp.subscribe((data)=>this.message=data);
+    
+         //Ajouter le representant
+       this.personne_morale.representants.push(this.representant_legal)
+       
        const dialogConfig = new MatDialogConfig();
-      dialogConfig.disableClose = true;
-      dialogConfig.autoFocus = true;
-      dialogConfig.data = {p};
-      dialogConfig.width = "50%";
-      this.dialog.open(BeneficiairesEffectifsComponent,dialogConfig);}
+       dialogConfig.disableClose = true;
+       dialogConfig.autoFocus = true;
+       dialogConfig.data = {p};
+       dialogConfig.width = "50%";
+       this.dialog.open(BeneficiairesEffectifsComponent,dialogConfig);
+    
+          }
+      }));
+     
+      
+      
+  
     } 
     
     onClick1(codeClient:number)

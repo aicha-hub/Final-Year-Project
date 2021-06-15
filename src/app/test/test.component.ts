@@ -111,7 +111,7 @@ export class TestComponent implements OnInit {
       this.toastr.warning("La carte sejour  doit etre composée de 9 caractères");
      }
 
-     if(this.personne_physique.numTelephoner=="")
+     if(this.personne_physique.numTelephone=="")
      {
       this.verif=false;
       this.toastr.warning("Le numero de telephone doit etre composée de 8 chiffres");

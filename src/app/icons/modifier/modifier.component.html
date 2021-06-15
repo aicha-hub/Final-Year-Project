@@ -113,7 +113,7 @@
                                 <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
                                 <mat-label>Pays Residence</mat-label>
-                                <input [(ngModel)]="representant_legal.paysResidence" id="paysResidence2" name="paysResidence2" matInput placeholder="Pays residence" type="text" >
+                                <input [(ngModel)]="representant_legal.paysResidence" id="paysResidence2" name="paysResidence2" matInput placeholder="Pays residence" type="text" #paysRep >
                                 </mat-form-field>
                               </div>
                               </div>
@@ -230,7 +230,7 @@
                                 <mat-form-field class="example-full-width">
         
                                   <mat-label>Pays Residence</mat-label>
-                                <input [(ngModel)]="beneficiaireEffectif.paysResidence" id="paysResidenceBeneficiaire1" name="paysResidenceBeneficiaire1" matInput placeholder="Pays residence" type="text" >
+                                <input [(ngModel)]="beneficiaireEffectif.paysResidence" id="paysResidenceBeneficiaire1" name="paysResidenceBeneficiaire1" matInput placeholder="Pays residence" type="text"  #paysBe >
                                  
                                 </mat-form-field>
                               </div>
@@ -241,7 +241,7 @@
                               
                               <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
-                                 <input  required matInput [(ngModel)]="beneficiaireEffectif.pourcentage" name="pourcentageBeneficiaire1" id="pourcentageBeneficiaire1" placeholder="Pourcentage" type="text" >
+                                 <input  required matInput [(ngModel)]="beneficiaireEffectif.pourcentage" name="pourcentageBeneficiaire1" id="pourcentageBeneficiaire1" placeholder="Pourcentage" type="text" #pourcentageBe >
                                </mat-form-field>
                                </div>
                             
@@ -280,7 +280,7 @@
                                 <div class="col-md-6">
                                   <mat-form-field class="example-full-width">
                                   <mat-label>Pays Residence</mat-label>
-                                  <input [(ngModel)]="beneficiaireEffectif2.paysResidence" id="paysResidenceBeneficiaire2" name="paysResidenceBeneficiaire2" matInput placeholder="Pays residence" type="text">
+                                  <input [(ngModel)]="beneficiaireEffectif2.paysResidence" id="paysResidenceBeneficiaire2" name="paysResidenceBeneficiaire2" matInput placeholder="Pays residence" type="text" #paysBe1>
                                   </mat-form-field>
                                 </div>
                               
@@ -291,7 +291,7 @@
                                 
                                 <div class="col-md-6">
                                   <mat-form-field class="example-full-width">
-                                   <input  required matInput [(ngModel)]="beneficiaireEffectif2.pourcentage" name="pourcentageBeneficiaire2" id="pourcentageBeneficiaire2" placeholder="pourcentage" type="text" >
+                                   <input  required matInput [(ngModel)]="beneficiaireEffectif2.pourcentage" name="pourcentageBeneficiaire2" id="pourcentageBeneficiaire2" placeholder="pourcentage" type="text" #pourcentageBe1>
                                  </mat-form-field>
                                  </div>
                               
@@ -331,7 +331,7 @@
                                 <div class="col-md-6">
                                   <mat-form-field class="example-full-width">
                                   <mat-label>Pays Residence</mat-label>
-                                  <input [(ngModel)]="beneficiaireEffectif3.paysResidence" id="paysResidenceBeneficiaire3" name="paysResidenceBeneficiaire3" matInput placeholder="Pays residence" type="text">
+                                  <input [(ngModel)]="beneficiaireEffectif3.paysResidence" id="paysResidenceBeneficiaire3" name="paysResidenceBeneficiaire3" matInput placeholder="Pays residence" type="text" #paysBe2>
                                  </mat-form-field>
                                 </div>
                               
@@ -342,7 +342,7 @@
                                 
                                 <div class="col-md-6">
                                   <mat-form-field class="example-full-width">
-                                   <input  required matInput [(ngModel)]="beneficiaireEffectif3.pourcentage" name="pourcentageBeneficiaire3" id="pourcentageBeneficiaire3" placeholder="pourcentage" type="text" >
+                                   <input  required matInput [(ngModel)]="beneficiaireEffectif3.pourcentage" name="pourcentageBeneficiaire3" id="pourcentageBeneficiaire3" placeholder="pourcentage" type="text" #pourcentageBe2 >
                                  </mat-form-field>
                                  </div>
                               
@@ -386,7 +386,7 @@
                                 <div class="col-md-6">
                                   <mat-form-field class="example-full-width">
                                   <mat-label>Pays Residence</mat-label>
-                                  <input [(ngModel)]="beneficiaireEffectif4.paysResidence" id="paysResidenceBeneficiaire4" name="paysResidenceBeneficiaire4" matInput placeholder="Pays residence" type="text" >
+                                  <input [(ngModel)]="beneficiaireEffectif4.paysResidence" id="paysResidenceBeneficiaire4" name="paysResidenceBeneficiaire4" matInput placeholder="Pays residence" type="text" #paysBe3 >
                                    </mat-form-field>
                                 </div>
                               
@@ -397,7 +397,7 @@
                                 
                                 <div class="col-md-6">
                                   <mat-form-field class="example-full-width">
-                                   <input  required matInput [(ngModel)]="beneficiaireEffectif4.pourcentage" name="pourcentageBeneficiaire4" id="pourcentageBeneficiaire4" placeholder="Date de naissance" placeholder="pourcentage" type="text">
+                                   <input  required matInput [(ngModel)]="beneficiaireEffectif4.pourcentage" name="pourcentageBeneficiaire4" id="pourcentageBeneficiaire4" placeholder="Date de naissance" placeholder="pourcentage" type="text" #pourcentageBe3>
                                  </mat-form-field>
                                  </div>
                               
@@ -457,7 +457,6 @@
                                 <input  matInput #CIN maxlength="8" required [(ngModel)]="beneficiaire_effectif.codeClient" name="codeClientBE" id="codeClientBE" required matInput placeholder="Numero Carte identite" type="number" >
                                 <mat-hint align="end">{{CIN.value?.length || 0}}/8</mat-hint>
                             </mat-form-field>
-                            <mat-error *ngIf="CIN.value?.length!=8">Le numéro de la carte d'identité nationale est composé de 8 chiffres</mat-error>
           
                               </div>
                                
@@ -560,7 +559,7 @@
                               
                               <div class="col-md-6">
                               <mat-form-field class="example-full-width">
-                              <input  required  matInput [(ngModel)]="personne_morale.chiffreAffaire" name="chiffreAffaire" id="chiffreAffaire"  placeholder="Chiffre d'affaires" type="number" >
+                              <input  required  matInput [(ngModel)]="personne_morale.chiffreAffaire" name="chiffreAffaire" id="chiffreAffaire" #chiffreAffaire placeholder="Chiffre d'affaires" type="number" >
                               </mat-form-field>
                               </div>
 
@@ -571,7 +570,7 @@
                             <div class="col-md-6">
                             
                             <mat-form-field class="example-full-width">
-                                <input  required matInput [(ngModel)]="personne_morale.origineFonds" name="origineFonds" id="origineFonds" placeholder="Origine des fonds" type="text" disabled>
+                                <input  required matInput [(ngModel)]="personne_morale.origineFonds" name="origineFonds" id="origineFonds"  placeholder="Origine des fonds" type="text" disabled>
                               </mat-form-field>
                               
                             </div>
@@ -579,7 +578,7 @@
                             <div class="col-md-6">
                               <div *ngIf="personne_morale.paysOrigineFonds"> 
                                 <mat-form-field class="example-full-width">
-                                  <input  required matInput [(ngModel)]="personne_morale.paysOrigineFonds" name="paysOrigineFonds" id="paysOrigineFonds" placeholder="Origine des fonds" type="text">
+                                  <input  required matInput [(ngModel)]="personne_morale.paysOrigineFonds"   name="paysOrigineFonds" id="paysOrigineFonds"  placeholder="Origine des fonds" type="text" disabled >
                                 </mat-form-field> 
                                
                               </div>
@@ -642,19 +641,19 @@
                                 </ng-template>
 
                                 <div *ngIf="beneficiaireEffectif && beneficiaireEffectif2 && beneficiaireEffectif3 && beneficiaireEffectif4" >
-                                <button mat-stroked-button color="warn" (click)="updateNow(beneficiaireEffectif.codeClient,beneficiaireEffectif2.codeClient, beneficiaireEffectif3.codeClient , beneficiaireEffectif4.codeClient, representant_legal.codeClient, paysResidence.value , adresse.value , email.value , numero.value)" ><span class="material-icons">article</span> Confirmer</button>
+                                <button mat-stroked-button color="warn" (click)="updateNow(beneficiaireEffectif.codeClient,beneficiaireEffectif2.codeClient, beneficiaireEffectif3.codeClient , beneficiaireEffectif4.codeClient, representant_legal.codeClient, paysResidence.value , adresse.value , email.value , numero.value, paysRep.value, chiffreAffaire.value)" ><span class="material-icons">article</span> Confirmer</button>
                                 </div>
 
                                 <div *ngIf="beneficiaireEffectif && beneficiaireEffectif2 && beneficiaireEffectif3 && !beneficiaireEffectif4" >
-                                  <button mat-stroked-button color="warn" (click)="updateNow1(beneficiaireEffectif.codeClient,beneficiaireEffectif2.codeClient, beneficiaireEffectif3.codeClient,representant_legal.codeClient, paysResidence.value , adresse.value , email.value , numero.value )" ><span class="material-icons">article</span> Confirmer</button>
+                                  <button mat-stroked-button color="warn" (click)="updateNow1(beneficiaireEffectif.codeClient,beneficiaireEffectif2.codeClient, beneficiaireEffectif3.codeClient,representant_legal.codeClient, paysResidence.value , adresse.value , email.value , numero.value , paysRep.value,  chiffreAffaire.value )" ><span class="material-icons">article</span> Confirmer</button>
                                 </div>
 
                                 <div *ngIf="beneficiaireEffectif && beneficiaireEffectif2 && !beneficiaireEffectif3 && !beneficiaireEffectif4  " >
-                                  <button mat-stroked-button color="warn" (click)="updateNow2(beneficiaireEffectif.codeClient,beneficiaireEffectif2.codeClient , representant_legal.codeClient, paysResidence.value , adresse.value , email.value , numero.value)" ><span class="material-icons">article</span> Confirmer</button>
+                                  <button mat-stroked-button color="warn" (click)="updateNow2(beneficiaireEffectif.codeClient,beneficiaireEffectif2.codeClient , representant_legal.codeClient, paysResidence.value , adresse.value , email.value , numero.value, paysRep.value,  chiffreAffaire.value )" ><span class="material-icons">article</span> Confirmer</button>
                                 </div>
 
                                 <div *ngIf="beneficiaireEffectif && !beneficiaireEffectif2 && !beneficiaireEffectif3 && !beneficiaireEffectif4" >
-                                  <button mat-stroked-button color="warn" (click)="updateNow3(beneficiaireEffectif.codeClient, representant_legal.codeClient , paysResidence.value , adresse.value , email.value , numero.value)" ><span class="material-icons">article</span> Confirmer</button>
+                                  <button mat-stroked-button color="warn" (click)="updateNow3(beneficiaireEffectif.codeClient, representant_legal.codeClient , paysResidence.value , adresse.value , email.value , numero.value , paysRep.value,  chiffreAffaire.value )" ><span class="material-icons">article</span> Confirmer</button>
                                 </div>
 
 

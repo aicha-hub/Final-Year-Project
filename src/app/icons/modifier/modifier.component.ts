@@ -108,31 +108,49 @@ export class ModifierComponent implements OnInit {
     });
   }
   createNow(code:number,code1:number)
-  { 
-    let resp=this.service1.deleteRL(code1);
-    resp.subscribe((data)=> {
-      console.log(data);
-    },
-    error => console.log(error));
-    this.representant_legal1.personneMoraleList.push(this.personne_morale) ;
-    let rep1=this.service1.CreateRL(this.representant_legal1);
-    rep1.subscribe((data)=>this.message=data);
-    this.createRep=false;
-    let snackBarRef = this.snackBar.open('Representant crée avec succès!', 'Succès', {
-      duration: 3000
-    });
+  { if( this.representant_legal1.nom==""||this.representant_legal1.prenom==""||this.representant_legal1.paysResidence==""||this.representant_legal1.Fonction_organisme==""||this.representant_legal1.codeClient==0)
+    {
+      this.toastr.warning("Veuillez remplir tous les champs");
+    }
+    else if(this.representant_legal1.codeClient<9999999||this.representant_legal1.codeClient>99999999)
+     {
+      this.toastr.warning("Veuillez verifier le numéro de cin introduit ");
+    }
+    else {
+      let resp=this.service1.deleteRL(code1);
+      resp.subscribe((data)=> {
+        console.log(data);
+      },
+      error => console.log(error));
+      this.representant_legal1.personneMoraleList.push(this.personne_morale) ;
+      let rep1=this.service1.CreateRL(this.representant_legal1);
+      rep1.subscribe((data)=>this.message=data);
+      this.createRep=false;
+      let snackBarRef = this.snackBar.open('Representant crée avec succès!', 'Succès', {
+        duration: 3000
+      });
+    }
+    
   }
   createBeneficiaire(code:number)
+  { if( this.beneficiaire_effectif.nom==""||this.beneficiaire_effectif.prenom==""||this.beneficiaire_effectif.paysResidence==""||this.beneficiaire_effectif.Pourcentage==null||this.beneficiaire_effectif.codeClient==null)
   {
+    this.toastr.warning("Veuillez remplir tous les champs");
+  }
+  else if(this.beneficiaire_effectif.codeClient<9999999||this.beneficiaire_effectif.codeClient>99999999)
+   {
+    this.toastr.warning("Veuillez verifier le numéro de cin introduit ");
+  }
+  else {
     this.beneficiaire_effectif.personneMoraleArrayList.push(this.personne_morale) ;
     let rep1=this.service2.CreatePR(this.beneficiaire_effectif);
     rep1.subscribe((data)=>this.message=data);
     this.createBe=false;
     let snackBarRef = this.snackBar.open('Beneficiaire Effectif crée avec succès!', 'Succès', {
       duration: 3000
-    });
+    });}
   }
-  updateNow ( codeBE : number,codeBE1 : number,codeBE2 : number,codeBE3 : number, codeRep:number, paysResidence : String , adresse : String , email : String , numero: Number )
+  updateNow ( codeBE : number,codeBE1 : number,codeBE2 : number,codeBE3 : number, codeRep:number, paysResidence : String , adresse : String , email : String , numero: Number , paysRep : string, paysBe : string , pourcentageBe:number, paysBe1 : string , pourcentageBe1:number ,paysBe2: string  , pourcentageBe2:number,paysBe3: string  , pourcentageBe3: number, chiffreAffaire : number , paysFonds : string )
   { if(paysResidence=="")
     {
       this.toastr.warning("Veuillez saisir le pays de résidence");
@@ -149,6 +167,12 @@ export class ModifierComponent implements OnInit {
     {
       this.toastr.warning("Veuillez entrer le numéro de télephone");
     }
+    else if (paysRep==""||chiffreAffaire==0)
+    {
+      this.toastr.warning("Veuillez remplir tous les champs");
+    }
+    
+    
     else {
        
     let resp2= this.service.updatePersonne(this.id,this.personne_morale);
@@ -171,7 +195,7 @@ export class ModifierComponent implements OnInit {
     }
    
   }
-  updateNow1 ( codeBE : number, codeBE1 : number,codeBE2 : number, codeRep:number, paysResidence : String , adresse : String , email : String , numero: Number )
+  updateNow1 ( codeBE : number, codeBE1 : number,codeBE2 : number, codeRep:number, paysResidence : String , adresse : String , email : String , numero: Number, paysRep : string, paysBe : string , pourcentageBe:number, paysBe1 : string , pourcentageBe1:number ,paysBe2: string  , pourcentageBe2:number, chiffreAffaire : number , paysFonds : string )
   { if(paysResidence=="")
     {
       this.toastr.warning("Veuillez saisir le pays de résidence");
@@ -188,6 +212,11 @@ export class ModifierComponent implements OnInit {
     {
       this.toastr.warning("Veuillez entrer le numéro de télephone");
     }
+    else if (paysRep==""||chiffreAffaire==0)
+    {
+      this.toastr.warning("Veuillez remplir tous les champs");
+    }
+    
     else {
     let resp2= this.service.updatePersonne(this.id,this.personne_morale);
     resp2.subscribe((data)=>this.message=data); 
@@ -205,7 +234,7 @@ export class ModifierComponent implements OnInit {
     });
     this.router.navigate(['/clientsMorales']) ;}
   }
-  updateNow2 ( codeBE : number ,codeBE1 : number, codeRep:number, paysResidence : String , adresse : String , email : String , numero: Number )
+  updateNow2 ( codeBE : number ,codeBE1 : number, codeRep:number, paysResidence : String , adresse : String , email : String , numero: Number , paysRep : string, paysBe : string , pourcentageBe:number, paysBe1 : string , pourcentageBe1:number , chiffreAffaire : number , paysFonds : string  )
   { if(paysResidence=="")
     {
       this.toastr.warning("Veuillez saisir le pays de résidence");
@@ -222,6 +251,10 @@ export class ModifierComponent implements OnInit {
     {
       this.toastr.warning("Veuillez entrer le numéro de télephone");
     }
+    else if (paysRep==""||chiffreAffaire==0)    {
+      this.toastr.warning("Veuillez remplir tous les champs");
+    }
+    
     else {
     let be = this.service2.updatePR(codeBE,this.beneficiaireEffectif);
     be.subscribe((data)=>this.message=data);
@@ -237,7 +270,7 @@ export class ModifierComponent implements OnInit {
     });
     this.router.navigate(['/clientsMorales']) ;}
   }
-  updateNow3 ( codeBE : number, codeRep:number,paysResidence : String , adresse : String , email : String , numero: Number )
+  updateNow3 ( codeBE : number, codeRep:number,paysResidence : String , adresse : String , email : String , numero: Number, paysRep : string, paysBe : string , pourcentageBe:number, chiffreAffaire : number , paysFonds : string )
   { if(paysResidence=="")
     {
       this.toastr.warning("Veuillez saisir le pays de résidence");
@@ -254,6 +287,10 @@ export class ModifierComponent implements OnInit {
     {
       this.toastr.warning("Veuillez entrer le numéro de télephone");
     }
+    else if (paysRep==""||chiffreAffaire==0)    {
+      this.toastr.warning("Veuillez remplir tous les champs");
+    }
+    
     else {
     let resp2= this.service.updatePersonne(this.id,this.personne_morale);
     resp2.subscribe((data)=>this.message=data); 

@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { personne_morale } from 'app/client/personne_morale';
 import { personne_physique } from 'app/client/personne_physique';
 import { TokenStorageService } from 'app/securityServices/token-storage.service';
-import { ContactService } from 'app/service_clients/contact.service';
 import { PersonneMoraleServiceService } from 'app/service_clients/personne-morale-service.service';
 import { PersonnePhysiqueService } from 'app/service_clients/personne-physique.service';
 
@@ -174,4 +173,14 @@ export class CompteComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  applyFilterone(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource1.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource1.paginator) {
+      this.dataSource1.paginator.firstPage();
+    }
+  }
+  
 }

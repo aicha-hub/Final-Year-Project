@@ -10,8 +10,10 @@
                   <div class="card-body">
                     <form #Form="ngForm"  [formGroup]="this.form">
                         <td><mat-form-field class="example-full-width" > 
-                          <input matInput [(ngModel)]="personne_physique.codeClient"   formControlName="codeClient" placeholder="Code client" id="codeClient" type="number"  required>
-                          <mat-error>Champs obligatoire.</mat-error>
+                          <input #codeClient matInput [(ngModel)]="personne_physique.codeClient"  formControlName="codeClient" placeholder="Code client" id="codeClient" type="number"  required>
+                          <mat-hint align="end">{{codeClient.value?.length || 0}}/8</mat-hint>
+                          <mat-error *ngIf="this.form.controls['codeClient'].errors?.maxlength">Maximum 8 caracteres.</mat-error>
+                          <mat-error *ngIf="this.form.controls['codeClient'].errors?.required">Champs obligatoire.</mat-error>
                         </mat-form-field></td>
                        <div>
                          <label class="l1">DESIGNATION :</label>
@@ -102,13 +104,21 @@
                           <div class="row">
                             <div class="col-md-6">
                               <mat-form-field class="example-full-width">
-                                <input matInput  [(ngModel)]="personne_physique.numPassport" id="passeport" formControlName="passeport" placeholder="Num passeport" type="text">
+                                <input matInput  [(ngModel)]="personne_physique.numPassport" minlength="9" #numPassport maxlength="9" id="passeport" formControlName="passeport" placeholder="Num passeport" type="text">
+                                <mat-hint align="end">{{numPassport.value?.length || 0}}/9</mat-hint>
+                                <mat-error *ngIf="this.form.controls['passeport'].errors?.maxlength">Le passport doit contenir 9 caractéres.</mat-error>
+                                <mat-error *ngIf="this.form.controls['passeport'].errors?.required">Champs obligatoire.</mat-error>
                               </mat-form-field>
+                             
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput [(ngModel)]="personne_physique.carteSejour" id="carte_sejour" formControlName="carte_sejour"  placeholder="Carte sejour" type="text">
+                                  <input matInput [(ngModel)]="personne_physique.carteSejour" minlength="9" #carteSejour  maxlength="9" id="carte_sejour" formControlName="carte_sejour"  placeholder="Carte sejour" type="text">
+                                  <mat-hint align="end">{{carteSejour.value?.length || 0}}/9</mat-hint>
+                                  <mat-error *ngIf="this.form.controls['carte_sejour'].errors?.maxlength">La carte sejour doit contenir 9 caractéres.</mat-error>
+                                  <mat-error *ngIf="this.form.controls['carte_sejour'].errors?.required">Champs obligatoire.</mat-error> 
                                 </mat-form-field>
+                                
                               </div>
                             </div>
                                                                               
@@ -159,7 +169,7 @@
                       </div>  
                       <div class="col-md-4">
                         <mat-form-field class="example-full-width">
-                          <input [(ngModel)]="personne_physique.numTelephone" id="contact" formControlName="contact" matInput placeholder="Telephone de contact" type="number" required >
+                          <input [(ngModel)]="personne_physique.numTelephone" id="contact" formControlName="contact" minlength="8" maxlength="8" matInput placeholder="Telephone de contact" type="number" required >
                           <mat-error *ngIf="this.form.controls['contact'].errors?.required">Champs obligatoire.</mat-error>
                           <mat-error *ngIf="this.form.controls['contact'].errors?.maxlength">Maximum 8 caracteres.</mat-error> 
                         </mat-form-field>
@@ -306,7 +316,7 @@
                       </div>   
                     </div> 
                     <p></p>
-                <button mat-raised-button  mat-stroked-button color="warn"  (click)="onClick2(personne_physique.codeClient,personne_physique,Form)">
+                <button mat-raised-button  mat-stroked-button color="warn"  (click)="onClick2(personne_physique.codeClient,personne_physique,Form,codeClient.value?.length)">
                   <span class="material-icons">
                     playlist_add
                     </span> Ajouter nationalite
@@ -371,7 +381,7 @@
 
                       
                      
-                        <button mat-raised-button  mat-stroked-button color="primary" style="width: 15%;"   [disabled]="this.form.invalid"  (click)="CreateNow()">
+                        <button mat-raised-button  mat-stroked-button color="primary" style="width: 15%;" [disabled]="this.form.invalid"  (click)="CreateNow(numPassport.value?.length,carteSejour.value?.length,contact.value?.length)">
                           <span class="material-icons">article</span> Ajouter 
                         </button>                      </form>
                   </div>

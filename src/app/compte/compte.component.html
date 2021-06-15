@@ -19,7 +19,7 @@
                           <mat-form-field >
                            
                             <mat-label>Chercher</mat-label>
-                            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. MATRICULE FISCALE" #input>
+                            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. NUM RNE" #input>
                           </mat-form-field>
                         </div>
                         <div class="col-md-1" style="width:60%;margin-top:15px;margin-right: -10px;">
@@ -86,7 +86,7 @@
                           <mat-form-field >
                            
                             <mat-label>Chercher</mat-label>
-                            <input matInput (keyup)="applyFilterone($event)" placeholder="Ex. MATRICULE FISCALE" #input>
+                            <input matInput (keyup)="applyFilterone($event)" placeholder="Ex. NUM CIN" #input1>
                           </mat-form-field>
                         </div>
                         <div class="col-md-1" style="width:60%;margin-top:15px;margin-right: -10px;">
@@ -138,7 +138,7 @@
     
         <!-- Row shown when there is no matching data. -->
         <tr class="mat-row" *matNoDataRow>
-          <td class="mat-cell" colspan="4">Aucune donnée correspondant au recherche  "{{input1.value}}"</td>
+          <td class="mat-cell" colspan="4">Aucune donnée correspondant au recherche "{{input1.value}}"</td>
         </tr>
 
 
