@@ -28,9 +28,13 @@ export class NiveauRisqueComponent implements OnInit {
       
     }
   }
+  close(): void{
+    this.dialogRef.close();  
+}
   modifier(modele:modeleCotation)
    {
     let resp1=this.service.update(1,modele);
     resp1.subscribe((data)=>this.message=data);
+    this.dialogRef.close();  
    }
 }

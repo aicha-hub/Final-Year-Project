@@ -3,6 +3,7 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { personne_morale } from 'app/client/personne_morale';
 import { PersonneMoraleServiceService } from 'app/service_clients/personne-morale-service.service';
@@ -22,7 +23,7 @@ export class DetailsFatcaComponent implements OnInit {
   currentFile : File ; 
   justificatif : justificatif;
   message:any;
-  constructor(@Inject(MAT_DIALOG_DATA) public data1, public dialogRef: MatDialogRef<DetailsFatcaComponent>,private service : PersonneMoraleServiceService, private router: Router,private route: ActivatedRoute) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data1,private snackBar: MatSnackBar, public dialogRef: MatDialogRef<DetailsFatcaComponent>,private service : PersonneMoraleServiceService, private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -34,8 +35,7 @@ export class DetailsFatcaComponent implements OnInit {
   }
 
   close(): void{
-    this.dialogRef.close();
-  
+    this.dialogRef.close();  
 }
 
 selectFile(event:any) {
@@ -51,7 +51,7 @@ Add(Form:NgForm)
 
     if (file) {
       this.currentFile = file;
-      this.justificatif=new justificatif("","29/04/2021",this.currentFile.type,this.currentFile);
+      this.justificatif=new justificatif("","17/07/2021",this.currentFile.type,this.currentFile);
       this.service.AddDocument(this.justificatif,this.currentFile).subscribe(
         (event: any) => {
           if (event.type === HttpEventType.UploadProgress) {
@@ -75,6 +75,8 @@ Add(Form:NgForm)
       }
         this.selectedFiles = undefined; 
   }
+  let snackBarRef = this.snackBar.open('Votre justificatif a été ajouté!', 'Bravo', {duration: 3000});
+  this.dialogRef.close();
 }
 
 }

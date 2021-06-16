@@ -40,6 +40,7 @@ export class UserProfileComponent implements OnInit {
   form1: FormGroup ;
   selectedFiles : FileList ; 
   creationDate : string ; 
+  to=true;
   progress : Number ;
   currentFile : File ; 
   justificatif : justificatif; 
@@ -105,7 +106,7 @@ export class UserProfileComponent implements OnInit {
 
       if (file) {
         this.currentFile = file;
-        this.justificatif=new justificatif("","19/06/2021",this.currentFile.type,this.currentFile);
+        this.justificatif=new justificatif("","18/06/2021",this.currentFile.type,this.currentFile);
         this.service.AddDocument(this.justificatif,this.currentFile).subscribe(
           (event: any) => {
             if (event.type === HttpEventType.UploadProgress) {
@@ -133,29 +134,18 @@ export class UserProfileComponent implements OnInit {
  
 
 
-  public CreateNow(numPassport:number,carteSejour:number,contact:number)
+  public CreateNow()
   {
-    if(numPassport!=9)
-    {
-     this.toastr.error("Le numéro du passport doit étre composé de 9 caractéres");
-    }
-    if(carteSejour!=9)
-    {
-     this.toastr.error("La carte séjour doit étre composé de 9 caractéres");
-    }
-    if(contact!=8)
-    {
-     this.toastr.error("Le numéro de téléphone doit étre composé de 8 chiffres");
-    }
-    if((numPassport==9)&&(carteSejour==9)&&(contact==8))
-   { let resp= this.service.updatePP(this.personne_physique.codeClient,this.personne_physique);
+   
+   
+     let resp= this.service.updatePP(this.personne_physique.codeClient,this.personne_physique);
     resp.subscribe((data)=>this.message=data);
     
     let snackBarRef = this.snackBar.open('Client physique cree!', 'Bravo', {
       duration: 3000
     });
 
-    this.router.navigate(['clientsPhysiques']);}
+    this.router.navigate(['clientsPhysiques']);
    
   }
      

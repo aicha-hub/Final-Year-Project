@@ -36,7 +36,7 @@ export class RevenuComponent implements OnInit {
   let resp= this.service.CreateR(this.revenu);
    resp.subscribe((data)=>this.message=data);
   }
-
+  this.dialogRef.close();
   }
 
   Close()

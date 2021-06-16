@@ -3,6 +3,7 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { personne_physique } from 'app/client/personne_physique';
 import { PersonnePhysiqueService } from 'app/service_clients/personne-physique.service';
@@ -24,7 +25,7 @@ export class DetailsFatcaPPComponent implements OnInit {
   justificatif : justificatif;
   message:any;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data1 , public dialogRef: MatDialogRef<DetailsFatcaPPComponent>,private service : PersonnePhysiqueService, private router: Router,private route: ActivatedRoute) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data1, private snackBar: MatSnackBar, public dialogRef: MatDialogRef<DetailsFatcaPPComponent>,private service : PersonnePhysiqueService, private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -76,6 +77,8 @@ export class DetailsFatcaPPComponent implements OnInit {
         }
           this.selectedFiles = undefined; 
     }
+    let snackBarRef = this.snackBar.open('Votre justificatif a été ajouté!', 'Bravo', {duration: 3000});
+    this.dialogRef.close();
   }
 
 }
